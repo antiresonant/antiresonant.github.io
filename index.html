@@ -177,5 +177,29 @@
 		<p>&copy; Polarj Sapkota 2026 &nbsp;&middot;&nbsp; <a href="info/" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85em">Full site &rarr;</a></p>
     </footer>
 
+<script>
+document.querySelectorAll('.category').forEach(function(cat){
+  var img = cat.querySelector('img');
+  function classify(){
+    var c = document.createElement('canvas');
+    c.width = 50; c.height = 50;
+    var ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0, 50, 50);
+    try {
+      var d = ctx.getImageData(0, 0, 50, 50).data;
+      var sum = 0;
+      for(var i = 0; i < d.length; i += 4){
+        sum += d[i] * 0.299 + d[i+1] * 0.587 + d[i+2] * 0.114;
+      }
+      var brightness = sum / (50 * 50);
+      cat.classList.add(brightness > 140 ? 'img-light' : 'img-dark');
+    } catch(e){
+      cat.classList.add('img-dark');
+    }
+  }
+  if(img.complete) classify();
+  else img.addEventListener('load', classify);
+});
+</script>
 </body>
 </html>
