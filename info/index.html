@@ -2,29 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polarj Sapkota</title>
-  <meta name="description" content="Electrical engineer, researcher, and builder. Power systems, control systems, nanotechnology, and software infrastructure.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Polarj Sapkota &mdash; Engineer, Researcher, Builder</title>
+  <meta name="description" content="Electrical engineer and researcher. Power systems, control systems, nanotechnology, and AI-driven software infrastructure.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="nav">
+<nav class="nav" id="nav">
   <div class="nav-inner">
-    <span class="nav-brand">polarj sapkota</span>
-    <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav').classList.toggle('open')">&#9776;</button>
+    <span class="nav-brand">Polarj Sapkota</span>
+    <button class="menu-btn" onclick="document.getElementById('nav').classList.toggle('open')">&#9776;</button>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#engineering">Engineering</a></li>
+      <li><a href="#galleries">Galleries</a></li>
       <li><a href="#software">Software</a></li>
+      <li><a href="#documents">Documents</a></li>
       <li><a href="#education">Education</a></li>
-      <li><a href="#publications">Publications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -32,115 +33,106 @@
 
 <!-- HERO -->
 <header class="hero">
+  <img class="hero-photo" src="assets/profile/Polarj.jpg" alt="Polarj Sapkota">
   <h1>Polarj Sapkota</h1>
-  <p class="subtitle">Electrical Engineer &middot; Researcher &middot; Builder</p>
-  <p class="location">Kathmandu, Nepal</p>
+  <p class="sub">Electrical Engineer &middot; Researcher &middot; Builder</p>
+  <p class="loc">Kathmandu, Nepal</p>
+  <div class="hero-links">
+    <a href="assets/papers/PolarCV.pdf" target="_blank">&#9655; Download CV</a>
+    <a href="https://github.com/antiresonant" target="_blank">&#9671; GitHub</a>
+    <a href="mailto:polarjsapkota@gmail.com">&#9993; Email</a>
+    <a href="#documents">&#9783; Papers &amp; Reports</a>
+  </div>
 </header>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="container">
-    <h2 class="section-title">About</h2>
-    <div class="about-text">
-      <p>
-        I am an electrical and electronics engineer with a specialization in power and control systems from Kathmandu University. My work spans power electronics, embedded systems, signal processing, control theory, and&mdash;increasingly&mdash;the infrastructure layer of software and AI.
-      </p>
-      <p>
-        I have built wireless sensor networks for wildlife conservation, shimmed superconducting magnets for MRI systems, designed flight controllers for electric aircraft, and written compilers that turn natural language into verified code. The thread connecting these is a persistent interest in <em>systems under constraint</em>&mdash;energy-limited, size-limited, SNR-limited&mdash;and in building tools that remove friction between thinking and making.
-      </p>
-      <p>
-        My current research direction centers on nanosystems and nanodevices: multi-modal energy harvesting, far-field wireless power transfer, and monolithic integration at the nanoscale. The goal is devices as easy to deploy as sowing seeds&mdash;technology that blends with the natural environment rather than overwriting it.
-      </p>
-      <p>
-        I grew up with limited resources and chose engineering over physics out of economic necessity. That constraint shaped how I think: favor first principles, build from what is available, and never confuse movement with progress. I believe the smallest units of our social fabric are people, and communities thrive when individuals take responsibility beyond formal provisions.
-      </p>
+  <div class="wrap">
+    <div class="sec-head"><h2>About</h2><div class="sec-line"></div></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am an electrical and electronics engineer with a specialization in power and control systems from Kathmandu University. My work spans power electronics, embedded systems, signal processing, control theory, and the infrastructure layer of software and AI.</p>
+        <p>I have built wireless sensor networks for wildlife conservation, shimmed superconducting magnets for MRI systems at General Electric, designed flight controllers for electric aircraft, and written compilers that turn natural language into verified code. The thread connecting these is a persistent interest in <em>systems under constraint</em>&mdash;energy-limited, size-limited, SNR-limited&mdash;and in building tools that remove friction between thinking and making.</p>
+        <p>My current research direction centers on nanosystems and nanodevices: multi-modal energy harvesting, far-field wireless power transfer, and monolithic integration at the nanoscale. The goal is devices as easy to deploy as sowing seeds&mdash;technology that blends with the natural environment rather than overwriting it.</p>
+        <p>I grew up with limited resources and chose engineering over physics out of economic necessity. That constraint shaped how I think: favor first principles, build from what is available, and never confuse movement with progress.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card"><div class="num">50+</div><div class="lbl">Projects</div></div>
+        <div class="stat-card"><div class="num">6</div><div class="lbl">Organizations</div></div>
+        <div class="stat-card"><div class="num">2</div><div class="lbl">Publications</div></div>
+        <div class="stat-card"><div class="num">60+</div><div class="lbl">Courses Mastered</div></div>
+        <div class="stat-card"><div class="num">63</div><div class="lbl">Circuit Designs</div></div>
+        <div class="stat-card"><div class="num">2</div><div class="lbl">Companies Founded</div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-  <div class="container">
-    <h2 class="section-title">Experience</h2>
+<section id="experience" class="alt">
+  <div class="wrap">
+    <div class="sec-head"><h2>Experience</h2><div class="sec-line"></div></div>
     <div class="timeline">
 
-      <div class="timeline-item">
-        <div class="t-header">
-          <h3>EE / Co-founder</h3>
-          <span class="t-date">May 2025 &ndash; Present</span>
-        </div>
+      <div class="t-item">
+        <div class="t-top"><h3>EE / Co-founder</h3><span class="t-date">May 2025 &ndash; Present</span></div>
         <div class="t-org">Rolos Engineering</div>
-        <ul class="t-details">
-          <li>Full-scale development services in embedded &amp; control systems, analog &amp; power electronics, and software/data applications</li>
-          <li>Custom power converter design, TRIAC firing control for industrial heating, firmware and hardware from scratch</li>
-          <li>Client outreach, project management, and technical delivery</li>
+        <ul>
+          <li>Full-scale development in embedded &amp; control systems, analog &amp; power electronics, software/data applications</li>
+          <li>Custom power converter design, TRIAC firing control for industrial heating, firmware from scratch</li>
+          <li>Client outreach, project management, and end-to-end technical delivery</li>
         </ul>
       </div>
 
-      <div class="timeline-item">
-        <div class="t-header">
-          <h3>Chief Engineer / Founder</h3>
-          <span class="t-date">Jul 2024 &ndash; Jun 2025</span>
-        </div>
-        <div class="t-org">Cymbiosys</div>
-        <ul class="t-details">
-          <li>Built next-generation wireless sensor networks for bio-conservation&mdash;prototype 60x cheaper than state-of-the-art, targeting 400x at commercial scale</li>
+      <div class="t-item">
+        <div class="t-top"><h3>Chief Engineer / Founder</h3><span class="t-date">Jul 2024 &ndash; Jun 2025</span></div>
+        <div class="t-org">Cymbiosys &mdash; Wireless Sensor Networks for Bio-Conservation</div>
+        <ul>
+          <li>Prototype 60&times; cheaper than state-of-the-art; targeting 400&times; at commercial scale</li>
           <li>4-microphone array with 2&deg; angular resolution for acoustic source localization</li>
-          <li>Spectrogram-based environmental noise removal and novel PSD ceiling estimation using abstract algebra</li>
-          <li>Technology validated by WWF, SAWEN, NTNC, and National Trust for Nature Conservation</li>
+          <li>Spectrogram-based environmental noise removal; novel PSD ceiling estimation via abstract algebra</li>
+          <li>Technology validated by WWF, SAWEN, NTNC, National Trust for Nature Conservation</li>
           <li>Comprehensive energy harvesting research including Carbon Nanotube (CNT) feasibility</li>
         </ul>
       </div>
 
-      <div class="timeline-item">
-        <div class="t-header">
-          <h3>Field Engineer Apprentice</h3>
-          <span class="t-date">Nov 2023 &ndash; Jul 2024</span>
-        </div>
-        <div class="t-org">General Electric Healthcare &middot; Nepal / India</div>
-        <ul class="t-details">
-          <li>Top hire from Nepal (94% on GE technical entrance examination)</li>
-          <li>Spearheaded Signal Integrity lab at the EMI/EMC facility (JFWTC, Bengaluru)&mdash;added up to 40 GHz SI testing using TDR &amp; S-parameter characterization</li>
-          <li>Shimmed a superconducting 10.8 H inductor to achieve 1.5 T B-field with 2 parts per billion inhomogeneity</li>
-          <li>Installation and maintenance of 3T &amp; 1.5T MRI systems</li>
-          <li>Led 4 technical sessions; completed 6 SI certifications through Teledyne LeCroy SI Academy</li>
+      <div class="t-item">
+        <div class="t-top"><h3>Field Engineer Apprentice</h3><span class="t-date">Nov 2023 &ndash; Jul 2024</span></div>
+        <div class="t-org">General Electric Healthcare &mdash; Nepal / India</div>
+        <ul>
+          <li>Top hire from Nepal &mdash; 94% on GE technical entrance examination</li>
+          <li>Spearheaded Signal Integrity lab at JFWTC Bengaluru: 40 GHz SI via TDR &amp; S-parameter characterization</li>
+          <li>Shimmed superconducting 10.8 H inductor &rarr; 1.5 T B-field at 2 parts per billion inhomogeneity</li>
+          <li>Installed and maintained 3T &amp; 1.5T MRI systems</li>
+          <li>Led 4 technical sessions; completed 6 SI certifications (Teledyne LeCroy SI Academy)</li>
         </ul>
       </div>
 
-      <div class="timeline-item">
-        <div class="t-header">
-          <h3>Control Systems Engineer</h3>
-          <span class="t-date">Aug &ndash; Nov 2023</span>
-        </div>
+      <div class="t-item">
+        <div class="t-top"><h3>Control Systems Engineer</h3><span class="t-date">Aug &ndash; Nov 2023</span></div>
         <div class="t-org">Garudeus Aviation Inc.</div>
-        <ul class="t-details">
-          <li>Designed inertial-frame flight controller and BLDC motor control algorithms for eVTOL aircraft</li>
-          <li>Built automatic load-tester for onboard power circuits (1 W &ndash; 1 kW range)</li>
-          <li>Designed onboard electrical networks for vehicle communication</li>
+        <ul>
+          <li>Inertial-frame flight controller and BLDC motor control algorithms for eVTOL</li>
+          <li>Automatic load-tester for onboard power circuits (1 W &ndash; 1 kW range)</li>
+          <li>Onboard electrical system design for vehicle communication networks</li>
         </ul>
       </div>
 
-      <div class="timeline-item">
-        <div class="t-header">
-          <h3>Electrical Engineering Intern</h3>
-          <span class="t-date">Feb &ndash; Mar 2023</span>
-        </div>
+      <div class="t-item">
+        <div class="t-top"><h3>Electrical Engineering Intern</h3><span class="t-date">Feb &ndash; Mar 2023</span></div>
         <div class="t-org">Upper Tamakoshi Hydropower Ltd. (456 MW)</div>
-        <ul class="t-details">
-          <li>21-day technical study of Nepal's largest hydropower plant</li>
-          <li>Modeled plant economics and conducted load-flow and contingency studies</li>
+        <ul>
+          <li>21-day study of Nepal's largest hydropower plant</li>
+          <li>Plant economic modeling, load-flow and contingency studies</li>
         </ul>
       </div>
 
-      <div class="timeline-item">
-        <div class="t-header">
-          <h3>Instrumentation Intern</h3>
-          <span class="t-date">Feb &ndash; May 2022</span>
-        </div>
+      <div class="t-item">
+        <div class="t-top"><h3>Instrumentation Intern</h3><span class="t-date">Feb &ndash; May 2022</span></div>
         <div class="t-org">Yatri Motorcycles</div>
-        <ul class="t-details">
-          <li>Designed 8-step Programmable Gain Amplifier board for data acquisition: 8-channel MUX, max gain 128, CMRR &gt;120 dB, 3-bit digital control</li>
-          <li>Component selection and sourcing for PCB manufacture</li>
+        <ul>
+          <li>8-step Programmable Gain Amplifier board for DAQ: 8-channel MUX, max gain 128, CMRR &gt;120 dB</li>
+          <li>Component selection, sourcing, and PCB manufacture preparation</li>
         </ul>
       </div>
 
@@ -150,56 +142,84 @@
 
 <!-- RESEARCH & IDEAS -->
 <section id="research">
-  <div class="container">
-    <h2 class="section-title">Research &amp; Ideas</h2>
-    <div class="research-grid">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Research &amp; Ideas</h2>
+      <p>Major intellectual contributions and active research directions.</p>
+      <div class="sec-line"></div>
+    </div>
+    <div class="r-grid">
 
-      <div class="research-card">
-        <span class="r-tag">SOFTWARE THEORY</span>
-        <h3>NLC &mdash; The Natural Language Compiler</h3>
-        <p>
-          A framework for making LLM-generated code deterministic and verifiable. Each algorithmic step is specified as a domain&ndash;range contract: the LLM generates code, the system asserts correctness of outputs given inputs, and regenerates on failure. The result is a compiler that accepts natural-language algorithm descriptions and produces verified, working programs. Published as a formal paper with mathematical proofs. Live web demo available.
-        </p>
+      <div class="r-card">
+        <img class="r-card-img" src="assets/demos/output-example.png" alt="NLC Compiler output">
+        <div class="r-card-body">
+          <span class="r-tag">SOFTWARE THEORY</span>
+          <h3>NLC &mdash; Natural Language Compiler</h3>
+          <p>A framework for making LLM-generated code deterministic and verifiable. Each algorithmic step is specified as a domain&ndash;range contract: the LLM generates code, the system asserts correctness, and regenerates on failure. The result is a compiler that accepts natural-language algorithm descriptions and produces verified, working programs.</p>
+        </div>
+        <div class="r-card-foot">
+          <a class="btn btn-primary" href="assets/papers/NLC__A_Natural_Language_Compiler_with_Deterministic_Outputs.pdf" target="_blank">&#8595; Read Paper</a>
+        </div>
       </div>
 
-      <div class="research-card">
-        <span class="r-tag">SOFTWARE THEORY</span>
-        <h3>The Periodic Table of Software (PSI)</h3>
-        <p>
-          The thesis that all computational behavior reduces to roughly 650 structural primitives&mdash;analogous to the periodic table's 118 elements yielding millions of compounds. Built a working prototype: 35 indexed fragments with domain/range contracts, deterministic SHA-256 caching, and energy accounting showing 5 orders of magnitude savings (2 J/token compile vs. 36 &mu;J/token serve). Software becomes composition, not invention.
-        </p>
+      <div class="r-card">
+        <img class="r-card-img" src="assets/projects/amoeba.png" alt="Fungible Software concepts">
+        <div class="r-card-body">
+          <span class="r-tag">SOFTWARE THEORY</span>
+          <h3>The Periodic Table of Software (PSI)</h3>
+          <p>The thesis that all computational behavior reduces to ~650 structural primitives&mdash;analogous to the periodic table's 118 elements yielding millions of compounds. Working prototype: 35 indexed fragments with domain/range contracts, deterministic SHA-256 caching, and 5 orders of magnitude energy savings (2 J/token compile vs. 36 &mu;J/token serve).</p>
+        </div>
+        <div class="r-card-foot">
+          <a class="btn btn-primary" href="assets/papers/Fungible-Software-Case.pdf" target="_blank">&#8595; Case Study</a>
+        </div>
       </div>
 
-      <div class="research-card">
-        <span class="r-tag">ECONOMICS &amp; LABOR</span>
-        <h3>The Future of Software Labor</h3>
-        <p>
-          A 44,000-word research essay analyzing 260 years of labor transitions through the lens of AI-driven software automation. Central finding: when a capability becomes cheap, labor migrates one abstraction layer up. Handloom weavers became factory engineers; human computers became programmers. Examines whether AI breaks this pattern, with evidence from SWE-bench benchmarks, Cursor's ARR trajectory, employment data for junior developers, and the 4.8 million unfilled cybersecurity roles.
-        </p>
+      <div class="r-card">
+        <img class="r-card-img" src="assets/projects/Econ_model.png" alt="Economic modeling">
+        <div class="r-card-body">
+          <span class="r-tag">ECONOMICS &amp; LABOR</span>
+          <h3>The Future of Software Labor</h3>
+          <p>A 44,000-word research essay analyzing 260 years of labor transitions through the lens of AI-driven automation. Central finding: when a capability becomes cheap, labor migrates one abstraction layer up. Examines SWE-bench benchmarks, Cursor's growth, junior developer employment data, and the 4.8M unfilled cybersecurity roles.</p>
+        </div>
+        <div class="r-card-foot">
+          <span class="r-tag" style="margin:0">ESSAY &middot; 44K WORDS</span>
+        </div>
       </div>
 
-      <div class="research-card">
-        <span class="r-tag">NANOTECHNOLOGY</span>
-        <h3>Nanosystems for Constrained Environments</h3>
-        <p>
-          Active research direction: multi-modal energy harvesting, efficient far-field wireless power transfer (up to 200 m), Carbon Nanotube applications, 3D monolithic nanosystem integration, and MEMS/photonics exploration. The vision is nanosystems that blend with natural environments&mdash;devices as easy to deploy as sowing seeds.
-        </p>
+      <div class="r-card">
+        <img class="r-card-img" src="assets/projects/mic_arr.png" alt="Microphone array for conservation">
+        <div class="r-card-body">
+          <span class="r-tag">CONSERVATION TECH</span>
+          <h3>Wireless Sensor Networks for Wildlife</h3>
+          <p>Designed and prototyped sensor nodes using 4-element microphone arrays with 2&deg; angular discrimination, spectrogram-based noise removal, and novel PSD estimation via abstract algebra. Detects poaching activity (gunshots, chainsaws, engines) in real-time across protected habitats. Validated by four major conservation organizations.</p>
+        </div>
+        <div class="r-card-foot">
+          <a class="btn btn-outline" href="#galleries">&#9655; See Hardware Photos</a>
+        </div>
       </div>
 
-      <div class="research-card">
-        <span class="r-tag">INFRASTRUCTURE</span>
-        <h3>Brain Pipeline &amp; Knowledge Engine</h3>
-        <p>
-          Two complementary tools for removing friction from thought to publication. <strong>Brain Pipeline</strong> converts voice recordings into LaTeX papers via Claude, with GitHub Actions auto-compilation and Overleaf integration&mdash;zero-cost infrastructure. <strong>Knowledge</strong> converts handwritten notes and photos into typeset documents using Claude Vision, with an intermediate JSON IR that supports structural editing before rendering to Typst, LaTeX, or HTML.
-        </p>
+      <div class="r-card">
+        <img class="r-card-img" src="assets/hardware/RT-TR-OHL.jpeg" alt="Real-time thermal rating setup">
+        <div class="r-card-body">
+          <span class="r-tag">POWER SYSTEMS</span>
+          <h3>Real-Time Thermal Rating of Transmission Lines</h3>
+          <p>R&amp;D system calculating real-time ampacity based on air/conductor temperature, wind speed, and solar heating. Includes predictive models for ampacity forecasting to enable dynamic line rating. Published at IEEE PowerCon 2024.</p>
+        </div>
+        <div class="r-card-foot">
+          <a class="btn btn-primary" href="assets/papers/Real-Time Thermal Rating of OH Lines.pdf" target="_blank">&#8595; Read Report</a>
+        </div>
       </div>
 
-      <div class="research-card">
-        <span class="r-tag">CONSERVATION TECH</span>
-        <h3>Wireless Sensor Networks for Wildlife</h3>
-        <p>
-          At Cymbiosys, designed and prototyped sensor nodes using 4-element microphone arrays with 2&deg; angular discrimination, spectrogram-based noise removal, and novel PSD estimation via abstract algebra. The system detects poaching activity (gunshots, chainsaws, vehicle engines) in real-time across protected habitats. Prototype validated by four major conservation organizations.
-        </p>
+      <div class="r-card">
+        <img class="r-card-img" src="assets/projects/heart_anomaly.png" alt="Heartbeat anomaly detection">
+        <div class="r-card-body">
+          <span class="r-tag">MACHINE LEARNING</span>
+          <h3>Heartbeat Anomaly Detection</h3>
+          <p>ANN &amp; LSTM-based predictive models for detecting abnormal cardiac conditions including atrial fibrillation. Trained on ECG time-series data with real-time classification output.</p>
+        </div>
+        <div class="r-card-foot">
+          <a class="btn btn-primary" href="assets/papers/Heartbeat Anomaly Detection.pdf" target="_blank">&#8595; Read Report</a>
+        </div>
       </div>
 
     </div>
@@ -207,174 +227,551 @@
 </section>
 
 <!-- ENGINEERING PORTFOLIO -->
-<section id="engineering">
-  <div class="container">
-    <h2 class="section-title">Engineering Portfolio</h2>
+<section id="engineering" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Engineering Portfolio</h2>
+      <p>Hardware, power systems, control, instrumentation, and design projects. Click thumbnails to explore.</p>
+      <div class="sec-line"></div>
+    </div>
+    <div class="eng-grid">
 
-    <div class="category-block">
-      <h3>Power Systems</h3>
-      <ul class="project-list">
-        <li>Real-time thermal rating of overhead transmission lines (IEEE published)</li>
-        <li>Overcurrent protection system design</li>
-        <li>Detailed transmission line design</li>
-        <li>Switchgear and grounding system design</li>
-        <li>Load-flow and contingency analysis (ETAP, PowerFactory)</li>
-        <li>HVDC protection and control equipment (literature review)</li>
-        <li>456 MW hydropower plant economic modeling</li>
-      </ul>
+      <div class="eng-card">
+        <img class="eng-card-img" src="assets/projects/oc_protexion.png" alt="Overcurrent protection" loading="lazy">
+        <div class="eng-card-body">
+          <h3>Power Systems</h3>
+          <ul>
+            <li>Overcurrent protection system design</li>
+            <li>Transmission line design</li>
+            <li>Switchgear and grounding system</li>
+            <li>Load-flow and contingency analysis</li>
+            <li>HVDC protection &amp; control research</li>
+            <li>456 MW hydropower plant modeling</li>
+          </ul>
+        </div>
+        <div class="eng-card-foot">
+          <a class="btn btn-outline" href="assets/papers/Research on HVDC Protection & Control Equipment.pdf" target="_blank">HVDC Paper</a>
+        </div>
+      </div>
+
+      <div class="eng-card">
+        <img class="eng-card-img" src="assets/projects/haptic.png" alt="Power electronics" loading="lazy">
+        <div class="eng-card-body">
+          <h3>Power Electronics</h3>
+          <ul>
+            <li>Static VAR compensator</li>
+            <li>Switched PFC reactor</li>
+            <li>Novel current source topology</li>
+            <li>Simplest resonant converter</li>
+            <li>Closed-loop boost converter with DC machine</li>
+            <li>TRIAC firing control for industrial heating</li>
+          </ul>
+        </div>
+        <div class="eng-card-foot">
+          <a class="btn btn-outline" href="assets/papers/Control Characteristics Simulation of Power Converters.pdf" target="_blank">Converter Paper</a>
+        </div>
+      </div>
+
+      <div class="eng-card">
+        <img class="eng-card-img" src="assets/projects/controls.png" alt="Control systems" loading="lazy">
+        <div class="eng-card-body">
+          <h3>Control Systems</h3>
+          <ul>
+            <li>eVTOL inertial-frame flight controller</li>
+            <li>BLDC motor control algorithms</li>
+            <li>Voltage-controlled inverter</li>
+            <li>Dye-injection process control</li>
+            <li>Ackermann gain and observer design</li>
+            <li>Automatic load-tester (1 W &ndash; 1 kW)</li>
+          </ul>
+        </div>
+        <div class="eng-card-foot">
+          <a class="btn btn-outline" href="assets/papers/Dye-injection.pdf" target="_blank">Dye-Injection Paper</a>
+        </div>
+      </div>
+
+      <div class="eng-card">
+        <img class="eng-card-img" src="assets/projects/lfa.png" alt="Signal processing" loading="lazy">
+        <div class="eng-card-body">
+          <h3>Signal Processing &amp; Instrumentation</h3>
+          <ul>
+            <li>40 GHz Signal Integrity (TDR + S-parameters)</li>
+            <li>Binaural recording microphone array</li>
+            <li>Acoustic source localization (4-mic, TDOA)</li>
+            <li>8-step PGA for DAQ (CMRR &gt;120 dB)</li>
+            <li>Edge detection, histogram equalization, SVD</li>
+          </ul>
+        </div>
+        <div class="eng-card-foot">
+          <a class="btn btn-outline" href="assets/papers/Binaural Recording Project Progress Report.pdf" target="_blank">Binaural Report</a>
+        </div>
+      </div>
+
+      <div class="eng-card">
+        <img class="eng-card-img" src="assets/projects/mic_arr.png" alt="Embedded hardware" loading="lazy">
+        <div class="eng-card-body">
+          <h3>Embedded Systems &amp; Hardware</h3>
+          <ul>
+            <li>STM32 AC waveform monitor (ADC, UART, ZCD)</li>
+            <li>Multi-axis haptic joypad (discrete analog, no MCU)</li>
+            <li>Multi-level security (discrete logic, 2FA, no MCU)</li>
+            <li>Battery level indicator circuit</li>
+            <li>Path-planning rover (GNC, obstacle avoidance)</li>
+            <li>MRI magnet shimming (10.8 H, 1.5 T, 2 ppb)</li>
+          </ul>
+        </div>
+        <div class="eng-card-foot">
+          <a class="btn btn-outline" href="assets/papers/Gamepad Haptic Feedback.pdf" target="_blank">Haptic Joypad</a>
+          <a class="btn btn-outline" href="assets/papers/Battery Level Indicator Final Report.pdf" target="_blank">Battery Indicator</a>
+        </div>
+      </div>
+
+      <div class="eng-card">
+        <img class="eng-card-img" src="assets/projects/art_gal.jpg" alt="Lighting design" loading="lazy">
+        <div class="eng-card-body">
+          <h3>Lighting &amp; Facility Design</h3>
+          <ul>
+            <li>RGB art gallery (DIALux, multiple renders)</li>
+            <li>Basantapur lighting intervention study</li>
+            <li>KU ring road lighting case study</li>
+            <li>Food processing plant &amp; boiler installation</li>
+            <li>Industrial warehouse construction</li>
+          </ul>
+        </div>
+        <div class="eng-card-foot">
+          <a class="btn btn-outline" href="assets/papers/Report on Food Processing Plant and Boiler Installation - Professional Engineering Management.pdf" target="_blank">Plant Report</a>
+          <a class="btn btn-outline" href="assets/papers/Report on Industrial Warehouse Construction - Professional Engineering Management.pdf" target="_blank">Warehouse Report</a>
+        </div>
+      </div>
+
+      <div class="eng-card">
+        <img class="eng-card-img" src="assets/projects/Z_plot.png" alt="Optimization" loading="lazy">
+        <div class="eng-card-body">
+          <h3>Optimization</h3>
+          <ul>
+            <li>F1 game performance optimization</li>
+            <li>NPN-BJT V<sub>BE</sub> optimization</li>
+            <li>Switching-noise reduction</li>
+            <li>MIMO channel power optimization</li>
+            <li>Root variation analysis</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="eng-card">
+        <img class="eng-card-img" src="assets/projects/edge.png" alt="Image processing" loading="lazy">
+        <div class="eng-card-body">
+          <h3>Image Processing</h3>
+          <ul>
+            <li>Edge detection suite (multiple operators)</li>
+            <li>Histogram equalization</li>
+            <li>SVD compression analysis</li>
+            <li>Temperature-changing kernel</li>
+            <li>Customizable DFT matrix</li>
+          </ul>
+        </div>
+        <div class="eng-card-foot">
+          <a class="btn btn-outline" href="#gallery-matlab">&#9655; MATLAB Gallery</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL GALLERIES -->
+<section id="galleries">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Visual Galleries</h2>
+      <p>Click any image to enlarge.</p>
+      <div class="sec-line"></div>
     </div>
 
-    <div class="category-block">
-      <h3>Power Electronics</h3>
-      <ul class="project-list">
-        <li>Static VAR compensator</li>
-        <li>Switched PFC reactor</li>
-        <li>Novel current source topology</li>
-        <li>Simplest resonant converter</li>
-        <li>Closed-loop boost converter with DC machine</li>
-        <li>TRIAC firing control for industrial heating</li>
-        <li>Power converter characteristics with closed-loop control</li>
-      </ul>
+    <!-- Hardware -->
+    <div class="gallery-section">
+      <h3>Hardware &amp; Lab Photography</h3>
+      <p class="gallery-desc">Physical builds: microphone arrays, thermal rating apparatus, circuit boards.</p>
+      <div class="gallery">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/hardware/Mic Array Front.jpg" alt="Microphone array front" loading="lazy">
+          <div class="g-label">Mic Array &mdash; Front</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/hardware/Mic Array Back.jpg" alt="Microphone array back" loading="lazy">
+          <div class="g-label">Mic Array &mdash; Back</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/hardware/RT-TR-OHL.jpeg" alt="Thermal rating test setup" loading="lazy">
+          <div class="g-label">RT Thermal Rating Setup</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/hardware/Fault Protecxion.png" alt="Fault protection diagram" loading="lazy">
+          <div class="g-label">Fault Protection System</div>
+        </div>
+      </div>
     </div>
 
-    <div class="category-block">
-      <h3>Control Systems</h3>
-      <ul class="project-list">
-        <li>eVTOL inertial-frame flight controller</li>
-        <li>BLDC motor control algorithms</li>
-        <li>Voltage-controlled inverter</li>
-        <li>Dye-injection process control (pharmaceutical applications)</li>
-        <li>Ackermann gain and observer design</li>
-        <li>Automatic load-tester (1 W &ndash; 1 kW)</li>
-      </ul>
+    <!-- DIALux -->
+    <div class="gallery-section">
+      <h3>DIALux Lighting Design</h3>
+      <p class="gallery-desc">RGB Art Gallery lighting renders &mdash; professional illumination design with colored zones.</p>
+      <div class="gallery">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/dialux/RGB Art Gallery.jpg" alt="Gallery overview" loading="lazy">
+          <div class="g-label">Gallery Overview</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/dialux/RGB Art Gallery - Lobby.jpg" alt="Gallery lobby" loading="lazy">
+          <div class="g-label">Lobby</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/dialux/RGB Art Gallery - Blue General Gallery.jpg" alt="Blue gallery" loading="lazy">
+          <div class="g-label">Blue General Gallery</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/dialux/RGB Art Gallery - Green Special Gallery.jpg" alt="Green gallery" loading="lazy">
+          <div class="g-label">Green Special Gallery</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/dialux/RGB Art Gallery - Balcony.jpg" alt="Balcony" loading="lazy">
+          <div class="g-label">Balcony</div>
+        </div>
+      </div>
     </div>
 
-    <div class="category-block">
-      <h3>Signal Processing &amp; Instrumentation</h3>
-      <ul class="project-list">
-        <li>40 GHz Signal Integrity testing (TDR &amp; S-parameters)</li>
-        <li>Binaural recording microphone array</li>
-        <li>Acoustic source localization (4-mic array, TDOA)</li>
-        <li>8-step PGA for data acquisition (8-ch MUX, CMRR &gt;120 dB)</li>
-        <li>Edge detection suite, histogram equalization, SVD compression</li>
-        <li>Radon transform for shape analysis</li>
-        <li>Joukowsky airfoil transform and flow field visualization</li>
-      </ul>
+    <!-- MATLAB -->
+    <div class="gallery-section" id="gallery-matlab">
+      <h3>MATLAB Image Processing</h3>
+      <p class="gallery-desc">Edge detection operators, histogram equalization, image negatives, and complex field analysis.</p>
+      <div class="gallery">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/A Edge 1.png" alt="Edge detection A1" loading="lazy">
+          <div class="g-label">Edge Detection A1</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/A Edge 2.png" alt="Edge detection A2" loading="lazy">
+          <div class="g-label">Edge Detection A2</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/A Edge 3.png" alt="Edge detection A3" loading="lazy">
+          <div class="g-label">Edge Detection A3</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/A Edge 4.png" alt="Edge detection A4" loading="lazy">
+          <div class="g-label">Edge Detection A4</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/C Edge 1.png" alt="Edge detection C" loading="lazy">
+          <div class="g-label">Edge Detection C</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/D Edge 1.png" alt="Edge detection D" loading="lazy">
+          <div class="g-label">Edge Detection D</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/E Edge 1.png" alt="Edge detection E" loading="lazy">
+          <div class="g-label">Edge Detection E</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Hist Equal 1.png" alt="Histogram equalization 1" loading="lazy">
+          <div class="g-label">Hist Equalization 1</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Hist Equal 2.png" alt="Histogram equalization 2" loading="lazy">
+          <div class="g-label">Hist Equalization 2</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Hist Equal 3.png" alt="Histogram equalization 3" loading="lazy">
+          <div class="g-label">Hist Equalization 3</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Hist Equal 4.png" alt="Histogram equalization 4" loading="lazy">
+          <div class="g-label">Hist Equalization 4</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Hist Equal 5.png" alt="Histogram equalization 5" loading="lazy">
+          <div class="g-label">Hist Equalization 5</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Negative 1.png" alt="Image negative 1" loading="lazy">
+          <div class="g-label">Image Negative 1</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Negative 2.png" alt="Image negative 2" loading="lazy">
+          <div class="g-label">Image Negative 2</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Negative 3.png" alt="Image negative 3" loading="lazy">
+          <div class="g-label">Image Negative 3</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Negative 4.png" alt="Image negative 4" loading="lazy">
+          <div class="g-label">Image Negative 4</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Negative 5.png" alt="Image negative 5" loading="lazy">
+          <div class="g-label">Image Negative 5</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/matlab/Z Field.png" alt="Z-plane field" loading="lazy">
+          <div class="g-label">Z-Plane Field Analysis</div>
+        </div>
+      </div>
     </div>
 
-    <div class="category-block">
-      <h3>Embedded Systems &amp; Hardware</h3>
-      <ul class="project-list">
-        <li>STM32 AC waveform monitor (ADC, UART, zero-cross detection, 50/60 Hz)</li>
-        <li>Multi-axis haptic joypad (no microcontroller, discrete analog)</li>
-        <li>Multi-level security system (discrete logic, two-factor auth, no MCU)</li>
-        <li>Battery level indicator circuit</li>
-        <li>Path-planning rover (guidance, navigation, obstacle avoidance)</li>
-        <li>MRI superconducting magnet shimming (10.8 H, 1.5 T, 2 ppb)</li>
-      </ul>
+    <!-- Signal Processing -->
+    <div class="gallery-section">
+      <h3>Signal &amp; Spectrum Analysis</h3>
+      <p class="gallery-desc">Fourier magnitude/phase transforms, spread spectrum analysis.</p>
+      <div class="gallery">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/signal/dark_magnitude_normalized.jpg" alt="Magnitude spectrum" loading="lazy">
+          <div class="g-label">Magnitude Spectrum (Normalized)</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/signal/dark_phase_transformed.jpg" alt="Phase transform" loading="lazy">
+          <div class="g-label">Phase Transformed</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="assets/signal/spread_spectrum.png" alt="Spread spectrum" loading="lazy">
+          <div class="g-label">Spread Spectrum Analysis</div>
+        </div>
+      </div>
     </div>
 
-    <div class="category-block">
-      <h3>Lighting &amp; Facility Design</h3>
-      <ul class="project-list">
-        <li>RGB themed art gallery (DIALux renders)</li>
-        <li>Basantapur lighting intervention study</li>
-        <li>KU ring road lighting case study</li>
-        <li>Food processing plant &amp; boiler installation report</li>
-        <li>Industrial warehouse construction report</li>
-      </ul>
-    </div>
-
-    <div class="category-block">
-      <h3>Optimization</h3>
-      <ul class="project-list">
-        <li>F1 game performance optimization</li>
-        <li>NPN-BJT V<sub>BE</sub> optimization</li>
-        <li>Switching-noise reduction in power electronics</li>
-        <li>MIMO channel power optimization</li>
-        <li>Root variation analysis</li>
-      </ul>
+    <!-- Circuits -->
+    <div class="gallery-section">
+      <h3>Circuit Designs &amp; Schematics <span style="font-weight:400;font-size:.85rem;color:var(--tx2)">(63 designs)</span></h3>
+      <p class="gallery-desc">Collection of analog, digital, and mixed-signal circuit schematics.</p>
+      <div class="gallery gallery-sm" id="circuits-gallery"></div>
     </div>
 
   </div>
 </section>
 
-<!-- SOFTWARE & COMPUTING -->
-<section id="software">
-  <div class="container">
-    <h2 class="section-title">Software &amp; Computing</h2>
-    <div class="software-grid">
+<!-- SOFTWARE -->
+<section id="software" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Software &amp; Computing</h2>
+      <p>From compilers to quantum circuits to AI-powered entertainment.</p>
+      <div class="sec-line"></div>
+    </div>
+    <div class="sw-grid">
 
       <div class="sw-card">
-        <h4>NLC Web Interface</h4>
-        <div class="sw-tech">JavaScript, Claude API, Domain-Driven Design</div>
-        <p>Live compiler accepting natural-language algorithm descriptions and producing verified programs through iterative domain&ndash;range assertion.</p>
+        <h4>NLC Compiler (Web Interface)</h4>
+        <div class="sw-tech">JavaScript &middot; Claude API &middot; Domain-Driven Design</div>
+        <p>Live compiler: write algorithms in plain English, get verified working code. Iterative domain&ndash;range assertion ensures deterministic outputs from a probabilistic LLM.</p>
       </div>
 
       <div class="sw-card">
         <h4>Fungible Software Engine v0</h4>
-        <div class="sw-tech">Python, Flask, SHA-256 Caching</div>
-        <p>35 indexed computational fragments with contracts, 5 composition pipelines, deterministic cache. Proof-of-concept for the PSI thesis.</p>
+        <div class="sw-tech">Python &middot; Flask &middot; SHA-256 Caching</div>
+        <p>35 indexed computational fragments with contracts, 5 composition pipelines, deterministic cache. Proof-of-concept for the Periodic Table of Software thesis.</p>
       </div>
 
       <div class="sw-card">
         <h4>Knowledge Pipeline</h4>
-        <div class="sw-tech">Python, Claude Vision, Typst, PyMuPDF</div>
-        <p>Image-to-publication system: handwritten notes and photos to typeset documents via structured JSON intermediate representation.</p>
+        <div class="sw-tech">Python &middot; Claude Vision &middot; Typst &middot; PyMuPDF</div>
+        <p>Converts handwritten notes and photographs into typeset documents. Claude Vision extracts structure into JSON IR; renders to Typst, LaTeX, or HTML.</p>
       </div>
 
       <div class="sw-card">
         <h4>Brain Pipeline</h4>
-        <div class="sw-tech">GitHub Actions, LaTeX, Overleaf, Claude API</div>
-        <p>Voice-to-paper infrastructure. Record, transcribe, structure with AI, auto-compile to PDF. Zero-cost publishing pipeline.</p>
+        <div class="sw-tech">GitHub Actions &middot; LaTeX &middot; Overleaf &middot; Claude API</div>
+        <p>Voice-to-paper infrastructure. Record &rarr; transcribe &rarr; structure with AI &rarr; auto-compile to PDF. Zero-cost publishing on free tiers.</p>
       </div>
 
       <div class="sw-card">
         <h4>NN Sonifier</h4>
-        <div class="sw-tech">Python, NumPy, Sounddevice</div>
-        <p>Terminal-based neural network training visualization with real-time audio sonification. Demonstrates grokking&mdash;the phase transition from memorization to generalization&mdash;through sound.</p>
+        <div class="sw-tech">Python &middot; NumPy &middot; Sounddevice</div>
+        <p>Real-time audio sonification of neural network training. Maps layer weights to frequency bands; demonstrates grokking (sudden memorization &rarr; generalization phase transition) through sound.</p>
       </div>
 
       <div class="sw-card">
         <h4>Quantum Circuits</h4>
-        <div class="sw-tech">Qiskit, OpenQASM, BluequBit</div>
-        <p>Collection of quantum circuit designs from 4 to hundreds of qubits, executed on the BluequBit quantum platform. RY, RZ, SX, CZ gate operations.</p>
-      </div>
-
-      <div class="sw-card">
-        <h4>Heartbeat Anomaly Detection</h4>
-        <div class="sw-tech">Python, ANN, LSTM</div>
-        <p>Predictive models for detecting abnormal heartbeat conditions including atrial fibrillation using neural network and LSTM architectures.</p>
+        <div class="sw-tech">Qiskit &middot; OpenQASM 2.0 &middot; BluequBit</div>
+        <p>Collection of circuits from 4 to hundreds of qubits. RY, RZ, SX, CZ gate operations executed on quantum hardware. Includes hackathon competition entries.</p>
       </div>
 
       <div class="sw-card">
         <h4>Badlibs</h4>
-        <div class="sw-tech">Python, Flask, OpenAI API, SQLite</div>
-        <p>AI-generated daily Mad Libs with 16 custom lib types, crowdsourced quality voting, and analytics. Deployed on Vercel.</p>
+        <div class="sw-tech">Python &middot; Flask &middot; GPT-4 &middot; SQLite &middot; Vercel</div>
+        <p>Daily AI-generated Mad Libs with 16 custom lib types, crowdsourced quality voting (insane/mid/shit), and analytics. Deployed live.</p>
       </div>
 
       <div class="sw-card">
         <h4>DirtyMario</h4>
-        <div class="sw-tech">Python, Pygame</div>
-        <p>Platformer game engine with physics simulation and AI enemy behaviors (chaser, camper, bouncer). Includes level editor and neural network input vector generation.</p>
+        <div class="sw-tech">Python &middot; Pygame</div>
+        <p>Platformer engine with physics, AI enemy behaviors (chaser, camper, bouncer), level editor, and neural network input vector generation for future ML integration.</p>
       </div>
 
       <div class="sw-card">
-        <h4>Wealth Redistribution Model</h4>
-        <div class="sw-tech">Python, Discrete Systems</div>
-        <p>Discrete mathematical model of wealth redistribution dynamics in economic systems.</p>
+        <h4>Acoustic Source Localization</h4>
+        <div class="sw-tech">Python &middot; NumPy &middot; Matplotlib</div>
+        <p>TDOA cross-correlation across environmental scenarios (Kathmandu, Amazon rainforest). Temperature-adjusted speed of sound, dual-frequency analysis at 1 kHz and 20 kHz.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>STM32 Waveform Monitor</h4>
+        <div class="sw-tech">C &middot; STM32 HAL &middot; ADC &middot; UART</div>
+        <p>Embedded firmware for real-time AC analysis: peak detection, zero-cross detection, min/max tracking, and data averaging at 50/60 Hz. Timer interrupts and ISR callbacks.</p>
       </div>
 
       <div class="sw-card">
         <h4>Signal Processing Library</h4>
-        <div class="sw-tech">Python, NumPy, Matplotlib</div>
-        <p>Fourier transforms, Hadamard matrices, cross-correlation, phase analysis, and acoustic TDOA estimation across environmental scenarios.</p>
+        <div class="sw-tech">Python &middot; NumPy &middot; SciPy</div>
+        <p>Hadamard transforms, Joukowsky airfoil flow fields, Radon transforms, SVD image compression, Fourier phase analysis, and cross-correlation with sliding windows.</p>
       </div>
 
       <div class="sw-card">
-        <h4>Embedded Firmware (STM32)</h4>
-        <div class="sw-tech">C, STM32 HAL, ADC, UART</div>
-        <p>AC waveform monitoring and analysis firmware for STM32C0. Real-time peak detection, zero-cross detection, and data averaging at 50/60 Hz.</p>
+        <h4>Wealth Redistribution Model</h4>
+        <div class="sw-tech">Python &middot; Discrete Mathematics</div>
+        <p>Discrete mathematical model simulating wealth redistribution dynamics. Analyzes convergence behavior and equilibrium states in economic systems.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section id="documents">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Documents &amp; Papers</h2>
+      <p>All downloadable reports, research papers, and project documentation.</p>
+      <div class="sec-line"></div>
+    </div>
+    <div class="doc-grid">
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Curriculum Vitae</h4>
+          <span>CV</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/PolarCV.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>NLC: A Natural Language Compiler with Deterministic Outputs</h4>
+          <span>RESEARCH PAPER</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/NLC__A_Natural_Language_Compiler_with_Deterministic_Outputs.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Fungible Software Case Study</h4>
+          <span>RESEARCH PAPER</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Fungible-Software-Case.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Real-Time Thermal Rating of Overhead Lines</h4>
+          <span>THESIS &middot; IEEE POWERCON 2024</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Real-Time Thermal Rating of OH Lines.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Control Characteristics Simulation of Power Converters</h4>
+          <span>INDEPENDENT RESEARCH</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Control Characteristics Simulation of Power Converters.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Dye-Injection Process Control</h4>
+          <span>INDEPENDENT RESEARCH</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Dye-injection.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Research on HVDC Protection &amp; Control Equipment</h4>
+          <span>INDEPENDENT RESEARCH</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Research on HVDC Protection & Control Equipment.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Wealth Redistribution Model (Discrete Systems)</h4>
+          <span>INDEPENDENT RESEARCH</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Wealth Redistribution Model_ Discrete..pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Heartbeat Anomaly Detection</h4>
+          <span>UNIVERSITY PROJECT</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Heartbeat Anomaly Detection.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Binaural Recording Project &mdash; Progress Report</h4>
+          <span>UNIVERSITY PROJECT</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Binaural Recording Project Progress Report.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Binaural Recording Proposal</h4>
+          <span>UNIVERSITY PROJECT</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Binaural Recording Proposal vTerminal.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Gamepad Haptic Feedback</h4>
+          <span>UNIVERSITY PROJECT</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Gamepad Haptic Feedback.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Dual-Axis Haptic Feedback Joypad with Finer Control</h4>
+          <span>UNIVERSITY PROJECT</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Dual-Axis Haptic Feedback Joypad with finer control.PDF" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Battery Level Indicator &mdash; Final Report</h4>
+          <span>UNIVERSITY PROJECT</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Battery Level Indicator Final Report.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Food Processing Plant &amp; Boiler Installation Report</h4>
+          <span>PROFESSIONAL ENGINEERING MANAGEMENT</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Report on Food Processing Plant and Boiler Installation - Professional Engineering Management.pdf" target="_blank">&#8595; PDF</a>
+      </div>
+
+      <div class="doc-row">
+        <div class="doc-info">
+          <h4>Industrial Warehouse Construction Report</h4>
+          <span>PROFESSIONAL ENGINEERING MANAGEMENT</span>
+        </div>
+        <a class="btn btn-primary" href="assets/papers/Report on Industrial Warehouse Construction - Professional Engineering Management.pdf" target="_blank">&#8595; PDF</a>
       </div>
 
     </div>
@@ -382,178 +779,221 @@
 </section>
 
 <!-- EDUCATION -->
-<section id="education">
-  <div class="container">
-    <h2 class="section-title">Education</h2>
+<section id="education" class="alt">
+  <div class="wrap">
+    <div class="sec-head"><h2>Education</h2><div class="sec-line"></div></div>
 
-    <div class="edu-block">
+    <div class="edu-item">
       <h3>BE Electrical &amp; Electronics Engineering</h3>
       <div class="edu-meta">Kathmandu University, Dhulikhel &middot; 2018 &ndash; 2023</div>
       <p>Specialization in Power &amp; Control. Undergraduate thesis on real-time thermal rating of overhead transmission lines, published at IEEE PowerCon 2024.</p>
     </div>
 
-    <div class="edu-block">
+    <div class="edu-item">
       <h3>+2 Science</h3>
       <div class="edu-meta">St. Xavier's College, Kathmandu &middot; 2015 &ndash; 2017</div>
     </div>
 
-    <div class="coursework">
-      <h3>Self-taught &amp; Independent Study</h3>
-      <div class="course-tags">
-        <span>CS50 (Harvard)</span>
-        <span>CS50P Python</span>
-        <span>CS50W Web Dev</span>
-        <span>MIT 18.06 Linear Algebra</span>
-        <span>EE261 Fourier Transform</span>
-        <span>EE263 Linear Dynamical Systems</span>
-        <span>Teledyne LeCroy SI Academy (6 courses)</span>
+    <div class="edu-item" style="margin-top:2.4rem">
+      <h3>Self-Taught &amp; Independent Study</h3>
+      <div class="tags">
+        <span class="tag">CS50 (Harvard)</span>
+        <span class="tag">CS50P Python</span>
+        <span class="tag">CS50W Web Dev</span>
+        <span class="tag">MIT 18.06 Linear Algebra</span>
+        <span class="tag">EE261 Fourier Transform</span>
+        <span class="tag">EE263 Linear Dynamical Systems</span>
+        <span class="tag">Teledyne LeCroy SI Academy (6 courses)</span>
       </div>
     </div>
 
-    <div class="coursework" style="margin-top: 1.4rem;">
+    <div class="edu-item" style="margin-top:1.6rem">
       <h3>Core University Coursework</h3>
-      <div class="course-tags">
-        <span>Differential Equations</span>
-        <span>Complex Analysis</span>
-        <span>Probability &amp; Statistics</span>
-        <span>Signals &amp; Systems</span>
-        <span>Control Systems</span>
-        <span>Power Systems Analysis</span>
-        <span>Power Electronics</span>
-        <span>Digital Signal Processing</span>
-        <span>Electromagnetic Fields</span>
-        <span>Microprocessors</span>
-        <span>Electric Machines</span>
-        <span>Switchgear &amp; Protection</span>
-        <span>High Voltage Engineering</span>
-        <span>Communication Systems</span>
-        <span>Digital Logic Design</span>
-        <span>Data Structures &amp; Algorithms</span>
-        <span>Numerical Methods</span>
-        <span>Instrumentation</span>
-        <span>Network Theory</span>
+      <div class="tags">
+        <span class="tag">Differential Equations</span>
+        <span class="tag">Complex Analysis</span>
+        <span class="tag">Probability &amp; Statistics</span>
+        <span class="tag">Signals &amp; Systems</span>
+        <span class="tag">Control Systems</span>
+        <span class="tag">Power Systems Analysis</span>
+        <span class="tag">Power Electronics</span>
+        <span class="tag">Digital Signal Processing</span>
+        <span class="tag">Electromagnetic Fields</span>
+        <span class="tag">Microprocessors</span>
+        <span class="tag">Electric Machines</span>
+        <span class="tag">Switchgear &amp; Protection</span>
+        <span class="tag">High Voltage Engineering</span>
+        <span class="tag">Communication Systems</span>
+        <span class="tag">Digital Logic Design</span>
+        <span class="tag">Data Structures &amp; Algorithms</span>
+        <span class="tag">Numerical Methods</span>
+        <span class="tag">Instrumentation</span>
+        <span class="tag">Network Theory</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <div class="container">
-    <h2 class="section-title">Publications</h2>
-
-    <div class="pub-item">
-      <h4>Real-time Thermal Rating of Overhead Transmission Lines</h4>
-      <div class="pub-venue">IEEE PowerCon 2024</div>
-      <p>R&amp;D system calculating real-time ampacity from air/conductor temperature, wind speed, and solar heating. Includes predictive models for ampacity forecasting to enable dynamic line rating.</p>
-    </div>
-
-    <div class="pub-item">
-      <h4>NLC: A Natural Language Compiler with Deterministic Outputs</h4>
-      <div class="pub-venue">Research Paper (2025)</div>
-      <p>Formal treatment of domain&ndash;range constrained compilation from natural language to verified programs. Mathematical proofs of convergence and correctness guarantees under assertion-guided regeneration.</p>
-    </div>
-
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="container">
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="skills-columns">
-
+  <div class="wrap">
+    <div class="sec-head"><h2>Technical Skills</h2><div class="sec-line"></div></div>
+    <div class="skills-grid">
       <div class="skill-group">
         <h3>Languages</h3>
-        <ul>
-          <li>C / C++</li>
-          <li>Python</li>
-          <li>MATLAB</li>
-          <li>JavaScript</li>
-          <li>Verilog HDL</li>
-          <li>OpenQASM</li>
-        </ul>
+        <ul><li>C / C++</li><li>Python</li><li>MATLAB</li><li>JavaScript</li><li>Verilog HDL</li><li>OpenQASM</li></ul>
       </div>
-
       <div class="skill-group">
-        <h3>Circuit &amp; PCB Design</h3>
-        <ul>
-          <li>KiCAD, Proteus, LTSpice</li>
-          <li>Multisim, Cadence Sigrity</li>
-          <li>High-speed digital / SI / PI</li>
-          <li>PDN design</li>
-        </ul>
+        <h3>Circuit &amp; PCB</h3>
+        <ul><li>KiCAD, Proteus, LTSpice</li><li>Multisim, Cadence Sigrity</li><li>High-speed digital / SI / PI</li><li>PDN design</li></ul>
       </div>
-
       <div class="skill-group">
         <h3>Control &amp; Simulation</h3>
-        <ul>
-          <li>Simulink (signal &amp; control)</li>
-          <li>PID, Full-state feedback</li>
-          <li>LQR, LQG, Kalman filtering</li>
-          <li>ETAP, DIGSilent PowerFactory</li>
-        </ul>
+        <ul><li>Simulink (signal &amp; control)</li><li>PID, Full-state feedback</li><li>LQR, LQG, Kalman filtering</li><li>ETAP, DIGSilent PowerFactory</li></ul>
       </div>
-
       <div class="skill-group">
-        <h3>Embedded &amp; Interfaces</h3>
-        <ul>
-          <li>STM32 HAL / bare-metal</li>
-          <li>SPI, UART, I2C</li>
-          <li>ADC, Timer interrupts</li>
-          <li>FPGA synthesis</li>
-        </ul>
+        <h3>Embedded</h3>
+        <ul><li>STM32 HAL / bare-metal</li><li>SPI, UART, I2C</li><li>ADC, Timer interrupts</li><li>FPGA synthesis</li></ul>
       </div>
-
       <div class="skill-group">
         <h3>Lab Equipment</h3>
-        <ul>
-          <li>Oscilloscope, VNA, TDR</li>
-          <li>Function generator, PSA</li>
-          <li>Goniophotometer</li>
-          <li>Custom test circuit design</li>
-        </ul>
+        <ul><li>Oscilloscope, VNA, TDR</li><li>Function gen, Power spectrum analyzer</li><li>Goniophotometer</li><li>Custom test circuit design</li></ul>
       </div>
-
       <div class="skill-group">
         <h3>Software &amp; AI</h3>
-        <ul>
-          <li>Flask, NumPy, Matplotlib</li>
-          <li>Claude / OpenAI APIs</li>
-          <li>Qiskit, PyMuPDF, Typst</li>
-          <li>GitHub Actions, Git</li>
-        </ul>
+        <ul><li>Flask, NumPy, Matplotlib, SciPy</li><li>Claude / OpenAI APIs</li><li>Qiskit, PyMuPDF, Typst</li><li>GitHub Actions, Git, Docker</li></ul>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <h2 class="section-title">Contact</h2>
-    <div class="contact-info">
-      <div class="contact-item">
-        <strong>Email</strong>
-        <a href="mailto:polarjsapkota@gmail.com">polarjsapkota@gmail.com</a>
-      </div>
-      <div class="contact-item">
-        <strong>GitHub</strong>
-        <a href="https://github.com/antiresonant" target="_blank" rel="noopener">github.com/antiresonant</a>
-      </div>
-      <div class="contact-item">
-        <strong>Location</strong>
-        Kathmandu, Nepal
-      </div>
+<section id="contact" class="alt">
+  <div class="wrap">
+    <div class="sec-head"><h2>Contact</h2><div class="sec-line"></div></div>
+    <div class="contact-row">
+      <div class="c-item"><strong>Email</strong><a href="mailto:polarjsapkota@gmail.com">polarjsapkota@gmail.com</a></div>
+      <div class="c-item"><strong>GitHub</strong><a href="https://github.com/antiresonant" target="_blank">github.com/antiresonant</a></div>
+      <div class="c-item"><strong>Location</strong>Kathmandu, Nepal</div>
+      <div class="c-item"><strong>CV</strong><a href="assets/papers/PolarCV.pdf" target="_blank">Download PDF</a></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  &copy; 2025 Polarj Sapkota
-</footer>
+<footer>&copy; 2025 Polarj Sapkota</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lightbox-caption" id="lb-caption"></div>
+</div>
+
+<script>
+// Lightbox
+function openLightbox(el){
+  const img=el.querySelector('img');
+  const label=el.querySelector('.g-label');
+  document.getElementById('lb-img').src=img.src;
+  document.getElementById('lb-caption').textContent=label?label.textContent:'';
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(e){
+  if(e.target.id==='lightbox'||e.target.classList.contains('lightbox-close')){
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow='';
+  }
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow='';
+  }
+});
+
+// Dynamically load 63 circuit images
+(function(){
+  const hashes=[
+    "025e8132266b7766fb95f17d7f4bb030340e70234809da638d1dc0855df0e128_37483349517ff826",
+    "13087f1231fdc88bf86a5f612433954748a5b1cf786e3b4368dbfe42cfc1b961_cf279b674a406d5f",
+    "14d64aa7fc06a18cd1f0926c19f91634f649f65a173ffa67d54e6ddf336a6443_e06786c30573460e",
+    "15c1b2c3fb065c6206c66b794f98a080edb46d7048b3240dce044124e0431e7a_16145920cb4a35ec",
+    "1da9b42185e9eaa16a5fd29c8afac3a958f4a11b66adaa2926329bfaa7d9f2f8_ed5504ece20fcbf1",
+    "1fd5828ba7b60d12cdb10b926306100f7c2e9dee89d1818bfb2c1ae9e97397f0_1642087e9ef67a44",
+    "20160560880ca50eb2c27ab14f90c63502c701ef97b3e83112ba212b3de81c1d_deddc90135ac7886",
+    "21e155563ce553a90c3f9d2d63c5dfa8192d233bd0e046c5b4a44c89658409c1_373d48605128114d",
+    "22e0ded6298fb2931bf84de08f2bfc9c8a668855dccff357d4cb836187f8f782_f772a7eb6168a3ea",
+    "24d138990f43f582fba573cdc42487b10b51c9f99f3295fa791b962bc1eaf63d_4174ed64527af893",
+    "294cec92655a165e4bae3f0374526992ac5d43314f2672d47345bb36b9c7b92a_ca5ad114da7fbd0f",
+    "2a63a75093bcec7300708be46e290edf31faf030f4f691a3d3a9005adfa8b712_93e7fc69451ac161",
+    "2b5e9644fb5720d0d02c6fdd3a9caea9b880b4b8b94c863d990ffdbc83f7d385_a53e6d600d122b04",
+    "2bd819a75f6b3b807ec797c41a7921d6c599c475fc1ce3e52d96b15bdc9fdad4_c8451c65b78029eb",
+    "2e37179ef38bfa505d536d0ce755eac6a162d65f6ed04053f7814e7f1e15f33b_abb1983f4576fbe9",
+    "31935c06d23b230dc4d64353549cf39a0525d9cfbcf5c7709cb20de76b39da6c_878b2163a93864d8",
+    "31cba253c8338521855f52d2ab2fff146ae0204d44846879fcc25996d25b4487_52b94858a9c051b5",
+    "36264d07c2f802c35c7ef671672780ecfb7acfd26a161bf18fe433381ac64d72_338f55d264e8aa45",
+    "380b0fa4607b1536bd103f1cfa5c91fc1ac7ed4066c1b41ad71f7758752bd77a_fc49f9586bfe80d6",
+    "4399e1a070ac4aea940437791a4b4e5117cffb5f00cc0c43b243f355cc5d041d_52c3b1123858c290",
+    "4ea7c63667cec5ec196ac73400d0d51aafb4abe59886a59479b08789317d3035_7459c2ae61cb2d05",
+    "522e8201b3d6dd0aa3969cf9285f15c704615d216198fb3870ebc376a25ab3fb_a1692bfffefaa40f",
+    "5ca43f076c8341a1f4261833e218f52093ec5b0989eb14fcc34f8895a16249e9_8315b9c56baab601",
+    "6035aed4db9f6e2671332cf993042cb709f869b20ef80ec7b3ae863850de2daf_ff835e1514bda7b1",
+    "6052d30237ab540d21e313fb6f29241f53873f9c682df51b3c6e437f604d239f_191b4eccbc7cb6f0",
+    "66b8e3b25245b91d5a85ea126627802526b137ce904e2aad748b7ed1bfc3d94b_be8bb9aea20b5e25",
+    "6826e262b34162c718182582007ce81dc5e33569ff0f1b40be71eace30d3cdde_abc55dbda24294e",
+    "69d1b0e7ccc9ce7cf6b42538f6534229c93792d234fe35751e45ebb737ff925d_8bf5a6fdc0769f5c",
+    "6db9e4fe2a454dcf7a0da7056df1fa64f33cb38548be9b8beec4f46f1b4919bd_9382e2c765b34d57",
+    "721c962a2aab54941a4f3fc9f334dc00629788db1d3436c7d97a2e097a930940_3c255b3de2e0b274",
+    "7544430018247c5b96157f94e21c7f4d2a4d3ae2512f16773afafb6e8b6525ec_c5f6a6b4e7eb5ec0",
+    "767cd567972e0ca041e9b5479163a1cd1b60e47160b999bb401486f104be40ab_d6a00837655ad60a",
+    "7926395aa845ecf7be62a64e804fb2a683066b1f74d111579e2c2a5c257d20ba_6edef43184e88fee",
+    "7b83a0ea98141cd7625f1934524f263fb2074c9992cf9d7ba638390de37a729e_7f011112386f0d7d",
+    "7fd02609efb943a9cae506c0b105f4641a5e608eb8d46e80e394a9fa431405c9_918767b567951038",
+    "839f8cab74535aa632b57fa081cfddc3a1dfbbce06ff880de0a296fbcef531ef_df75fb2aad360f85",
+    "8ce4413292f3a82c5b8b06f92cbd4133a8f86185cdecbac962d1ba0ffe7f2c59_be62f102bdeac858",
+    "8dba63d8194315cfa85c20d193cd0bcec0e7bb47f490cb6b0b0c62cf66b96d16_fce6ef2012a2a72e",
+    "8fa85eb6c476c74f00ccd9f507f050bcceb8a6f7d72ec4ddb535b348faa342a9_cdfe39cb4ba72d84",
+    "903cd1bead6c7fd1e3b6018ae93d0437875c50d732e37f645cb4520e5221b54f_329301a5c2e34e80",
+    "93217e261a8f225aecaa444a47fa0af71570ee0ef33e1031d0e3cda1de313721_456e807fc37e84ed",
+    "95742a8feb6b545eca5c55b73a1a1a10c272397a43284b020d3a80336232cbbd_dfcd4d0f5f2d7c16",
+    "95bf7864d675bc0551535d1c1d620f546c12742a568d6ab24d9b65fd33cd1296_114745679b2ae707",
+    "9e2616ce3c35b0ebd2daed0f43ea6ca0ec0368a336c6654f51c2d7ea2e85a104_777d0e0cffe47b08",
+    "9f0e92a8f3bb4fa7b11444b5cfe402ac855714b40b66db7d586631249e08bb1c_6001ed7b2f9e75f1",
+    "a41d34e051f350cf0f2e89d50a306ad3f1f0ee8411adb45feaacb9859fdbc97c_3e12e2fbfb9735ca",
+    "a46e57797564bc22c427ea17b70812b27693965c12903504b96a52aeba81fc6a_e4b6557ef056b12c",
+    "a50787a0975a299f1659ad4f94eb5c832227835e34a381925be5cb3f378c7f24_8bcad47d9522a387",
+    "a74395128828e47f90fee223751be79bc35c8f5aa90f4d4f00d1f3e707fae924_116bb01764c09aaa",
+    "a89c5c76a99b17dfd9747a67d427c3e719b06041e84f7cfff1eb5a70ecbc3213_e944d6fee5420a50",
+    "ab31f5131f0320e97ace0e48550f6a5e851a27dde1b29271f640fd195c0dd1cf_545de0649b51c8c9",
+    "bbf8b8bcf761d507385b018b522daec9ecf348b2193c3a84f68567a211c734c8_aba727315c6b9d38",
+    "c1b3b1b211a9059491bba685b700869455897c2076eee5bc9164304c6b249377_9d6246f33b8c9a5e",
+    "ca5e017ab8645f3c16259b06fc5ed0f82e6009506cd9e0923e3107828243b2c4_c320f7e9e8825cc8",
+    "d6561ccd02558448a628d4fd60144200b89622534e91cb37936fade4e04fe48a_71e128da082d3e1a",
+    "dcab3b6be9881fe44fa422551b15b0bd7e0cc9738acc1138d4be1c48f9713d20_5f8e7e0b2946088b",
+    "dd78270942ffb3f7256e9b54b048825a870766aba963bc672864f9073cf9861c_a53eae8c465bb199",
+    "e27fa9623f6a7b15306b4460e23ed3272a46cc75e1e68959236f152590922ffc_20e511478b2d067c",
+    "ecf35f56c25bd44ad0c0c60c8293a115c7046e5c6080bf42d9acd6323106fc6e_91cbde333b927faa",
+    "eda35648edba7e798260f5d281f25e7944c5d823cce4635f934a61046bc0543d_bf445fd7b172797a",
+    "ee581a0c7cb7999a56df9ee11d33f25f631da71181e86852f4965ae12516609c_774bb1e2a171ca31",
+    "fb97918bb9fd322de8001b595d4de3be71f5bc779a57776771b3f115fa454fb0_a718996ef68c22bf",
+    "fc15dc6b65fe3601813819ca3a7314031617eb5b599aeddea733e2dc1b0d911c_edf4a83776bbee2f"
+  ];
+  const g=document.getElementById('circuits-gallery');
+  hashes.forEach(function(h,i){
+    const d=document.createElement('div');
+    d.className='gallery-item';
+    d.onclick=function(){openLightbox(this)};
+    d.innerHTML='<img src="assets/circuits/0-02-03-'+h+'.png" alt="Circuit '+(i+1)+'" loading="lazy"><div class="g-label">Circuit #'+(i+1)+'</div>';
+    g.appendChild(d);
+  });
+})();
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('nav').classList.remove('open')});
+});
+</script>
 
 </body>
 </html>
