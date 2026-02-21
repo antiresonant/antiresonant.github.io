@@ -106,3 +106,14 @@ main {
     left: 0;
     top: 0;
 }
+
+.overlay ul li a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    transition: border-color 0.2s;
+}
+
+.overlay ul li a:hover {
+    border-bottom-color: #fff;
+}
