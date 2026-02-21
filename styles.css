@@ -24,10 +24,14 @@ header p {
 	text-align: center;
 }
 
+footer {
+    text-align: center;
+}
+
 footer p {
     margin: 12px 0 0;
     font-size: 1.2em;
-	text-align: center;
+    text-align: center;
 }
 
 main {
