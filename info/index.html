@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polarj Sapkota</title>
+  <meta name="description" content="Electrical engineer, researcher, and builder. Power systems, control systems, nanotechnology, and software infrastructure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">polarj sapkota</span>
+    <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav').classList.toggle('open')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#engineering">Engineering</a></li>
+      <li><a href="#software">Software</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <h1>Polarj Sapkota</h1>
+  <p class="subtitle">Electrical Engineer &middot; Researcher &middot; Builder</p>
+  <p class="location">Kathmandu, Nepal</p>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About</h2>
+    <div class="about-text">
+      <p>
+        I am an electrical and electronics engineer with a specialization in power and control systems from Kathmandu University. My work spans power electronics, embedded systems, signal processing, control theory, and&mdash;increasingly&mdash;the infrastructure layer of software and AI.
+      </p>
+      <p>
+        I have built wireless sensor networks for wildlife conservation, shimmed superconducting magnets for MRI systems, designed flight controllers for electric aircraft, and written compilers that turn natural language into verified code. The thread connecting these is a persistent interest in <em>systems under constraint</em>&mdash;energy-limited, size-limited, SNR-limited&mdash;and in building tools that remove friction between thinking and making.
+      </p>
+      <p>
+        My current research direction centers on nanosystems and nanodevices: multi-modal energy harvesting, far-field wireless power transfer, and monolithic integration at the nanoscale. The goal is devices as easy to deploy as sowing seeds&mdash;technology that blends with the natural environment rather than overwriting it.
+      </p>
+      <p>
+        I grew up with limited resources and chose engineering over physics out of economic necessity. That constraint shaped how I think: favor first principles, build from what is available, and never confuse movement with progress. I believe the smallest units of our social fabric are people, and communities thrive when individuals take responsibility beyond formal provisions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="t-header">
+          <h3>EE / Co-founder</h3>
+          <span class="t-date">May 2025 &ndash; Present</span>
+        </div>
+        <div class="t-org">Rolos Engineering</div>
+        <ul class="t-details">
+          <li>Full-scale development services in embedded &amp; control systems, analog &amp; power electronics, and software/data applications</li>
+          <li>Custom power converter design, TRIAC firing control for industrial heating, firmware and hardware from scratch</li>
+          <li>Client outreach, project management, and technical delivery</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="t-header">
+          <h3>Chief Engineer / Founder</h3>
+          <span class="t-date">Jul 2024 &ndash; Jun 2025</span>
+        </div>
+        <div class="t-org">Cymbiosys</div>
+        <ul class="t-details">
+          <li>Built next-generation wireless sensor networks for bio-conservation&mdash;prototype 60x cheaper than state-of-the-art, targeting 400x at commercial scale</li>
+          <li>4-microphone array with 2&deg; angular resolution for acoustic source localization</li>
+          <li>Spectrogram-based environmental noise removal and novel PSD ceiling estimation using abstract algebra</li>
+          <li>Technology validated by WWF, SAWEN, NTNC, and National Trust for Nature Conservation</li>
+          <li>Comprehensive energy harvesting research including Carbon Nanotube (CNT) feasibility</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="t-header">
+          <h3>Field Engineer Apprentice</h3>
+          <span class="t-date">Nov 2023 &ndash; Jul 2024</span>
+        </div>
+        <div class="t-org">General Electric Healthcare &middot; Nepal / India</div>
+        <ul class="t-details">
+          <li>Top hire from Nepal (94% on GE technical entrance examination)</li>
+          <li>Spearheaded Signal Integrity lab at the EMI/EMC facility (JFWTC, Bengaluru)&mdash;added up to 40 GHz SI testing using TDR &amp; S-parameter characterization</li>
+          <li>Shimmed a superconducting 10.8 H inductor to achieve 1.5 T B-field with 2 parts per billion inhomogeneity</li>
+          <li>Installation and maintenance of 3T &amp; 1.5T MRI systems</li>
+          <li>Led 4 technical sessions; completed 6 SI certifications through Teledyne LeCroy SI Academy</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="t-header">
+          <h3>Control Systems Engineer</h3>
+          <span class="t-date">Aug &ndash; Nov 2023</span>
+        </div>
+        <div class="t-org">Garudeus Aviation Inc.</div>
+        <ul class="t-details">
+          <li>Designed inertial-frame flight controller and BLDC motor control algorithms for eVTOL aircraft</li>
+          <li>Built automatic load-tester for onboard power circuits (1 W &ndash; 1 kW range)</li>
+          <li>Designed onboard electrical networks for vehicle communication</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="t-header">
+          <h3>Electrical Engineering Intern</h3>
+          <span class="t-date">Feb &ndash; Mar 2023</span>
+        </div>
+        <div class="t-org">Upper Tamakoshi Hydropower Ltd. (456 MW)</div>
+        <ul class="t-details">
+          <li>21-day technical study of Nepal's largest hydropower plant</li>
+          <li>Modeled plant economics and conducted load-flow and contingency studies</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="t-header">
+          <h3>Instrumentation Intern</h3>
+          <span class="t-date">Feb &ndash; May 2022</span>
+        </div>
+        <div class="t-org">Yatri Motorcycles</div>
+        <ul class="t-details">
+          <li>Designed 8-step Programmable Gain Amplifier board for data acquisition: 8-channel MUX, max gain 128, CMRR &gt;120 dB, 3-bit digital control</li>
+          <li>Component selection and sourcing for PCB manufacture</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH & IDEAS -->
+<section id="research">
+  <div class="container">
+    <h2 class="section-title">Research &amp; Ideas</h2>
+    <div class="research-grid">
+
+      <div class="research-card">
+        <span class="r-tag">SOFTWARE THEORY</span>
+        <h3>NLC &mdash; The Natural Language Compiler</h3>
+        <p>
+          A framework for making LLM-generated code deterministic and verifiable. Each algorithmic step is specified as a domain&ndash;range contract: the LLM generates code, the system asserts correctness of outputs given inputs, and regenerates on failure. The result is a compiler that accepts natural-language algorithm descriptions and produces verified, working programs. Published as a formal paper with mathematical proofs. Live web demo available.
+        </p>
+      </div>
+
+      <div class="research-card">
+        <span class="r-tag">SOFTWARE THEORY</span>
+        <h3>The Periodic Table of Software (PSI)</h3>
+        <p>
+          The thesis that all computational behavior reduces to roughly 650 structural primitives&mdash;analogous to the periodic table's 118 elements yielding millions of compounds. Built a working prototype: 35 indexed fragments with domain/range contracts, deterministic SHA-256 caching, and energy accounting showing 5 orders of magnitude savings (2 J/token compile vs. 36 &mu;J/token serve). Software becomes composition, not invention.
+        </p>
+      </div>
+
+      <div class="research-card">
+        <span class="r-tag">ECONOMICS &amp; LABOR</span>
+        <h3>The Future of Software Labor</h3>
+        <p>
+          A 44,000-word research essay analyzing 260 years of labor transitions through the lens of AI-driven software automation. Central finding: when a capability becomes cheap, labor migrates one abstraction layer up. Handloom weavers became factory engineers; human computers became programmers. Examines whether AI breaks this pattern, with evidence from SWE-bench benchmarks, Cursor's ARR trajectory, employment data for junior developers, and the 4.8 million unfilled cybersecurity roles.
+        </p>
+      </div>
+
+      <div class="research-card">
+        <span class="r-tag">NANOTECHNOLOGY</span>
+        <h3>Nanosystems for Constrained Environments</h3>
+        <p>
+          Active research direction: multi-modal energy harvesting, efficient far-field wireless power transfer (up to 200 m), Carbon Nanotube applications, 3D monolithic nanosystem integration, and MEMS/photonics exploration. The vision is nanosystems that blend with natural environments&mdash;devices as easy to deploy as sowing seeds.
+        </p>
+      </div>
+
+      <div class="research-card">
+        <span class="r-tag">INFRASTRUCTURE</span>
+        <h3>Brain Pipeline &amp; Knowledge Engine</h3>
+        <p>
+          Two complementary tools for removing friction from thought to publication. <strong>Brain Pipeline</strong> converts voice recordings into LaTeX papers via Claude, with GitHub Actions auto-compilation and Overleaf integration&mdash;zero-cost infrastructure. <strong>Knowledge</strong> converts handwritten notes and photos into typeset documents using Claude Vision, with an intermediate JSON IR that supports structural editing before rendering to Typst, LaTeX, or HTML.
+        </p>
+      </div>
+
+      <div class="research-card">
+        <span class="r-tag">CONSERVATION TECH</span>
+        <h3>Wireless Sensor Networks for Wildlife</h3>
+        <p>
+          At Cymbiosys, designed and prototyped sensor nodes using 4-element microphone arrays with 2&deg; angular discrimination, spectrogram-based noise removal, and novel PSD estimation via abstract algebra. The system detects poaching activity (gunshots, chainsaws, vehicle engines) in real-time across protected habitats. Prototype validated by four major conservation organizations.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ENGINEERING PORTFOLIO -->
+<section id="engineering">
+  <div class="container">
+    <h2 class="section-title">Engineering Portfolio</h2>
+
+    <div class="category-block">
+      <h3>Power Systems</h3>
+      <ul class="project-list">
+        <li>Real-time thermal rating of overhead transmission lines (IEEE published)</li>
+        <li>Overcurrent protection system design</li>
+        <li>Detailed transmission line design</li>
+        <li>Switchgear and grounding system design</li>
+        <li>Load-flow and contingency analysis (ETAP, PowerFactory)</li>
+        <li>HVDC protection and control equipment (literature review)</li>
+        <li>456 MW hydropower plant economic modeling</li>
+      </ul>
+    </div>
+
+    <div class="category-block">
+      <h3>Power Electronics</h3>
+      <ul class="project-list">
+        <li>Static VAR compensator</li>
+        <li>Switched PFC reactor</li>
+        <li>Novel current source topology</li>
+        <li>Simplest resonant converter</li>
+        <li>Closed-loop boost converter with DC machine</li>
+        <li>TRIAC firing control for industrial heating</li>
+        <li>Power converter characteristics with closed-loop control</li>
+      </ul>
+    </div>
+
+    <div class="category-block">
+      <h3>Control Systems</h3>
+      <ul class="project-list">
+        <li>eVTOL inertial-frame flight controller</li>
+        <li>BLDC motor control algorithms</li>
+        <li>Voltage-controlled inverter</li>
+        <li>Dye-injection process control (pharmaceutical applications)</li>
+        <li>Ackermann gain and observer design</li>
+        <li>Automatic load-tester (1 W &ndash; 1 kW)</li>
+      </ul>
+    </div>
+
+    <div class="category-block">
+      <h3>Signal Processing &amp; Instrumentation</h3>
+      <ul class="project-list">
+        <li>40 GHz Signal Integrity testing (TDR &amp; S-parameters)</li>
+        <li>Binaural recording microphone array</li>
+        <li>Acoustic source localization (4-mic array, TDOA)</li>
+        <li>8-step PGA for data acquisition (8-ch MUX, CMRR &gt;120 dB)</li>
+        <li>Edge detection suite, histogram equalization, SVD compression</li>
+        <li>Radon transform for shape analysis</li>
+        <li>Joukowsky airfoil transform and flow field visualization</li>
+      </ul>
+    </div>
+
+    <div class="category-block">
+      <h3>Embedded Systems &amp; Hardware</h3>
+      <ul class="project-list">
+        <li>STM32 AC waveform monitor (ADC, UART, zero-cross detection, 50/60 Hz)</li>
+        <li>Multi-axis haptic joypad (no microcontroller, discrete analog)</li>
+        <li>Multi-level security system (discrete logic, two-factor auth, no MCU)</li>
+        <li>Battery level indicator circuit</li>
+        <li>Path-planning rover (guidance, navigation, obstacle avoidance)</li>
+        <li>MRI superconducting magnet shimming (10.8 H, 1.5 T, 2 ppb)</li>
+      </ul>
+    </div>
+
+    <div class="category-block">
+      <h3>Lighting &amp; Facility Design</h3>
+      <ul class="project-list">
+        <li>RGB themed art gallery (DIALux renders)</li>
+        <li>Basantapur lighting intervention study</li>
+        <li>KU ring road lighting case study</li>
+        <li>Food processing plant &amp; boiler installation report</li>
+        <li>Industrial warehouse construction report</li>
+      </ul>
+    </div>
+
+    <div class="category-block">
+      <h3>Optimization</h3>
+      <ul class="project-list">
+        <li>F1 game performance optimization</li>
+        <li>NPN-BJT V<sub>BE</sub> optimization</li>
+        <li>Switching-noise reduction in power electronics</li>
+        <li>MIMO channel power optimization</li>
+        <li>Root variation analysis</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOFTWARE & COMPUTING -->
+<section id="software">
+  <div class="container">
+    <h2 class="section-title">Software &amp; Computing</h2>
+    <div class="software-grid">
+
+      <div class="sw-card">
+        <h4>NLC Web Interface</h4>
+        <div class="sw-tech">JavaScript, Claude API, Domain-Driven Design</div>
+        <p>Live compiler accepting natural-language algorithm descriptions and producing verified programs through iterative domain&ndash;range assertion.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>Fungible Software Engine v0</h4>
+        <div class="sw-tech">Python, Flask, SHA-256 Caching</div>
+        <p>35 indexed computational fragments with contracts, 5 composition pipelines, deterministic cache. Proof-of-concept for the PSI thesis.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>Knowledge Pipeline</h4>
+        <div class="sw-tech">Python, Claude Vision, Typst, PyMuPDF</div>
+        <p>Image-to-publication system: handwritten notes and photos to typeset documents via structured JSON intermediate representation.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>Brain Pipeline</h4>
+        <div class="sw-tech">GitHub Actions, LaTeX, Overleaf, Claude API</div>
+        <p>Voice-to-paper infrastructure. Record, transcribe, structure with AI, auto-compile to PDF. Zero-cost publishing pipeline.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>NN Sonifier</h4>
+        <div class="sw-tech">Python, NumPy, Sounddevice</div>
+        <p>Terminal-based neural network training visualization with real-time audio sonification. Demonstrates grokking&mdash;the phase transition from memorization to generalization&mdash;through sound.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>Quantum Circuits</h4>
+        <div class="sw-tech">Qiskit, OpenQASM, BluequBit</div>
+        <p>Collection of quantum circuit designs from 4 to hundreds of qubits, executed on the BluequBit quantum platform. RY, RZ, SX, CZ gate operations.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>Heartbeat Anomaly Detection</h4>
+        <div class="sw-tech">Python, ANN, LSTM</div>
+        <p>Predictive models for detecting abnormal heartbeat conditions including atrial fibrillation using neural network and LSTM architectures.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>Badlibs</h4>
+        <div class="sw-tech">Python, Flask, OpenAI API, SQLite</div>
+        <p>AI-generated daily Mad Libs with 16 custom lib types, crowdsourced quality voting, and analytics. Deployed on Vercel.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>DirtyMario</h4>
+        <div class="sw-tech">Python, Pygame</div>
+        <p>Platformer game engine with physics simulation and AI enemy behaviors (chaser, camper, bouncer). Includes level editor and neural network input vector generation.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>Wealth Redistribution Model</h4>
+        <div class="sw-tech">Python, Discrete Systems</div>
+        <p>Discrete mathematical model of wealth redistribution dynamics in economic systems.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>Signal Processing Library</h4>
+        <div class="sw-tech">Python, NumPy, Matplotlib</div>
+        <p>Fourier transforms, Hadamard matrices, cross-correlation, phase analysis, and acoustic TDOA estimation across environmental scenarios.</p>
+      </div>
+
+      <div class="sw-card">
+        <h4>Embedded Firmware (STM32)</h4>
+        <div class="sw-tech">C, STM32 HAL, ADC, UART</div>
+        <p>AC waveform monitoring and analysis firmware for STM32C0. Real-time peak detection, zero-cross detection, and data averaging at 50/60 Hz.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-block">
+      <h3>BE Electrical &amp; Electronics Engineering</h3>
+      <div class="edu-meta">Kathmandu University, Dhulikhel &middot; 2018 &ndash; 2023</div>
+      <p>Specialization in Power &amp; Control. Undergraduate thesis on real-time thermal rating of overhead transmission lines, published at IEEE PowerCon 2024.</p>
+    </div>
+
+    <div class="edu-block">
+      <h3>+2 Science</h3>
+      <div class="edu-meta">St. Xavier's College, Kathmandu &middot; 2015 &ndash; 2017</div>
+    </div>
+
+    <div class="coursework">
+      <h3>Self-taught &amp; Independent Study</h3>
+      <div class="course-tags">
+        <span>CS50 (Harvard)</span>
+        <span>CS50P Python</span>
+        <span>CS50W Web Dev</span>
+        <span>MIT 18.06 Linear Algebra</span>
+        <span>EE261 Fourier Transform</span>
+        <span>EE263 Linear Dynamical Systems</span>
+        <span>Teledyne LeCroy SI Academy (6 courses)</span>
+      </div>
+    </div>
+
+    <div class="coursework" style="margin-top: 1.4rem;">
+      <h3>Core University Coursework</h3>
+      <div class="course-tags">
+        <span>Differential Equations</span>
+        <span>Complex Analysis</span>
+        <span>Probability &amp; Statistics</span>
+        <span>Signals &amp; Systems</span>
+        <span>Control Systems</span>
+        <span>Power Systems Analysis</span>
+        <span>Power Electronics</span>
+        <span>Digital Signal Processing</span>
+        <span>Electromagnetic Fields</span>
+        <span>Microprocessors</span>
+        <span>Electric Machines</span>
+        <span>Switchgear &amp; Protection</span>
+        <span>High Voltage Engineering</span>
+        <span>Communication Systems</span>
+        <span>Digital Logic Design</span>
+        <span>Data Structures &amp; Algorithms</span>
+        <span>Numerical Methods</span>
+        <span>Instrumentation</span>
+        <span>Network Theory</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="container">
+    <h2 class="section-title">Publications</h2>
+
+    <div class="pub-item">
+      <h4>Real-time Thermal Rating of Overhead Transmission Lines</h4>
+      <div class="pub-venue">IEEE PowerCon 2024</div>
+      <p>R&amp;D system calculating real-time ampacity from air/conductor temperature, wind speed, and solar heating. Includes predictive models for ampacity forecasting to enable dynamic line rating.</p>
+    </div>
+
+    <div class="pub-item">
+      <h4>NLC: A Natural Language Compiler with Deterministic Outputs</h4>
+      <div class="pub-venue">Research Paper (2025)</div>
+      <p>Formal treatment of domain&ndash;range constrained compilation from natural language to verified programs. Mathematical proofs of convergence and correctness guarantees under assertion-guided regeneration.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-columns">
+
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <ul>
+          <li>C / C++</li>
+          <li>Python</li>
+          <li>MATLAB</li>
+          <li>JavaScript</li>
+          <li>Verilog HDL</li>
+          <li>OpenQASM</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>Circuit &amp; PCB Design</h3>
+        <ul>
+          <li>KiCAD, Proteus, LTSpice</li>
+          <li>Multisim, Cadence Sigrity</li>
+          <li>High-speed digital / SI / PI</li>
+          <li>PDN design</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>Control &amp; Simulation</h3>
+        <ul>
+          <li>Simulink (signal &amp; control)</li>
+          <li>PID, Full-state feedback</li>
+          <li>LQR, LQG, Kalman filtering</li>
+          <li>ETAP, DIGSilent PowerFactory</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>Embedded &amp; Interfaces</h3>
+        <ul>
+          <li>STM32 HAL / bare-metal</li>
+          <li>SPI, UART, I2C</li>
+          <li>ADC, Timer interrupts</li>
+          <li>FPGA synthesis</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>Lab Equipment</h3>
+        <ul>
+          <li>Oscilloscope, VNA, TDR</li>
+          <li>Function generator, PSA</li>
+          <li>Goniophotometer</li>
+          <li>Custom test circuit design</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>Software &amp; AI</h3>
+        <ul>
+          <li>Flask, NumPy, Matplotlib</li>
+          <li>Claude / OpenAI APIs</li>
+          <li>Qiskit, PyMuPDF, Typst</li>
+          <li>GitHub Actions, Git</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <strong>Email</strong>
+        <a href="mailto:polarjsapkota@gmail.com">polarjsapkota@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <strong>GitHub</strong>
+        <a href="https://github.com/antiresonant" target="_blank" rel="noopener">github.com/antiresonant</a>
+      </div>
+      <div class="contact-item">
+        <strong>Location</strong>
+        Kathmandu, Nepal
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Polarj Sapkota
+</footer>
+
+</body>
+</html>
