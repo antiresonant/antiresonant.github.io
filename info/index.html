@@ -65,6 +65,7 @@
         <p class="hero-sub">Electrical Engineer &middot; Theorist</p>
         <div class="hero-links">
           <a href="assets/papers/PolarCV.pdf" target="_blank">&#9655; Download CV</a>
+          <a href="javascript:void(0)" class="consult-cta" onclick="openConsult()">&#9670; Consult Polarj</a>
           <a href="https://github.com/antiresonant" target="_blank">&#9671; GitHub</a>
           <a href="https://www.linkedin.com/in/polarj-s-86239b158/" target="_blank">&#9670; LinkedIn</a>
           <a href="mailto:hi@polarjsapkota.com">&#9993; Email</a>
@@ -959,6 +960,32 @@
   <div class="lightbox-caption" id="lb-caption"></div>
 </div>
 
+<!-- CONSULT OVERLAY -->
+<div class="consult-overlay" id="consult-overlay" onclick="closeConsult(event)">
+  <button class="consult-close" onclick="closeConsult(event)">&times;</button>
+  <div class="consult-panel">
+    <div class="consult-header">
+      <p class="consult-label">Electrical Engineering</p>
+      <h2 class="consult-title">Consulting Services</h2>
+      <p class="consult-desc">Embedded controls, power electronics, instrumentation, signal integrity, and engineering feasibility reviews. Outcome-based packages with clear deliverables.</p>
+    </div>
+    <div class="consult-cards">
+      <a class="consult-card" href="assets/EE%20Consulting%20-%20Global.pdf" target="_blank">
+        <div class="consult-icon">&#127760;</div>
+        <h3>Global</h3>
+        <p>International clients &mdash; USD pricing, Payoneer &amp; USDC payments</p>
+        <span class="consult-action">View Brochure &rarr;</span>
+      </a>
+      <a class="consult-card" href="assets/EE%20Consulting%20-%20Nepal.pdf" target="_blank">
+        <div class="consult-icon">&#127987;</div>
+        <h3>Nepal</h3>
+        <p>Nepal-based clients &mdash; NRs pricing, eSewa, FonePay &amp; Khalti</p>
+        <span class="consult-action">View Brochure &rarr;</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   var deck = document.getElementById('deck');
@@ -1145,8 +1172,19 @@ function closeLightbox(e){
 document.addEventListener('keydown',function(e){
   if(e.key === 'Escape'){
     document.getElementById('lightbox').classList.remove('active');
+    document.getElementById('consult-overlay').classList.remove('active');
   }
 });
+
+// ---- Consult overlay ----
+function openConsult(){
+  document.getElementById('consult-overlay').classList.add('active');
+}
+function closeConsult(e){
+  if(e.target.id === 'consult-overlay' || e.target.classList.contains('consult-close')){
+    document.getElementById('consult-overlay').classList.remove('active');
+  }
+}
 
 // ---- Dynamically load 63 circuit images ----
 (function(){

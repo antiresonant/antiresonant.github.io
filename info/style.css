@@ -370,6 +370,73 @@ button{cursor:pointer;font-family:var(--ff)}
 .skill-group ul{list-style:none}
 .skill-group li{font-size:.82rem;color:var(--text-secondary);padding:.12rem 0}
 
+/* ===== CONSULT CTA BUTTON ===== */
+.hero-links .consult-cta{
+  background:transparent;color:var(--accent);
+  border:1.5px solid var(--accent);font-weight:600;
+}
+.hero-links .consult-cta:hover{
+  background:var(--accent);color:var(--bg-primary);
+}
+
+/* ===== CONSULT OVERLAY ===== */
+.consult-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.92);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  justify-content:center;align-items:center;padding:2rem;
+}
+.consult-overlay.active{display:flex}
+.consult-close{
+  position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;
+  color:#fff;font-size:2.2rem;cursor:pointer;z-index:501;opacity:.7;
+}
+.consult-close:hover{opacity:1}
+.consult-panel{
+  max-width:580px;width:100%;text-align:center;
+}
+.consult-header{margin-bottom:2.5rem}
+.consult-label{
+  font-size:.72rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--accent);font-family:var(--mono);
+  margin-bottom:.4rem;
+}
+.consult-title{
+  font-size:2.2rem;font-weight:700;letter-spacing:-.02em;
+  color:var(--text-primary);margin-bottom:.8rem;line-height:1.15;
+}
+.consult-desc{
+  font-size:.88rem;color:var(--text-secondary);line-height:1.7;
+  max-width:480px;margin:0 auto;
+}
+.consult-cards{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;
+}
+.consult-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:12px;padding:2rem 1.5rem;
+  text-decoration:none;display:flex;flex-direction:column;
+  align-items:center;gap:.6rem;
+}
+.consult-card:hover{
+  border-color:var(--accent);background:rgba(0,212,170,.04);
+}
+.consult-icon{
+  font-size:2.4rem;line-height:1;margin-bottom:.2rem;
+}
+.consult-card h3{
+  font-size:1.15rem;font-weight:700;color:var(--text-primary);
+}
+.consult-card p{
+  font-size:.8rem;color:var(--text-secondary);line-height:1.6;
+}
+.consult-action{
+  margin-top:auto;padding-top:.6rem;
+  font-size:.78rem;font-weight:600;color:var(--accent);
+  letter-spacing:.02em;font-family:var(--mono);
+}
+.consult-card:hover .consult-action{color:#33e0bb}
+
 /* ===== LIGHTBOX ===== */
 .lightbox{
   display:none;position:fixed;inset:0;z-index:500;
@@ -422,4 +489,7 @@ button{cursor:pointer;font-family:var(--ff)}
   .hero-links{flex-direction:column;align-items:center}
   .hero-name{font-size:2rem}
   .hero-contact{flex-direction:column;gap:.8rem}
+  .consult-cards{grid-template-columns:1fr}
+  .consult-title{font-size:1.6rem}
+  .consult-panel{padding:0 .5rem}
 }
