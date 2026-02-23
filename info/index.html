@@ -24,7 +24,7 @@
 
 <!-- TOP NAV -->
 <nav class="top-nav" id="topnav">
-  <button class="brand" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})">Polarj Sapkota</button>
+  <button class="brand" onclick="document.getElementById('hero').scrollIntoView({behavior:'instant'})">Polarj Sapkota</button>
   <button class="menu-btn" id="menu-btn">&#9776;</button>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -1010,7 +1010,7 @@
   // ---- Side dot clicks ----
   sideDots.forEach(function(dot,i){
     dot.addEventListener('click',function(){
-      slides[i].scrollIntoView({behavior:'smooth'});
+      slides[i].scrollIntoView({behavior:'instant'});
     });
   });
 
@@ -1019,7 +1019,7 @@
     a.addEventListener('click',function(e){
       e.preventDefault();
       var target = document.querySelector(a.getAttribute('href'));
-      if(target) target.scrollIntoView({behavior:'smooth'});
+      if(target) target.scrollIntoView({behavior:'instant'});
       document.getElementById('topnav').classList.remove('open');
     });
   });
@@ -1032,7 +1032,7 @@
       e.preventDefault();
       var next = e.key === 'ArrowDown' ? activeIndex + 1 : activeIndex - 1;
       if(next >= 0 && next < slides.length){
-        slides[next].scrollIntoView({behavior:'smooth'});
+        slides[next].scrollIntoView({behavior:'instant'});
       }
     }
 
@@ -1041,7 +1041,7 @@
       if(track){
         e.preventDefault();
         var dir = e.key === 'ArrowRight' ? 1 : -1;
-        track.scrollBy({left: dir * window.innerWidth, behavior:'smooth'});
+        track.scrollBy({left: dir * window.innerWidth, behavior:'instant'});
       }
     }
   });
@@ -1058,7 +1058,7 @@
       var dot = document.createElement('button');
       dot.className = 'sub-dot' + (i === 0 ? ' active' : '');
       dot.addEventListener('click',function(){
-        track.scrollTo({left: i * track.clientWidth, behavior:'smooth'});
+        track.scrollTo({left: i * track.clientWidth, behavior:'instant'});
       });
       dotsContainer.appendChild(dot);
     });
@@ -1077,7 +1077,7 @@
       var track = arrow.closest('.slide').querySelector('.slide-track');
       if(track){
         var dir = arrow.classList.contains('right') ? 1 : -1;
-        track.scrollBy({left: dir * window.innerWidth, behavior:'smooth'});
+        track.scrollBy({left: dir * window.innerWidth, behavior:'instant'});
       }
     });
   });

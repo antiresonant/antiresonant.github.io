@@ -36,7 +36,7 @@ button{cursor:pointer;font-family:var(--ff)}
   height:100vh;height:100dvh;
   overflow-y:auto;
   scroll-snap-type:y mandatory;
-  scroll-behavior:smooth;
+  scroll-behavior:auto;
   scrollbar-width:none;
   -ms-overflow-style:none;
 }
@@ -406,8 +406,7 @@ button{cursor:pointer;font-family:var(--ff)}
 }
 
 /* ===== REVEAL ANIMATION ===== */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
-.reveal.revealed{opacity:1;transform:translateY(0)}
+.reveal{opacity:1;transform:none}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){
