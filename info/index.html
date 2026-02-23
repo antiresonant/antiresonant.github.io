@@ -36,7 +36,6 @@
     <li><a href="#documents">Documents</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -52,14 +51,13 @@
   <button class="dot" data-target="documents"><span class="dot-label">Documents</span></button>
   <button class="dot" data-target="education"><span class="dot-label">Education</span></button>
   <button class="dot" data-target="skills"><span class="dot-label">Skills</span></button>
-  <button class="dot" data-target="contact"><span class="dot-label">Contact</span></button>
 </nav>
 
 <!-- DECK -->
 <div class="deck" id="deck">
 
   <!-- ==================== HERO ==================== -->
-  <section class="slide" id="hero">
+  <section class="slide active" id="hero">
     <div class="slide-body">
       <div class="hero-content">
         <img class="hero-photo" src="assets/profile/Tremendous.png" alt="Polarj Sapkota">
@@ -72,9 +70,15 @@
           <a href="mailto:hi@polarjsapkota.com">&#9993; Email</a>
           <a href="#documents">&#9783; Papers &amp; Reports</a>
         </div>
+        <div class="hero-contact">
+          <div class="hc"><strong>Email</strong><a href="mailto:hi@polarjsapkota.com">hi@polarjsapkota.com</a></div>
+          <div class="hc"><strong>GitHub</strong><a href="https://github.com/antiresonant" target="_blank">github.com/antiresonant</a></div>
+          <div class="hc"><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/polarj-s-86239b158/" target="_blank">linkedin.com/in/polarj-s</a></div>
+          <div class="hc"><strong>Location</strong><a href="https://en.wikipedia.org/wiki/Pangaea">Pangaea</a></div>
+        </div>
       </div>
     </div>
-    <div class="scroll-hint">Scroll &darr;</div>
+    <div class="footer-line">&copy; 2026 Polarj Sapkota &nbsp;&middot;&nbsp; <a href="https://antiresonant.github.io/">Portfolio &rarr;</a></div>
   </section>
 
   <!-- ==================== ABOUT ==================== -->
@@ -109,8 +113,8 @@
     </div>
     <div class="slide-track">
 
-      <div class="sub-slide">
-        <div class="exp-card reveal">
+      <div class="sub-slide active">
+        <div class="exp-card">
           <div class="role">EE / Co-founder</div>
           <div class="org">Rolos Engineering</div>
           <div class="date">May 2025 &ndash; Present</div>
@@ -123,7 +127,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="exp-card reveal">
+        <div class="exp-card">
           <div class="role">Chief Engineer / Founder</div>
           <div class="org">Cymbiosys &mdash; Wireless Sensor Networks for Bio-Conservation</div>
           <div class="date">Jul 2024 &ndash; Jun 2025</div>
@@ -138,7 +142,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="exp-card reveal">
+        <div class="exp-card">
           <div class="role">Field Engineer Apprentice</div>
           <div class="org">General Electric Healthcare &mdash; Nepal / India</div>
           <div class="date">Nov 2023 &ndash; Jul 2024</div>
@@ -152,7 +156,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="exp-card reveal">
+        <div class="exp-card">
           <div class="role">Control Systems Engineer</div>
           <div class="org">Garudeus Aviation Inc.</div>
           <div class="date">Aug &ndash; Nov 2023</div>
@@ -165,7 +169,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="exp-card reveal">
+        <div class="exp-card">
           <div class="role">Electrical Engineering Intern</div>
           <div class="org">Upper Tamakoshi Hydropower Ltd. (456 MW)</div>
           <div class="date">Feb &ndash; Mar 2023</div>
@@ -177,7 +181,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="exp-card reveal">
+        <div class="exp-card">
           <div class="role">Instrumentation Intern</div>
           <div class="org">Yatri Motorcycles</div>
           <div class="date">Feb &ndash; May 2022</div>
@@ -202,8 +206,8 @@
     </div>
     <div class="slide-track">
 
-      <div class="sub-slide">
-        <div class="r-card reveal">
+      <div class="sub-slide active">
+        <div class="r-card">
           <img class="r-card-img" src="assets/demos/output-example.png" alt="NLC Compiler output">
           <div class="r-card-body">
             <span class="r-tag">SOFTWARE THEORY</span>
@@ -217,7 +221,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="r-card reveal">
+        <div class="r-card">
           <img class="r-card-img" src="assets/projects/psi-cover.png" alt="Periodic Table of Software" onerror="this.src=this.src.replace('.png','.jpg')">
           <div class="r-card-body">
             <span class="r-tag">SOFTWARE THEORY</span>
@@ -231,7 +235,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="r-card reveal">
+        <div class="r-card">
           <img class="r-card-img" src="assets/projects/future-cover.png" alt="Future of Software Labor" onerror="this.src=this.src.replace('.png','.jpg')">
           <div class="r-card-body">
             <span class="r-tag">ECONOMICS &amp; LABOR</span>
@@ -245,7 +249,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="r-card reveal">
+        <div class="r-card">
           <img class="r-card-img" src="assets/projects/wsn-cover.png" alt="Wireless sensor networks for conservation" onerror="this.src=this.src.replace('.png','.jpg')">
           <div class="r-card-body">
             <span class="r-tag">CONSERVATION TECH</span>
@@ -259,7 +263,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="r-card reveal">
+        <div class="r-card">
           <img class="r-card-img" src="assets/hardware/RT-TR-OHL.jpeg" alt="Real-time thermal rating setup">
           <div class="r-card-body">
             <span class="r-tag">POWER SYSTEMS</span>
@@ -273,7 +277,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="r-card reveal">
+        <div class="r-card">
           <img class="r-card-img" src="assets/projects/heart_anomaly.png" alt="Heartbeat anomaly detection">
           <div class="r-card-body">
             <span class="r-tag">MACHINE LEARNING</span>
@@ -300,8 +304,8 @@
     </div>
     <div class="slide-track">
 
-      <div class="sub-slide">
-        <div class="eng-card reveal">
+      <div class="sub-slide active">
+        <div class="eng-card">
           <img class="eng-card-img" src="assets/projects/oc_protexion.png" alt="Overcurrent protection" loading="lazy">
           <div class="eng-card-body">
             <h3>Power Systems</h3>
@@ -321,7 +325,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="eng-card reveal">
+        <div class="eng-card">
           <img class="eng-card-img" src="assets/projects/haptic.png" alt="Power electronics" loading="lazy">
           <div class="eng-card-body">
             <h3>Power Electronics</h3>
@@ -341,7 +345,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="eng-card reveal">
+        <div class="eng-card">
           <img class="eng-card-img" src="assets/projects/controls.png" alt="Control systems" loading="lazy">
           <div class="eng-card-body">
             <h3>Control Systems</h3>
@@ -361,7 +365,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="eng-card reveal">
+        <div class="eng-card">
           <img class="eng-card-img" src="assets/projects/lfa.png" alt="Signal processing" loading="lazy">
           <div class="eng-card-body">
             <h3>Signal Processing &amp; Instrumentation</h3>
@@ -380,7 +384,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="eng-card reveal">
+        <div class="eng-card">
           <img class="eng-card-img" src="assets/projects/mic_arr.png" alt="Embedded hardware" loading="lazy">
           <div class="eng-card-body">
             <h3>Embedded Systems &amp; Hardware</h3>
@@ -401,7 +405,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="eng-card reveal">
+        <div class="eng-card">
           <img class="eng-card-img" src="assets/projects/art_gal.jpg" alt="Lighting design" loading="lazy">
           <div class="eng-card-body">
             <h3>Lighting &amp; Facility Design</h3>
@@ -421,7 +425,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="eng-card reveal">
+        <div class="eng-card">
           <img class="eng-card-img" src="assets/projects/Z_plot.png" alt="Optimization" loading="lazy">
           <div class="eng-card-body">
             <h3>Optimization</h3>
@@ -437,7 +441,7 @@
       </div>
 
       <div class="sub-slide">
-        <div class="eng-card reveal">
+        <div class="eng-card">
           <img class="eng-card-img" src="assets/projects/edge.png" alt="Image processing" loading="lazy">
           <div class="eng-card-body">
             <h3>Image Processing</h3>
@@ -470,8 +474,8 @@
     <div class="slide-track">
 
       <!-- Hardware -->
-      <div class="sub-slide">
-        <div class="gallery-sub reveal">
+      <div class="sub-slide active">
+        <div class="gallery-sub">
           <h3>Hardware &amp; Lab Photography</h3>
           <p class="gallery-desc">Physical builds: microphone arrays, thermal rating apparatus, circuit boards.</p>
           <div class="gallery-grid">
@@ -497,7 +501,7 @@
 
       <!-- DIALux -->
       <div class="sub-slide">
-        <div class="gallery-sub reveal">
+        <div class="gallery-sub">
           <h3>DIALux Lighting Design</h3>
           <p class="gallery-desc">RGB Art Gallery lighting renders &mdash; professional illumination design with colored zones.</p>
           <div class="gallery-grid">
@@ -527,7 +531,7 @@
 
       <!-- MATLAB -->
       <div class="sub-slide">
-        <div class="gallery-sub reveal">
+        <div class="gallery-sub">
           <h3>MATLAB &amp; Signal Processing</h3>
           <p class="gallery-desc">Edge detection operators, histogram equalization, image negatives, spectral analysis, and complex field analysis.</p>
           <div class="gallery-scroll">
@@ -599,7 +603,7 @@
 
       <!-- Circuits -->
       <div class="sub-slide">
-        <div class="gallery-sub reveal">
+        <div class="gallery-sub">
           <h3>Circuit Designs &amp; Schematics <span style="font-weight:400;font-size:.82rem;color:var(--text-secondary)">(63 designs)</span></h3>
           <p class="gallery-desc">Collection of analog, digital, and mixed-signal circuit schematics.</p>
           <div class="gallery-scroll">
@@ -626,8 +630,8 @@
     <div class="slide-track">
 
       <!-- Software sub-slide 1 -->
-      <div class="sub-slide">
-        <div class="sw-sub-grid reveal">
+      <div class="sub-slide active">
+        <div class="sw-sub-grid">
           <div class="sw-card">
             <h4>NLC Compiler</h4>
             <div class="sw-tech">JavaScript &middot; Claude API &middot; Domain-Driven Design</div>
@@ -653,7 +657,7 @@
 
       <!-- Software sub-slide 2 -->
       <div class="sub-slide">
-        <div class="sw-sub-grid reveal">
+        <div class="sw-sub-grid">
           <div class="sw-card">
             <h4>NN Sonifier</h4>
             <div class="sw-tech">Python &middot; NumPy &middot; Sounddevice</div>
@@ -679,7 +683,7 @@
 
       <!-- Software sub-slide 3 -->
       <div class="sub-slide">
-        <div class="sw-sub-grid reveal">
+        <div class="sw-sub-grid">
           <div class="sw-card">
             <h4>Acoustic Source Localization</h4>
             <div class="sw-tech">Python &middot; NumPy &middot; Matplotlib</div>
@@ -949,24 +953,6 @@
     </div>
   </section>
 
-  <!-- ==================== CONTACT ==================== -->
-  <section class="slide" id="contact">
-    <div class="slide-body">
-      <div class="contact-content">
-        <h2 class="sec-title">Contact</h2>
-        <div class="sec-accent" style="margin-left:auto;margin-right:auto"></div>
-        <div class="contact-row">
-          <div class="c-item"><strong>Email</strong><a href="mailto:hi@polarjsapkota.com">hi@polarjsapkota.com</a></div>
-          <div class="c-item"><strong>GitHub</strong><a href="https://github.com/antiresonant" target="_blank">github.com/antiresonant</a></div>
-          <div class="c-item"><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/polarj-s-86239b158/" target="_blank">linkedin.com/in/polarj-s</a></div>
-          <div class="c-item"><strong>Location</strong><a href="https://en.wikipedia.org/wiki/Pangaea">Pangaea</a></div>
-          <div class="c-item"><strong>CV</strong><a href="assets/papers/PolarCV.pdf" target="_blank">Download PDF</a></div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-line">&copy; 2026 Polarj Sapkota &nbsp;&middot;&nbsp; <a href="https://antiresonant.github.io/">Portfolio &rarr;</a></div>
-  </section>
-
 </div><!-- /deck -->
 
 <!-- LIGHTBOX -->
@@ -984,117 +970,151 @@
   var topLinks = Array.from(document.querySelectorAll('.top-nav .nav-links a'));
   var activeIndex = 0;
 
-  // ---- Active section tracking via IntersectionObserver ----
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        var idx = slides.indexOf(entry.target);
-        if(idx !== -1){
-          activeIndex = idx;
-          updateNav();
-        }
-      }
-    });
-  },{root:deck, threshold:0.5});
+  // Sub-slide index per section
+  var subIndex = {};
+  slides.forEach(function(s){
+    if(s.querySelectorAll('.sub-slide').length > 0) subIndex[s.id] = 0;
+  });
 
-  slides.forEach(function(s){ observer.observe(s); });
+  function goToSlide(idx){
+    if(idx < 0 || idx >= slides.length || idx === activeIndex) return;
+    slides[activeIndex].classList.remove('active');
+    activeIndex = idx;
+    slides[activeIndex].classList.add('active');
+    updateNav();
+  }
+
+  function goToSub(dir){
+    var s = slides[activeIndex];
+    var subs = Array.from(s.querySelectorAll('.sub-slide'));
+    if(subs.length === 0) return;
+    var cur = subIndex[s.id] || 0;
+    var next = cur + dir;
+    if(next < 0 || next >= subs.length) return;
+    subs[cur].classList.remove('active');
+    subs[next].classList.add('active');
+    subIndex[s.id] = next;
+    updateSubDots(s);
+  }
+
+  function goToSubIdx(section, idx){
+    var subs = Array.from(section.querySelectorAll('.sub-slide'));
+    var cur = subIndex[section.id] || 0;
+    if(idx < 0 || idx >= subs.length || idx === cur) return;
+    subs[cur].classList.remove('active');
+    subs[idx].classList.add('active');
+    subIndex[section.id] = idx;
+    updateSubDots(section);
+  }
 
   function updateNav(){
     sideDots.forEach(function(d,i){ d.classList.toggle('active', i === activeIndex); });
-    var activeId = slides[activeIndex].id;
+    var id = slides[activeIndex].id;
     topLinks.forEach(function(a){
-      a.classList.toggle('active', a.getAttribute('href') === '#' + activeId);
+      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
     });
   }
 
-  // ---- Side dot clicks ----
+  function updateSubDots(section){
+    var dots = section.querySelectorAll('.sub-dot');
+    var cur = subIndex[section.id] || 0;
+    dots.forEach(function(d,i){ d.classList.toggle('active', i === cur); });
+  }
+
+  // Side dot clicks
   sideDots.forEach(function(dot,i){
-    dot.addEventListener('click',function(){
-      slides[i].scrollIntoView({behavior:'instant'});
-    });
+    dot.addEventListener('click', function(){ goToSlide(i); });
   });
 
-  // ---- Top nav link clicks (scroll within deck) ----
+  // Top nav clicks
   topLinks.forEach(function(a){
     a.addEventListener('click',function(e){
       e.preventDefault();
-      var target = document.querySelector(a.getAttribute('href'));
-      if(target) target.scrollIntoView({behavior:'instant'});
+      var id = a.getAttribute('href').slice(1);
+      for(var i=0;i<slides.length;i++){
+        if(slides[i].id === id){ goToSlide(i); break; }
+      }
       document.getElementById('topnav').classList.remove('open');
     });
   });
 
-  // ---- Keyboard navigation ----
+  // Keyboard
   document.addEventListener('keydown',function(e){
     if(document.getElementById('lightbox').classList.contains('active')) return;
+    if(e.key==='ArrowDown'){e.preventDefault();goToSlide(activeIndex+1);}
+    if(e.key==='ArrowUp'){e.preventDefault();goToSlide(activeIndex-1);}
+    if(e.key==='ArrowRight'){e.preventDefault();goToSub(1);}
+    if(e.key==='ArrowLeft'){e.preventDefault();goToSub(-1);}
+  });
 
-    if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
-      e.preventDefault();
-      var next = e.key === 'ArrowDown' ? activeIndex + 1 : activeIndex - 1;
-      if(next >= 0 && next < slides.length){
-        slides[next].scrollIntoView({behavior:'instant'});
-      }
+  // Wheel with cooldown
+  var wheelLock = false;
+  function isScrollable(el){
+    while(el && el !== deck){
+      if(el.scrollHeight > el.clientHeight + 2 &&
+        (el.classList.contains('doc-list') || el.classList.contains('gallery-scroll')))
+        return true;
+      el = el.parentElement;
     }
+    return false;
+  }
+  deck.addEventListener('wheel',function(e){
+    if(wheelLock || isScrollable(e.target)) return;
+    e.preventDefault();
+    wheelLock = true;
+    if(Math.abs(e.deltaY) >= Math.abs(e.deltaX)){
+      if(e.deltaY > 0) goToSlide(activeIndex+1); else goToSlide(activeIndex-1);
+    } else {
+      if(e.deltaX > 0) goToSub(1); else goToSub(-1);
+    }
+    setTimeout(function(){ wheelLock = false; }, 250);
+  },{passive:false});
 
-    if(e.key === 'ArrowLeft' || e.key === 'ArrowRight'){
-      var track = slides[activeIndex].querySelector('.slide-track');
-      if(track){
-        e.preventDefault();
-        var dir = e.key === 'ArrowRight' ? 1 : -1;
-        track.scrollBy({left: dir * window.innerWidth, behavior:'instant'});
-      }
+  // Touch swipe
+  var tx,ty;
+  deck.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY;});
+  deck.addEventListener('touchend',function(e){
+    if(tx===undefined) return;
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty; tx=undefined;
+    if(Math.abs(dy)>Math.abs(dx)&&Math.abs(dy)>40){
+      if(dy<0) goToSlide(activeIndex+1); else goToSlide(activeIndex-1);
+    } else if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){
+      if(dx<0) goToSub(1); else goToSub(-1);
     }
   });
 
-  // ---- Sub-dots: generate and track ----
-  document.querySelectorAll('.slide-track').forEach(function(track){
-    var section = track.closest('.slide');
-    var subSlides = Array.from(track.querySelectorAll('.sub-slide'));
-    var dotsContainer = section.querySelector('.sub-dots');
-
-    if(!dotsContainer || subSlides.length === 0) return;
-
-    subSlides.forEach(function(_,i){
-      var dot = document.createElement('button');
-      dot.className = 'sub-dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click',function(){
-        track.scrollTo({left: i * track.clientWidth, behavior:'instant'});
-      });
-      dotsContainer.appendChild(dot);
-    });
-
-    track.addEventListener('scroll',function(){
-      var idx = Math.round(track.scrollLeft / track.clientWidth);
-      dotsContainer.querySelectorAll('.sub-dot').forEach(function(d,i){
-        d.classList.toggle('active', i === idx);
-      });
+  // Generate sub-dots
+  slides.forEach(function(section){
+    var subs = section.querySelectorAll('.sub-slide');
+    var dotsC = section.querySelector('.sub-dots');
+    if(!dotsC || subs.length === 0) return;
+    subs.forEach(function(_,i){
+      var d = document.createElement('button');
+      d.className = 'sub-dot' + (i===0?' active':'');
+      d.addEventListener('click', function(){ goToSubIdx(section, i); });
+      dotsC.appendChild(d);
     });
   });
 
-  // ---- Slide arrows ----
+  // Slide arrows
   document.querySelectorAll('.slide-arrow').forEach(function(arrow){
-    arrow.addEventListener('click',function(){
-      var track = arrow.closest('.slide').querySelector('.slide-track');
-      if(track){
-        var dir = arrow.classList.contains('right') ? 1 : -1;
-        track.scrollBy({left: dir * window.innerWidth, behavior:'instant'});
-      }
-    });
+    arrow.addEventListener('click',function(){ goToSub(arrow.classList.contains('right')?1:-1); });
   });
 
-  // ---- Mobile nav toggle ----
+  // Mobile nav
   document.getElementById('menu-btn').addEventListener('click',function(){
     document.getElementById('topnav').classList.toggle('open');
   });
 
-  // ---- Reveal animations ----
-  var revealObs = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting) entry.target.classList.add('revealed');
-    });
-  },{threshold:0.1});
-
-  document.querySelectorAll('.reveal').forEach(function(el){ revealObs.observe(el); });
+  // Hash link clicks (e.g. #documents from hero)
+  document.addEventListener('click',function(e){
+    var a = e.target.closest('a[href^="#"]');
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1);
+    for(var i=0;i<slides.length;i++){
+      if(slides[i].id === id){e.preventDefault();goToSlide(i);return;}
+    }
+  });
 
 })();
 
