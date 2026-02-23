@@ -222,24 +222,31 @@ button{cursor:pointer;font-family:var(--ff)}
 .footer-line a{color:var(--accent)}
 
 /* ===== ABOUT ===== */
-.about-wrap{max-width:720px;width:100%}
+.about-wrap{max-width:720px;width:100%;text-align:center}
 .about-quote{
   font-size:1.15rem;font-style:italic;color:var(--text-primary);
   border-left:3px solid var(--accent);padding-left:1.2rem;
-  margin:0 0 1.8rem;line-height:1.6;
+  margin:0 auto 1.8rem;line-height:1.6;
+  text-align:left;display:inline-block;
 }
 .about-body p{
   font-size:.86rem;color:var(--text-secondary);
-  line-height:1.8;margin-bottom:.8rem;
+  line-height:1.8;margin-bottom:.8rem;text-align:left;
 }
 .about-body p:last-child{margin-bottom:0}
 .about-body em{color:var(--text-primary)}
-.about-stats-strip{
-  display:flex;justify-content:space-between;
-  margin-top:2rem;padding-top:1.3rem;
-  border-top:1px solid var(--border);
+.about-stats-grid{
+  display:grid;grid-template-columns:1fr 1px 1fr;
+  grid-template-rows:auto 1px auto;
+  margin-top:2rem;padding:1.2rem 1.5rem;
+  border:1px solid var(--border);border-radius:8px;
+  background:var(--bg-card);
+  max-width:320px;margin-left:auto;margin-right:auto;
+  gap:.8rem 0;
 }
-.stat-inline{text-align:center;flex:1}
+.grid-vline{background:var(--border)}
+.grid-hline{background:var(--border)}
+.stat-inline{text-align:center;padding:.4rem .8rem}
 .stat-inline .num{
   display:block;font-size:1.6rem;font-weight:700;
   color:var(--accent);line-height:1.2;
