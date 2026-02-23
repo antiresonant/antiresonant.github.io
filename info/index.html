@@ -71,9 +71,6 @@
           <a href="#documents">&#9783; Papers &amp; Reports</a>
         </div>
         <div class="hero-contact">
-          <div class="hc"><strong>Email</strong><a href="mailto:hi@polarjsapkota.com">hi@polarjsapkota.com</a></div>
-          <div class="hc"><strong>GitHub</strong><a href="https://github.com/antiresonant" target="_blank">github.com/antiresonant</a></div>
-          <div class="hc"><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/polarj-s-86239b158/" target="_blank">linkedin.com/in/polarj-s</a></div>
           <div class="hc"><strong>Location</strong><a href="https://en.wikipedia.org/wiki/Pangaea">Pangaea</a></div>
         </div>
       </div>
@@ -1049,17 +1046,31 @@
 
   // Wheel with cooldown
   var wheelLock = false;
-  function isScrollable(el){
+  function findScrollable(el){
     while(el && el !== deck){
       if(el.scrollHeight > el.clientHeight + 2 &&
         (el.classList.contains('doc-list') || el.classList.contains('gallery-scroll')))
-        return true;
+        return el;
       el = el.parentElement;
     }
-    return false;
+    return null;
   }
   deck.addEventListener('wheel',function(e){
-    if(wheelLock || isScrollable(e.target)) return;
+    if(wheelLock) return;
+    var scrollEl = findScrollable(e.target);
+    if(scrollEl){
+      var atTop = scrollEl.scrollTop <= 0;
+      var atBottom = scrollEl.scrollTop + scrollEl.clientHeight >= scrollEl.scrollHeight - 2;
+      var goingUp = e.deltaY < 0;
+      var goingDown = e.deltaY > 0;
+      if((goingUp && atTop) || (goingDown && atBottom)){
+        e.preventDefault();
+        wheelLock = true;
+        if(goingDown) goToSlide(activeIndex+1); else goToSlide(activeIndex-1);
+        setTimeout(function(){ wheelLock = false; }, 250);
+      }
+      return;
+    }
     e.preventDefault();
     wheelLock = true;
     if(Math.abs(e.deltaY) >= Math.abs(e.deltaX)){
