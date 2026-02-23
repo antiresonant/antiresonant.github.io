@@ -71,19 +71,18 @@
           <a href="mailto:hi@polarjsapkota.com">&#9993; Email</a>
           <a href="https://github.com/antiresonant" target="_blank">&#9671; GitHub</a>
           <a href="https://www.linkedin.com/in/polarj-s-86239b158/" target="_blank">&#9670; LinkedIn</a>
-          <a href="#documents">&#9783; Papers &amp; Reports</a>
         </div>
         <div class="hero-contact">
           <div class="hc"><strong>Location</strong><a href="https://en.wikipedia.org/wiki/Pangaea">Pangaea</a></div>
         </div>
       </div>
     </div>
-    <a class="papers-arrow" id="papers-arrow" href="#documents">
+    <div class="papers-arrow" id="papers-arrow">
       <span class="pa-dot"></span>
       <span class="pa-line"></span>
       <span class="pa-head"></span>
-      <span class="pa-text">Papers &amp; Reports</span>
-    </a>
+      <a class="pa-btn" href="#documents">&#9783; Papers &amp; Reports</a>
+    </div>
     <div class="footer-line">&copy; 2026 Polarj Sapkota &nbsp;&middot;&nbsp; <a href="https://antiresonant.github.io/">Portfolio &rarr;</a></div>
   </section>
 
@@ -1200,8 +1199,8 @@ function posPapersArrow(){
   var arrow = document.getElementById('papers-arrow');
   if(!word || !arrow) return;
   var r = word.getBoundingClientRect();
-  arrow.style.top = (r.top + r.height / 2) + 'px';
-  arrow.style.left = (r.right + 4) + 'px';
+  arrow.style.top = (r.top + r.height * 0.55) + 'px';
+  arrow.style.left = (r.right + 3) + 'px';
 }
 posPapersArrow();
 window.addEventListener('resize', posPapersArrow);

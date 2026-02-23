@@ -381,36 +381,34 @@ button{cursor:pointer;font-family:var(--ff)}
   right:25%;
   display:flex;
   align-items:center;
-  text-decoration:none;
   z-index:5;
   transform:translateY(-50%);
-  opacity:.5;
 }
-.papers-arrow:hover{opacity:1}
 .pa-dot{
-  width:6px;height:6px;border-radius:50%;flex-shrink:0;
-  background:var(--text-secondary);
+  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+  background:var(--accent);
+  box-shadow:0 0 8px rgba(0,212,170,.4);
 }
-.papers-arrow:hover .pa-dot{background:var(--accent);box-shadow:0 0 6px var(--accent)}
 .pa-line{
   flex:1;height:0;
-  border-top:1px dashed var(--text-secondary);
+  border-top:1.5px solid var(--accent-dim);
   min-width:20px;
 }
-.papers-arrow:hover .pa-line{border-color:var(--accent)}
 .pa-head{
   width:0;height:0;flex-shrink:0;
   border-top:5px solid transparent;
   border-bottom:5px solid transparent;
-  border-left:8px solid var(--text-secondary);
+  border-left:9px solid var(--accent-dim);
 }
-.papers-arrow:hover .pa-head{border-left-color:var(--accent)}
-.pa-text{
-  font-size:.7rem;color:var(--text-secondary);
-  font-family:var(--mono);letter-spacing:.03em;
-  white-space:nowrap;margin-left:.5rem;flex-shrink:0;
+.pa-btn{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.45rem 1.1rem;border-radius:var(--r);
+  font-size:.8rem;font-weight:500;letter-spacing:.02em;
+  border:1px solid var(--border);color:var(--text-secondary);
+  text-decoration:none;white-space:nowrap;flex-shrink:0;
+  margin-left:.3rem;
 }
-.papers-arrow:hover .pa-text{color:var(--accent)}
+.pa-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
 
 /* ===== CONSULT OVERLAY ===== */
 .consult-overlay{
