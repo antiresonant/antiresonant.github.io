@@ -355,11 +355,24 @@ button{cursor:pointer;font-family:var(--ff)}
 .doc-row .btn{flex-shrink:0}
 
 /* ===== EDUCATION ===== */
-.edu-grid{display:grid;gap:1.3rem}
-.edu-item h3{font-size:1rem;font-weight:600}
-.edu-meta{font-size:.8rem;color:var(--accent);font-family:var(--mono);font-weight:500;margin-bottom:.2rem}
-.edu-item p{font-size:.84rem;color:var(--text-secondary)}
-.tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
+.edu-grid{display:grid;gap:1rem}
+.edu-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-left:3px solid var(--accent);border-radius:var(--r);
+  padding:1.1rem 1.4rem;
+}
+.edu-card:hover{border-color:var(--accent-dim);border-left-color:var(--accent)}
+.edu-item h3{font-size:1.05rem;font-weight:700}
+.edu-meta{font-size:.8rem;color:var(--accent);font-family:var(--mono);font-weight:500;margin-bottom:.3rem}
+.edu-item p{font-size:.84rem;color:var(--text-secondary);line-height:1.65}
+.edu-rows{display:flex;flex-direction:column;gap:.4rem;margin-top:.3rem}
+.edu-row-label{
+  font-size:.68rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--text-secondary);font-family:var(--mono);
+  margin-top:.4rem;
+}
+.edu-row-label:first-child{margin-top:0}
+.tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.3rem}
 .tag{
   background:var(--accent-glow);color:var(--accent);
   font-size:.68rem;font-weight:500;padding:.18rem .55rem;
@@ -367,13 +380,19 @@ button{cursor:pointer;font-family:var(--ff)}
 }
 
 /* ===== SKILLS ===== */
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.skill-group{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--r);padding:1.2rem 1.4rem;
+}
+.skill-group:hover{border-color:var(--accent-dim)}
 .skill-group h3{
   font-size:.73rem;font-weight:700;color:var(--accent);text-transform:uppercase;
-  letter-spacing:.07em;margin-bottom:.5rem;font-family:var(--mono);
+  letter-spacing:.07em;margin-bottom:.6rem;font-family:var(--mono);
+  padding-bottom:.5rem;border-bottom:1px solid var(--border);
 }
 .skill-group ul{list-style:none}
-.skill-group li{font-size:.82rem;color:var(--text-secondary);padding:.12rem 0}
+.skill-group li{font-size:.82rem;color:var(--text-secondary);padding:.15rem 0}
 
 /* ===== PAPERS ARROW ===== */
 .papers-arrow{
