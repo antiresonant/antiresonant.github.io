@@ -384,9 +384,14 @@ button{cursor:pointer;font-family:var(--ff)}
   text-decoration:none;
   z-index:5;
   transform:translateY(-50%);
-  opacity:.45;
+  opacity:.5;
 }
 .papers-arrow:hover{opacity:1}
+.pa-dot{
+  width:6px;height:6px;border-radius:50%;flex-shrink:0;
+  background:var(--text-secondary);
+}
+.papers-arrow:hover .pa-dot{background:var(--accent);box-shadow:0 0 6px var(--accent)}
 .pa-line{
   flex:1;height:0;
   border-top:1px dashed var(--text-secondary);
@@ -395,9 +400,9 @@ button{cursor:pointer;font-family:var(--ff)}
 .papers-arrow:hover .pa-line{border-color:var(--accent)}
 .pa-head{
   width:0;height:0;flex-shrink:0;
-  border-top:4px solid transparent;
-  border-bottom:4px solid transparent;
-  border-left:7px solid var(--text-secondary);
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-left:8px solid var(--text-secondary);
 }
 .papers-arrow:hover .pa-head{border-left-color:var(--accent)}
 .pa-text{
