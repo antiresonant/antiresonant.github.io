@@ -194,10 +194,15 @@ button{cursor:pointer;font-family:var(--ff)}
   border:1px solid var(--border);color:var(--text-secondary);
 }
 .hero-links a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
-.hero-links a:first-child{
+.hero-links-primary{margin-bottom:.5rem}
+.hero-links-primary a:first-child{
   background:var(--accent);color:var(--bg-primary);border-color:var(--accent);font-weight:600;
 }
-.hero-links a:first-child:hover{background:#33e0bb;border-color:#33e0bb}
+.hero-links-primary a:first-child:hover{background:#33e0bb;border-color:#33e0bb}
+.hero-links-primary a:last-child{
+  background:transparent;color:var(--accent);border:1.5px solid var(--accent);font-weight:600;
+}
+.hero-links-primary a:last-child:hover{background:var(--accent);color:var(--bg-primary)}
 .hero-contact{
   margin-top:1.8rem;display:flex;justify-content:center;
   gap:2.5rem;flex-wrap:wrap;
@@ -370,14 +375,37 @@ button{cursor:pointer;font-family:var(--ff)}
 .skill-group ul{list-style:none}
 .skill-group li{font-size:.82rem;color:var(--text-secondary);padding:.12rem 0}
 
-/* ===== CONSULT CTA BUTTON ===== */
-.hero-links .consult-cta{
-  background:transparent;color:var(--accent);
-  border:1.5px solid var(--accent);font-weight:600;
+/* ===== PAPERS ARROW ===== */
+.papers-arrow{
+  position:absolute;
+  right:25%;
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+  z-index:5;
+  transform:translateY(-50%);
+  opacity:.45;
 }
-.hero-links .consult-cta:hover{
-  background:var(--accent);color:var(--bg-primary);
+.papers-arrow:hover{opacity:1}
+.pa-line{
+  flex:1;height:0;
+  border-top:1px dashed var(--text-secondary);
+  min-width:20px;
 }
+.papers-arrow:hover .pa-line{border-color:var(--accent)}
+.pa-head{
+  width:0;height:0;flex-shrink:0;
+  border-top:4px solid transparent;
+  border-bottom:4px solid transparent;
+  border-left:7px solid var(--text-secondary);
+}
+.papers-arrow:hover .pa-head{border-left-color:var(--accent)}
+.pa-text{
+  font-size:.7rem;color:var(--text-secondary);
+  font-family:var(--mono);letter-spacing:.03em;
+  white-space:nowrap;margin-left:.5rem;flex-shrink:0;
+}
+.papers-arrow:hover .pa-text{color:var(--accent)}
 
 /* ===== CONSULT OVERLAY ===== */
 .consult-overlay{
@@ -479,6 +507,7 @@ button{cursor:pointer;font-family:var(--ff)}
   .side-nav .dot{width:6px;height:6px}
   .side-nav .dot-label{display:none}
   .slide-arrow{display:none}
+  .papers-arrow{display:none}
   .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
   .hero-contact{gap:1.2rem}
   .exp-card{padding:1.5rem}
