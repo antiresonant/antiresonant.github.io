@@ -409,6 +409,7 @@ button{cursor:pointer;font-family:var(--ff)}
   margin-left:.3rem;
 }
 .pa-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.papers-fallback{display:none !important}
 
 /* ===== CONSULT OVERLAY ===== */
 .consult-overlay{
@@ -511,6 +512,7 @@ button{cursor:pointer;font-family:var(--ff)}
   .side-nav .dot-label{display:none}
   .slide-arrow{display:none}
   .papers-arrow{display:none}
+  .papers-fallback{display:inline-flex !important}
   .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
   .hero-contact{gap:1.2rem}
   .exp-card{padding:1.5rem}
