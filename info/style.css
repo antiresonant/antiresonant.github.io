@@ -422,21 +422,16 @@ button{cursor:pointer;font-family:var(--ff)}
   z-index:5;
   transform:translateY(-50%);
 }
-.pa-dot{
-  width:3.5px;height:3.5px;border-radius:50%;flex-shrink:0;
-  background:var(--accent);
-  box-shadow:0 0 4px rgba(0,212,170,.4);
-}
 .pa-line{
   flex:1;height:0;
-  border-top:1.5px solid var(--accent-dim);
+  border-top:1.5px solid var(--accent);
   min-width:20px;
 }
 .pa-head{
   width:0;height:0;flex-shrink:0;
   border-top:5px solid transparent;
   border-bottom:5px solid transparent;
-  border-left:9px solid var(--accent-dim);
+  border-left:9px solid var(--accent);
 }
 .pa-btn{
   display:inline-flex;align-items:center;gap:.4rem;
