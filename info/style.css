@@ -423,9 +423,9 @@ button{cursor:pointer;font-family:var(--ff)}
   transform:translateY(-50%);
 }
 .pa-dot{
-  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+  width:3.5px;height:3.5px;border-radius:50%;flex-shrink:0;
   background:var(--accent);
-  box-shadow:0 0 8px rgba(0,212,170,.4);
+  box-shadow:0 0 4px rgba(0,212,170,.4);
 }
 .pa-line{
   flex:1;height:0;
@@ -530,6 +530,7 @@ button{cursor:pointer;font-family:var(--ff)}
   .sw-sub-grid{grid-template-columns:1fr}
   .slide-body{padding:calc(var(--nav-h) + 1rem) 2rem 1.5rem}
   .sub-slide{padding:.8rem 2rem 3rem}
+  .papers-arrow{right:15%}
 }
 @media(max-width:768px){
   .top-nav .nav-links{display:none !important}

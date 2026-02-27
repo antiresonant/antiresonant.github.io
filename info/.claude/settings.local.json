@@ -3,7 +3,8 @@
     "allow": [
       "Bash(done)",
       "Bash(cd \"C:\\\\Users\\\\manis\\\\Documents\\\\Polarj\\\\WarRoom\\\\antiresonant.github.io\\\\info\" && echo \"=== OVERALL STATS ===\" && find . -type f | wc -l && du -sh . && echo \"\" && echo \"=== MAIN FILES ===\" && ls -lh *.html *.css 2>/dev/null)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(git add:*)"
     ]
   }
 }
