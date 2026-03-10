@@ -223,9 +223,10 @@ header {
 
 /* ── SWIPE HINT ── */
 .swipe-hint {
-  position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
-  font-family:'IBM Plex Mono',monospace; font-size:0.5rem;
-  color:var(--muted); opacity:0.5; pointer-events:none;
+  position:absolute; bottom:12px; left:50%; transform:translateX(-50%);
+  font-family:'IBM Plex Mono',monospace; font-size:0.82rem;
+  font-weight:600; letter-spacing:0.06em;
+  color:var(--text); opacity:0.7; pointer-events:none;
   transition:opacity 0.5s;
 }
 .swipe-hint.hidden { opacity:0; }
@@ -312,6 +313,24 @@ header {
   font-family:'IBM Plex Mono',monospace; font-size:0.48rem;
   color:var(--muted); text-align:center;
 }
+
+.tut-body-text {
+  font-size:0.78rem; line-height:1.65; text-align:left;
+  color:var(--text); opacity:0.85; max-width:340px;
+}
+.tut-body-text strong { opacity:1; font-weight:600; }
+.tut-arc-list {
+  display:flex; flex-direction:column; gap:4px;
+  width:100%; max-width:320px;
+}
+.tut-arc-item {
+  font-family:'IBM Plex Mono',monospace; font-size:0.62rem;
+  padding:6px 10px; border-left:2px solid var(--border);
+}
+.tut-diagram-wrap {
+  display:flex; justify-content:center; margin-bottom:8px;
+}
+.tut-diagram-wrap svg { display:block; }
 
 .tut-footer {
   display:flex; align-items:center; justify-content:space-between;
@@ -650,7 +669,7 @@ function toggleTheme(){
 // TUTORIAL
 // ══════════════════════════════════════════════════════════
 let tutPage=0;
-const TUT_PAGES=4;
+const TUT_PAGES=5;
 
 function openTutorial(){
   tutPage=0;
@@ -672,7 +691,9 @@ function renderTutPage(){
     el.classList.toggle('active',i===tutPage);
   });
   document.getElementById('tut-prev').style.visibility=tutPage===0?'hidden':'visible';
-  document.getElementById('tut-next').textContent=tutPage===TUT_PAGES-1?'ENTER →':'NEXT →';
+  const btn=document.getElementById('tut-next');
+  btn.textContent=tutPage===TUT_PAGES-1?'ENTER →':'NEXT →';
+  btn.onclick=function(){ tutPage<TUT_PAGES-1?tutGo(tutPage+1):closeTutorial(); };
 }
 
 // tutorial swipe
@@ -717,34 +738,97 @@ openTutorial();
     <div class="tut-slide active">
       <div class="tut-chapter">01 / the model</div>
       <div class="tut-heading">Six things.<br>One <em>life</em>.</div>
-      <div class="tut-para">Your life is a system of six coupled resources: <strong>Health</strong>, <strong>Energy</strong>, <strong>Money</strong>, <strong>Time</strong>, <strong>Network</strong>, and <strong>Agency</strong>. How they connect defines your state.</div>
+      <div class="tut-diagram-wrap">
+        <svg width="200" height="172" viewBox="0 0 160 130" fill="none">
+          <defs>
+            <marker id="ta" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto">
+              <path d="M0,0.5 L4.5,2.5 L0,4.5 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <polyline points="14,62 6,62 6,10 47,10" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="square" stroke-linejoin="miter" marker-end="url(#ta)"/>
+          <polyline points="146,62 154,62 154,10 113,10" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="square" stroke-linejoin="miter" marker-end="url(#ta)"/>
+          <line x1="80" y1="16" x2="80" y2="29" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+          <line x1="70" y1="41" x2="34" y2="62" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+          <line x1="90" y1="41" x2="126" y2="62" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+          <line x1="42" y1="66" x2="118" y2="66" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+          <line x1="118" y1="70" x2="42" y2="70" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+          <line x1="34" y1="74" x2="68" y2="92" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+          <line x1="126" y1="74" x2="92" y2="92" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+          <line x1="80" y1="104" x2="80" y2="116" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+          <rect x="62" y="4" width="36" height="12" rx="2" fill="var(--bg)"/>
+          <text x="80" y="13" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Health</text>
+          <rect x="62" y="29" width="36" height="12" rx="2" fill="var(--bg)"/>
+          <text x="80" y="38" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Energy</text>
+          <rect x="8" y="62" width="38" height="12" rx="2" fill="var(--bg)"/>
+          <text x="27" y="71" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Money</text>
+          <rect x="114" y="62" width="30" height="12" rx="2" fill="var(--bg)"/>
+          <text x="129" y="71" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Time</text>
+          <rect x="56" y="92" width="48" height="12" rx="2" fill="var(--bg)"/>
+          <text x="80" y="101" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Network</text>
+          <rect x="59" y="116" width="42" height="12" rx="2" fill="var(--bg)"/>
+          <text x="80" y="125" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Agency</text>
+        </svg>
+      </div>
+      <div class="tut-body-text">
+        Think about what actually determines how someone's life is going. Boil it all the way down and you get six things: <strong>Health, Energy, Money, Time, Network,</strong> and <strong>Agency</strong>.<br><br>
+        They flow into each other. Good health gives you energy. Energy earns you money or buys back your time. Money and time are interchangeable — up to a point. Both open doors to people, and people give you real choices.<br><br>
+        The arrows looping back from Money and Time up to Health are the ones most people forget. How you use your resources either maintains you — or quietly erodes you.
+      </div>
     </div>
 
     <!-- Page 1: The Glyph -->
     <div class="tut-slide">
       <div class="tut-chapter">02 / the glyph</div>
-      <div class="tut-heading">Read the <em>shape</em></div>
-      <div class="tut-para">Each state has a glyph. <strong>Thicker lines</strong> mean stronger connections. Missing lines mean broken or absent couplings.</div>
+      <div class="tut-heading">Every state has<br>a <em>shape</em>.</div>
       <div class="tut-glyph-row" id="tut-glyph-row"></div>
+      <div class="tut-body-text">
+        Each life state is drawn as a small version of that same diagram — but with the lines thickened or removed depending on how strongly each flow is operating.<br><br>
+        <strong>No line</strong> means that connection is completely dead. <strong>A hair-thin line</strong> means it barely exists. <strong>A thick line</strong> means it dominates everything else.<br><br>
+        The two horizontal lines between Money and Time are special — they show how freely you can swap one for the other. A lawyer billing 2,800 hours a year has those rails maxed out. That's the trap. A retiree with passive income has them gone entirely. That's the freedom.
+      </div>
     </div>
 
-    <!-- Page 2: The Arc -->
+    <!-- Page 2: The Story -->
     <div class="tut-slide">
-      <div class="tut-chapter">03 / the arc</div>
-      <div class="tut-heading">26 states.<br>One <em>arc</em>.</div>
-      <div class="tut-para">From <strong>Destitute</strong> to <strong>Peak State</strong>, through traps, detours, and pivots. Every state can transition to others — some forward, some backward. <strong>The Pivot</strong> is always reachable.</div>
+      <div class="tut-chapter">03 / the story</div>
+      <div class="tut-heading">26 states.<br><em>One</em> human arc.</div>
+      <div class="tut-arc-list">
+        <div class="tut-arc-item" style="color:var(--muted)">I · Zero — system inert</div>
+        <div class="tut-arc-item" style="color:var(--muted)">II · Survival — bare loops</div>
+        <div class="tut-arc-item" style="color:var(--red);border-color:var(--red)">III · Traps — locked in</div>
+        <div class="tut-arc-item" style="color:var(--red);border-color:var(--red)">IV · Detours — off-axis</div>
+        <div class="tut-arc-item" style="color:var(--blue);border-color:var(--blue)">V · Pivot — conscious rewire</div>
+        <div class="tut-arc-item" style="color:var(--blue);border-color:var(--blue)">V · Ascending — building</div>
+        <div class="tut-arc-item" style="color:var(--accent);border-color:var(--accent)">VI · Thriving — loops closed</div>
+      </div>
+      <div class="tut-body-text">
+        The 26 states are arranged left to right, from nothing to everything. But life doesn't move in a straight line — there are <strong>traps you can get stuck in</strong>, detours that look like progress, and regressions that can happen to anyone.<br><br>
+        The most important state isn't Peak State at the far right. It's <strong>The Pivot</strong> — the moment someone consciously decides to dismantle what isn't working and rebuild. Almost every trap has a path to it.<br><br>
+        Every state comes with a real example: a person, a situation, a moment you'll recognise.
+      </div>
     </div>
 
-    <!-- Page 3: How to Use -->
+    <!-- Page 3: Connections -->
     <div class="tut-slide">
-      <div class="tut-chapter">04 / how to use</div>
-      <div class="tut-heading"><em>Navigate</em></div>
+      <div class="tut-chapter">04 / connections</div>
+      <div class="tut-heading">See where<br>you can <em>go</em>.</div>
+      <div class="tut-body-text">
+        The connection chips below each state show you the actual transitions — states you could realistically move to. When you select one, everything updates: the glyph, the example, the connections.<br><br>
+        Set a goal state in <strong>Compare mode</strong> and you'll get a side-by-side diff showing exactly which flows need to grow and which need to shrink. The chips tell you which states you need to pass through — and which ones are dead ends without a Pivot first.<br><br>
+        Swipe left and right to follow transitions one at a time, or tap any chip to jump directly.
+      </div>
+    </div>
+
+    <!-- Page 4: Tips -->
+    <div class="tut-slide">
+      <div class="tut-chapter">05 / tips</div>
+      <div class="tut-heading">Get the most<br>out of <em>it</em>.</div>
       <div class="tut-tip-list">
-        <div class="tut-tip"><div class="tut-tip-key">SWIPE ←→</div><div class="tut-tip-desc">Navigate between connected states</div></div>
-        <div class="tut-tip"><div class="tut-tip-key">TAP CHIP</div><div class="tut-tip-desc">Jump to any connected state directly</div></div>
-        <div class="tut-tip"><div class="tut-tip-key">FILMSTRIP</div><div class="tut-tip-desc">Scroll and tap to jump to any state</div></div>
-        <div class="tut-tip"><div class="tut-tip-key">COMPARE</div><div class="tut-tip-desc">Set a goal state and see what to change</div></div>
-        <div class="tut-tip"><div class="tut-tip-key">SET GOAL</div><div class="tut-tip-desc">Mark current state as your target</div></div>
+        <div class="tut-tip"><div class="tut-tip-key">SWIPE ←→</div><div class="tut-tip-desc">Swipe left or right to move through connected states — it follows real transitions, not just the list order.</div></div>
+        <div class="tut-tip"><div class="tut-tip-key">TAP CHIP</div><div class="tut-tip-desc">Tap any connection chip to jump directly to that state. Everything updates instantly: glyph, example, edges.</div></div>
+        <div class="tut-tip"><div class="tut-tip-key">COMPARE</div><div class="tut-tip-desc">Hit Compare, pick a state you're aiming for, and set it as your goal. You'll see a side-by-side diff of the two states.</div></div>
+        <div class="tut-tip"><div class="tut-tip-key">FILMSTRIP</div><div class="tut-tip-desc">Scroll the strip at the bottom to scan all 26 glyphs at once. Patterns become obvious visually.</div></div>
+        <div class="tut-tip"><div class="tut-tip-key">◐ / ◑</div><div class="tut-tip-desc">Switch between light and dark mode. Everything adapts, including the glyphs.</div></div>
       </div>
     </div>
   </div>
@@ -755,10 +839,11 @@ openTutorial();
       <div class="tut-dot" onclick="tutGo(1)"></div>
       <div class="tut-dot" onclick="tutGo(2)"></div>
       <div class="tut-dot" onclick="tutGo(3)"></div>
+      <div class="tut-dot" onclick="tutGo(4)"></div>
     </div>
     <div class="tut-nav">
       <button class="tut-btn" id="tut-prev" onclick="tutGo(tutPage-1)" style="visibility:hidden">← BACK</button>
-      <button class="tut-btn primary" id="tut-next" onclick="tutPage<3?tutGo(tutPage+1):closeTutorial()">NEXT →</button>
+      <button class="tut-btn primary" id="tut-next" onclick="tutGo(tutPage+1)">NEXT →</button>
     </div>
   </div>
 </div>
