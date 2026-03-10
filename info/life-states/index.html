@@ -7,7 +7,7 @@
 (function(){
   var mobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
     || (navigator.maxTouchPoints > 1 && window.innerWidth < 1024);
-  var target = mobile ? 'mobile.html' : 'desktop.html';
+  var target = mobile ? 'mobile' : 'desktop';
   window.location.replace(target + window.location.hash);
 })();
 </script>
