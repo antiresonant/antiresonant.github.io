@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life State Topology</title>
+<script>if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.dataset.theme='dark';</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --bg:      #f2f3f5;
+  --surface: #e8eaee;
+  --border:  #d0d4dc;
+  --text:    #1a1d24;
+  --muted:   #7a8090;
+  --accent:  #3d7a64;
+  --red:     #a03030;
+  --blue:    #3a5a8c;
+  --gold:    #9a7a38;
+}
+[data-theme="dark"] {
+  --bg:      #07080b;
+  --surface: #101218;
+  --border:  #1b1f28;
+  --text:    #d6d9e0;
+  --muted:   #545a68;
+  --accent:  #5c8f7a;
+  --red:     #b44a4a;
+  --blue:    #4f6fa8;
+  --gold:    #c3a96b;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto auto;
+  grid-template-areas: "header" "focus" "diagram" "filmstrip" "legend";
+}
+header  { grid-area: header; }
+#focus-view { grid-area: focus; }
+#diagram-wrap { grid-area: diagram; }
+.filmstrip-wrap { grid-area: filmstrip; }
+.legend { grid-area: legend; }
+
+/* ── HEADER ── */
+header {
+  display: flex; align-items: flex-start;
+  justify-content: space-between;
+  padding: 11px 24px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.header-right { display: flex; align-items: center; gap: 6px; }
+.logo { font-size: 0.88rem; font-weight: 600; letter-spacing: -0.01em; }
+.logo em { color: var(--accent); font-style: normal; }
+
+/* ── REFERENCE STRIP ── */
+.ref-strip {
+  position: absolute;
+  top: 0;
+  left: clamp(8px, 2vw, 24px);
+  color: var(--text);
+  padding: 10px 0 0 0;
+  pointer-events: none;
+  z-index: 5;
+  width: clamp(140px, 15vw, 280px);
+}
+.ref-strip svg { width:100%; height:auto; }
+.logo-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mode-toggle { display:flex; gap:2px; background:var(--border); border-radius:6px; padding:3px; }
+.mode-btn {
+  font-family:'IBM Plex Mono',monospace; font-size:0.55rem; letter-spacing:0.06em;
+  padding:4px 10px; border:none; border-radius:4px;
+  background:transparent; color:var(--muted); cursor:pointer;
+  transition:background 0.15s,color 0.15s;
+}
+.mode-btn.active { background:var(--bg); color:var(--text); }
+.theme-btn {
+  font-family:'IBM Plex Mono',monospace; font-size:0.55rem; letter-spacing:0.06em;
+  padding:4px 9px; border:1px solid var(--border); border-radius:5px;
+  background:transparent; color:var(--muted); cursor:pointer;
+}
+.theme-btn:hover { background:var(--surface); color:var(--text); }
+
+/* ── DIAGRAM ── */
+#diagram-wrap {
+  height: clamp(120px, 20vh, 210px);
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+  touch-action: none;
+}
+#diagram-wrap:active { cursor: grabbing; }
+#diagram-svg { position:absolute; top:0; left:0; overflow:visible; }
+
+#focus-view {
+  display:flex; flex-direction:column;
+  align-items:center; padding:clamp(8px, 1.5vh, 20px) clamp(16px, 3vw, 36px) clamp(4px, 1vh, 10px);
+  overflow-y:auto; overflow-x:hidden;
+  position: relative;
+  min-height: 0;
+}
+.focus-glyphs {
+  display:flex; align-items:flex-start;
+  justify-content:center; gap:clamp(24px, 4vw, 64px);
+  width:100%; flex-wrap:wrap;
+}
+.glyph-current, .glyph-compare {
+  display:flex; flex-direction:column;
+  align-items:center; gap:clamp(8px, 1.2vh, 18px); flex-shrink:0;
+}
+.glyph-compare { opacity:0.55; transition:opacity 0.3s; }
+.glyph-compare.set { opacity:1; }
+.glyph-current svg, .glyph-compare svg { color:var(--text); width:100%; height:auto; }
+.glyph-current { width:clamp(140px, 20vh, 300px); }
+.glyph-compare { width:clamp(100px, 14vh, 210px); }
+
+.state-text-col {
+  display:flex; flex-direction:column; gap:clamp(4px, 0.8vh, 10px);
+  align-self:center; max-width:480px; flex:1;
+}
+.state-name {
+  font-size:clamp(2rem, 2.2vw, 3.2rem); font-weight:600;
+  letter-spacing:-0.02em; text-align:left; transition:color 0.3s;
+}
+.state-name.stressed  { color:var(--red); }
+.state-name.ascending { color:var(--blue); }
+.state-name.thriving  { color:var(--accent); }
+.state-name.neutral   { color:var(--text); }
+.state-sub {
+  font-family:'IBM Plex Mono',monospace; font-size:clamp(0.8rem, 0.9vw, 1.1rem);
+  color:var(--muted); text-align:left; line-height:1.7; max-width:340px;
+}
+.state-example {
+  font-family:'IBM Plex Mono',monospace; font-size:clamp(0.75rem, 0.85vw, 1.0rem);
+  color:var(--text); text-align:left; line-height:1.65;
+  max-width:480px; opacity:0.75;
+  border-left: 3px solid var(--border);
+  padding-left: 14px;
+}
+.compare-label {
+  font-family:'IBM Plex Mono',monospace; font-size:clamp(0.75rem, 0.85vw, 1.0rem);
+  letter-spacing:0.1em; text-transform:uppercase; margin-bottom:-6px;
+}
+.compare-label.goal-label { color:var(--gold); }
+.compare-label.now-label  { color:var(--muted); }
+.set-goal-btn {
+  font-family:'IBM Plex Mono',monospace; font-size:clamp(0.8rem, 0.9vw, 1.1rem); letter-spacing:0.08em;
+  padding:clamp(6px, 0.8vh, 10px) 22px; border:1px solid var(--gold); border-radius:6px;
+  background:transparent; color:var(--gold); cursor:pointer;
+  transition:background 0.15s,color 0.15s; margin-top:8px;
+}
+.set-goal-btn:hover { background:var(--gold); color:var(--bg); }
+.set-goal-btn.clear { border-color:var(--muted); color:var(--muted); }
+.set-goal-btn.clear:hover { background:var(--muted); color:var(--bg); }
+.action-col {
+  display:flex; flex-direction:column; gap:clamp(4px, 0.8vh, 10px);
+  align-self:center; min-width:200px; max-width:320px;
+}
+.action-heading {
+  font-family:'IBM Plex Mono',monospace; font-size:clamp(0.75rem, 0.85vw, 1.0rem);
+  letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:2px;
+}
+.action-row {
+  font-family:'IBM Plex Mono',monospace; font-size:clamp(0.8rem, 0.9vw, 1.1rem);
+  line-height:1.5; display:flex; flex-direction:column; gap:2px;
+}
+.action-verb { font-size:0.85rem; letter-spacing:0.12em; text-transform:uppercase; }
+.action-row.pos .action-verb { color:var(--accent); }
+.action-row.neg .action-verb { color:var(--red); }
+.action-edge { color:var(--text); }
+.action-same { font-family:'IBM Plex Mono',monospace; font-size:1.1rem; color:var(--accent); }
+
+/* ── FILMSTRIP ── */
+.filmstrip-wrap {
+  overflow-x:auto; overflow-y:hidden;
+  padding:clamp(4px, 0.6vh, 8px) 24px 0;
+  border-top:1px solid var(--border);
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.filmstrip-wrap::-webkit-scrollbar { display:none; }
+.filmstrip {
+  display:flex; gap:7px;
+  transition:transform 0.35s cubic-bezier(.4,0,.2,1);
+}
+.strip-card {
+  flex-shrink:0; width:clamp(52px, 5vw, 72px);
+  display:flex; flex-direction:column;
+  align-items:center; gap:3px;
+  cursor:pointer; opacity:0.25;
+  transition:opacity 0.2s;
+  padding:clamp(2px, 0.4vh, 5px) 3px; border-radius:6px;
+  border:1px solid transparent;
+}
+.strip-card svg { width:100%; height:auto; }
+.strip-card:hover { opacity:0.6; }
+.strip-card.active { opacity:1; background:var(--surface); border-color:var(--border); }
+.strip-card.goal-card { border-color:var(--gold) !important; opacity:1; }
+.strip-card svg { color:var(--text); }
+.strip-name { font-size:0.48rem; font-weight:600; text-align:center; color:var(--text); line-height:1.2; }
+
+/* ── TUTORIAL OVERLAY ── */
+#tutorial {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 100;
+  display: flex; flex-direction: column;
+  font-family: 'IBM Plex Sans', sans-serif;
+  transition: opacity 0.3s;
+}
+#tutorial.hidden { opacity: 0; pointer-events: none; visibility: hidden; }
+
+.tut-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.tut-logo { font-size: 0.88rem; font-weight: 600; letter-spacing: -0.01em; }
+.tut-logo em { color: var(--accent); font-style: normal; }
+.tut-close {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem;
+  letter-spacing: 0.1em; padding: 5px 14px;
+  border: 1px solid var(--border); border-radius: 5px;
+  background: transparent; color: var(--muted); cursor: pointer;
+}
+.tut-close:hover { background: var(--surface); color: var(--text); }
+
+.tut-body {
+  flex: 1; display: flex; overflow: hidden;
+}
+
+/* slide container */
+.tut-slides {
+  flex: 1; position: relative; overflow: hidden;
+}
+.tut-slide {
+  position: absolute; inset: 0;
+  display: flex; align-items: stretch;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+  padding: 0;
+}
+.tut-slide.active { opacity: 1; pointer-events: all; }
+
+/* two-column layout for slides */
+.tut-left {
+  width: 340px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-right: 1px solid var(--border);
+  padding: 32px;
+  color: var(--text);
+}
+.tut-right {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: center; padding: 48px 56px;
+  gap: 20px; overflow-y: auto;
+}
+
+.tut-chapter {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+}
+.tut-title {
+  font-size: 2.2rem; font-weight: 600;
+  letter-spacing: -0.03em; line-height: 1.1;
+  color: var(--text);
+}
+.tut-title em { color: var(--accent); font-style: normal; }
+.tut-body-text {
+  font-size: 1.05rem; line-height: 1.75;
+  color: var(--text); opacity: 0.85;
+  max-width: 560px;
+}
+.tut-body-text strong { color: var(--text); opacity: 1; font-weight: 600; }
+
+.tut-tips {
+  display: flex; flex-direction: column; gap: 14px;
+  margin-top: 4px;
+}
+.tut-tip {
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.tut-tip-key {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem; letter-spacing: 0.06em;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 5px; padding: 4px 10px;
+  color: var(--text); white-space: nowrap; flex-shrink: 0;
+  min-width: 80px; text-align: center;
+}
+.tut-tip-desc {
+  font-size: 0.9rem; line-height: 1.6; color: var(--text); opacity: 0.8;
+  padding-top: 3px;
+}
+
+/* nav footer */
+.tut-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 32px; border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.tut-dots {
+  display: flex; gap: 8px; align-items: center;
+}
+.tut-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--border); cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.tut-dot.active { background: var(--accent); transform: scale(1.3); }
+.tut-nav {
+  display: flex; gap: 8px;
+}
+.tut-btn {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem;
+  letter-spacing: 0.08em; padding: 7px 20px;
+  border: 1px solid var(--border); border-radius: 5px;
+  background: transparent; color: var(--muted); cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.tut-btn:hover { background: var(--surface); color: var(--text); }
+.tut-btn.primary {
+  background: var(--accent); border-color: var(--accent);
+  color: white;
+}
+.tut-btn.primary:hover { opacity: 0.88; }
+
+/* help button in main header */
+.help-btn {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem;
+  letter-spacing: 0.08em; padding: 4px 10px;
+  border: 1px solid var(--border); border-radius: 5px;
+  background: transparent; color: var(--muted); cursor: pointer;
+}
+.help-btn:hover { background: var(--surface); color: var(--text); }
+
+/* slide-specific: big topology diagram */
+.tut-diagram-wrap {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+}
+.tut-diagram-wrap svg { color: var(--text); }
+
+/* glyph demo row */
+.tut-glyph-row {
+  display: flex; gap: 32px; align-items: flex-end; flex-wrap: wrap;
+}
+.tut-glyph-item {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.tut-glyph-item svg { color: var(--text); }
+.tut-glyph-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem;
+  color: var(--muted); text-align: center;
+}
+
+.legend {
+  display:flex; justify-content:center; gap:16px; flex-wrap:wrap;
+  padding:clamp(4px, 0.6vh, 7px) 24px clamp(6px, 0.8vh, 10px); border-top:1px solid var(--border);
+}
+.legend-item {
+  font-family:'IBM Plex Mono',monospace; font-size:0.48rem;
+  color:var(--muted); display:flex; align-items:center; gap:4px;
+}
+.lsw { width:13px; border-radius:1px; display:inline-block; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  body { grid-template-rows: auto 1fr auto auto auto; }
+  .ref-strip { display:none; }
+  .focus-glyphs { flex-direction:column; align-items:center; gap:16px; }
+  .state-text-col { align-items:center; text-align:center; }
+  .state-name { text-align:center; }
+  .state-sub { text-align:center; }
+  .state-example { text-align:center; border-left:none; padding-left:0; border-top:2px solid var(--border); padding-top:10px; }
+  .glyph-current { width:clamp(100px, 30vw, 180px); }
+  .glyph-compare { width:clamp(80px, 25vw, 140px); }
+  .action-col { min-width:auto; align-items:center; }
+  .strip-card { width:56px; }
+  .strip-name { font-size:0.4rem; }
+  header { padding:8px 12px 6px; }
+  .header-right { gap:4px; }
+}
+@media (max-height: 600px) {
+  #diagram-wrap { height:100px; }
+  .filmstrip-wrap { display:none; }
+  .legend { display:none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Life State <em>Topology</em></div>
+  <div class="header-right">
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="btn-explore" onclick="setMode('explore')">EXPLORE</button>
+      <button class="mode-btn" id="btn-compare" onclick="setMode('compare')">COMPARE</button>
+    </div>
+    <button class="help-btn" onclick="openTutorial()">? GUIDE</button>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">◑ DARK</button>
+  </div>
+</header>
+
+<div id="focus-view">
+  <div class="ref-strip">
+    <svg width="280" height="228" viewBox="0 0 160 130" fill="none" style="display:block">
+      <defs>
+        <marker id="ra" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto">
+          <path d="M0,0.5 L4.5,2.5 L0,4.5 z" fill="currentColor"/>
+        </marker>
+      </defs>
+
+      <!-- ── EDGES (drawn first, behind boxes) ── -->
+
+      <!-- feedback: Money up-left edge → Health left edge -->
+      <polyline points="14,62 6,62 6,10 47,10"
+        stroke="currentColor" stroke-width="1.1" fill="none"
+        stroke-linecap="square" stroke-linejoin="miter" marker-end="url(#ra)"/>
+      <!-- feedback: Time up-right edge → Health right edge -->
+      <polyline points="146,62 154,62 154,10 113,10"
+        stroke="currentColor" stroke-width="1.1" fill="none"
+        stroke-linecap="square" stroke-linejoin="miter" marker-end="url(#ra)"/>
+
+      <!-- Health bottom → Energy top -->
+      <line x1="80" y1="16" x2="80" y2="29" stroke="currentColor" stroke-width="1.1" marker-end="url(#ra)"/>
+
+      <!-- Energy bottom-left → Money top-right -->
+      <line x1="70" y1="41" x2="34" y2="62" stroke="currentColor" stroke-width="1.1" marker-end="url(#ra)"/>
+      <!-- Energy bottom-right → Time top-left -->
+      <line x1="90" y1="41" x2="126" y2="62" stroke="currentColor" stroke-width="1.1" marker-end="url(#ra)"/>
+
+      <!-- Money right → Time left (upper rail) -->
+      <line x1="42" y1="66" x2="118" y2="66" stroke="currentColor" stroke-width="1.1" marker-end="url(#ra)"/>
+      <!-- Time left → Money right (lower rail) -->
+      <line x1="118" y1="70" x2="42" y2="70" stroke="currentColor" stroke-width="1.1" marker-end="url(#ra)"/>
+
+      <!-- Money bottom-right → Network top-left -->
+      <line x1="34" y1="74" x2="68" y2="92" stroke="currentColor" stroke-width="1.1" marker-end="url(#ra)"/>
+      <!-- Time bottom-left → Network top-right -->
+      <line x1="126" y1="74" x2="92" y2="92" stroke="currentColor" stroke-width="1.1" marker-end="url(#ra)"/>
+
+      <!-- Network bottom → Agency top -->
+      <line x1="80" y1="104" x2="80" y2="116" stroke="currentColor" stroke-width="1.1" marker-end="url(#ra)"/>
+
+      <!-- ── NODE BOXES (drawn over edges) ── -->
+
+      <!-- Health: cx=80 cy=10, w=36 h=12 -->
+      <rect x="62" y="4"   width="36" height="12" rx="2" fill="var(--bg)" stroke="none"/>
+      <text x="80" y="13"  text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" fill="currentColor">Health</text>
+
+      <!-- Energy: cx=80 cy=35, w=36 h=12 -->
+      <rect x="62" y="29"  width="36" height="12" rx="2" fill="var(--bg)" stroke="none"/>
+      <text x="80" y="38"  text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" fill="currentColor">Energy</text>
+
+      <!-- Money: cx=28 cy=68, w=36 h=12 -->
+      <rect x="10" y="62"  width="36" height="12" rx="2" fill="var(--bg)" stroke="none"/>
+      <text x="28" y="71"  text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" fill="currentColor">Money</text>
+
+      <!-- Time: cx=132 cy=68, w=28 h=12 -->
+      <rect x="118" y="62" width="28" height="12" rx="2" fill="var(--bg)" stroke="none"/>
+      <text x="132" y="71" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" fill="currentColor">Time</text>
+
+      <!-- Network: cx=80 cy=98, w=44 h=12 -->
+      <rect x="58" y="92"  width="44" height="12" rx="2" fill="var(--bg)" stroke="none"/>
+      <text x="80" y="101" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" fill="currentColor">Network</text>
+
+      <!-- Agency: cx=80 cy=122, w=38 h=12 -->
+      <rect x="61" y="116" width="38" height="12" rx="2" fill="var(--bg)" stroke="none"/>
+      <text x="80" y="125" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7.5" font-weight="600" fill="currentColor">Agency</text>
+    </svg>
+  </div>
+  <div class="focus-glyphs" id="focus-glyphs"></div>
+</div>
+
+<div id="diagram-wrap"><svg id="diagram-svg"></svg></div>
+
+<div class="filmstrip-wrap">
+  <div class="filmstrip" id="filmstrip"></div>
+</div>
+
+<div class="legend">
+  <div class="legend-item">absent = no line</div>
+  <div class="legend-item"><div class="lsw" style="height:1px;background:var(--text)"></div>weak</div>
+  <div class="legend-item"><div class="lsw" style="height:2px;background:var(--text)"></div>moderate</div>
+  <div class="legend-item"><div class="lsw" style="height:4px;background:var(--text)"></div>strong</div>
+  <div class="legend-item"><div class="lsw" style="height:7px;background:var(--text)"></div>dominant</div>
+</div>
+
+<script>
+// ╔═══════════════════════════════════════════════════════════╗
+// ║              ✦  ENGINE — DO NOT EDIT  ✦                  ║
+// ║  Glyph renderer — sealed IIFE, no external dependencies.  ║
+// ╚═══════════════════════════════════════════════════════════╝
+const glyph = (() => {
+  'use strict';
+  const CFG = Object.freeze({
+    SQUIGGLY:false, GW:300,GH:460,CR:32,CR_TIP:18,RO:13,
+    H:[150,20],E:[150,108],M:[44,224],T:[256,224],Nd:[150,340],A:[150,432],
+  });
+  const FDEF = CFG.SQUIGGLY?`<defs><filter id="r" x="-8%" y="-8%" width="116%" height="116%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="2" seed="14" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+</filter></defs>`:'';
+  const FX=CFG.SQUIGGLY?'filter="url(#r)"':'';
+  function es(t){if(!t)return null;return{sw:Math.pow(t/4,1.8)*22,c:'currentColor'};}
+  function ss(x1,y1,x2,y2,r){const dx=x2-x1,dy=y2-y1,l=Math.sqrt(dx*dx+dy*dy)||1;return[x1+dx/l*r,y1+dy/l*r,x2,y2];}
+  function se(x1,y1,x2,y2,r){const dx=x2-x1,dy=y2-y1,l=Math.sqrt(dx*dx+dy*dy)||1;return[x1,y1,x2-dx/l*r,y2-dy/l*r];}
+  function dl(x1,y1,x2,y2,t){const s=es(t);if(!s)return'';return`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${s.c}" stroke-width="${s.sw}" stroke-linecap="round" ${FX}/>`;}
+  return function glyph(g,scale=1){
+    const{hE=0,eM=0,eT=0,mT=0,mN=0,tN=0,nA=0,moneyHealth=0,timeHealth=0}=g;
+    const{GW,GH,CR,CR_TIP,RO}=CFG;
+    const[Hx,Hy]=CFG.H,[Ex,Ey]=CFG.E,[Mx,My]=CFG.M,[Tx,Ty]=CFG.T,[Nx,Ny]=CFG.Nd,[Ax,Ay]=CFG.A;
+    const LRAIL=Mx+CR_TIP,RRAIL=Tx-CR_TIP;
+    let s=FDEF;
+    if(moneyHealth>0){const f=es(moneyHealth);if(f){const tY=My-CR;s+=`<polyline points="${Mx},${tY} ${Mx},${Hy} ${Hx},${Hy}" stroke="${f.c}" stroke-width="${f.sw}" fill="none" stroke-linecap="square" stroke-linejoin="miter" ${FX}/>`; }}
+    if(timeHealth>0){const f=es(timeHealth);if(f){const tY=Ty-CR;s+=`<polyline points="${Tx},${tY} ${Tx},${Hy} ${Hx},${Hy}" stroke="${f.c}" stroke-width="${f.sw}" fill="none" stroke-linecap="square" stroke-linejoin="miter" ${FX}/>`; }}
+    s+=dl(Hx,Hy,Ex,Ey,hE);
+    if(eM){const[x1,y1,x2,y2]=se(Ex,Ey,Mx,My-RO,CR_TIP);s+=dl(x1,y1,x2,y2,eM);}
+    if(eT){const[x1,y1,x2,y2]=se(Ex,Ey,Tx,Ty-RO,CR_TIP);s+=dl(x1,y1,x2,y2,eT);}
+    if(mT>0){const st=es(mT);for(const sg of[-1,+1]){const ry=My+sg*RO;s+=`<line x1="${LRAIL.toFixed(1)}" y1="${ry.toFixed(1)}" x2="${RRAIL.toFixed(1)}" y2="${ry.toFixed(1)}" stroke="${st.c}" stroke-width="${st.sw}" stroke-linecap="round" ${FX}/>`;}}
+    if(mN){const[x1,y1,x2,y2]=ss(Mx,My+RO,Nx,Ny,CR_TIP);s+=dl(x1,y1,x2,y2,mN);}
+    if(tN){const[x1,y1,x2,y2]=ss(Tx,Ty+RO,Nx,Ny,CR_TIP);s+=dl(x1,y1,x2,y2,tN);}
+    s+=dl(Nx,Ny,Ax,Ay,nA);
+    return`<svg width="${Math.round(GW*scale)}" height="${Math.round(GH*scale)}" viewBox="0 0 ${GW} ${GH}" style="overflow:visible;display:block">${s}</svg>`;
+  };
+})();
+
+// ╔═══════════════════════════════════════════════════════════╗
+// ║                  ★  USER CONFIG  ★                       ║
+// ║  Edit STATES, EDGES, and LAYOUT freely.                   ║
+// ║  Everything else is frozen engine — do not touch.         ║
+// ╚═══════════════════════════════════════════════════════════╝
+
+// ── STATES ──────────────────────────────────────────────────
+// Each state: name, sub, type, chapter, example, g (edge weights 0–4)
+// g keys: hE  eM  eT  mT  mN  tN  nA  moneyHealth  timeHealth
+const STATES = {
+  destitute:        {name:'Destitute',        sub:'nothing is coupled\nsystem is inert',           type:'neutral',   chapter:'I · Zero',
+                     example:'A refugee arriving with nothing — no language, no contacts, no income. Or a released prisoner with $50 and no prospects.',
+                     g:{hE:1}},
+                     // hE:1 — barely alive. Nothing else is coupled. Correct.
+
+  dependent:        {name:'Dependent',         sub:'kept alive externally\nno self-coupling',       type:'neutral',   chapter:'I · Zero',
+                     example:'A child. A severely disabled adult in full-time care. Someone in a coma kept alive by a hospital. Alive, but the system is not their own.',
+                     g:{hE:2}},
+                     // hE:2 — health kept up by others, moderately. eT removed: they don't earn time autonomy.
+
+  homeless:         {name:'Homeless',           sub:'time-rich, money-zero\nno network access',     type:'neutral',   chapter:'II · Survival',
+                     example:'Someone sleeping rough but physically healthy — has all day, zero dollars, no phone. Time exists but cannot be converted.',
+                     g:{hE:1,tN:1,timeHealth:1}},
+                     // eT removed: time abundance is structural, not earned through energy.
+                     // tN:1 — marginal social contact (shelters, streets). timeHealth:1 — time exists to rest.
+
+  subsistence:      {name:'Subsistence',        sub:'bare time↔money loop\nno compounding',         type:'neutral',   chapter:'II · Survival',
+                     example:'A day labourer paid cash for physical work — enough to eat, rent a bed, repeat tomorrow. No savings, no trajectory.',
+                     g:{hE:1,eM:1,mT:1,moneyHealth:1}},
+                     // eT removed: energy goes to money, not to buying back time.
+                     // mT:1 — weak but present: can trade a little money for rest.
+
+  sick_broke:       {name:'Sick & Broke',       sub:'health collapsed\ncascade failure',            type:'stressed',  chapter:'II · Survival',
+                     example:'A gig worker who gets injured with no insurance. Medical debt compounds, can\'t work, health deteriorates further. The system collapses inward.',
+                     g:{eM:1,mT:1}},
+                     // hE:0 — health→energy link is broken; that IS the crisis.
+                     // eM:1 ghost — they try to work through illness. mT:1 — debt obligation persists.
+
+  debt_spiral:      {name:'Debt Spiral',        sub:'money flows out\nagency zero',                 type:'stressed',  chapter:'III · Traps',
+                     example:'Someone on payday loans rolling over at 300% APR. Works full time, pays interest, principal never shrinks. Every dollar earned is already owed.',
+                     g:{hE:1,eM:2,mT:1,moneyHealth:1}},
+                     // eM:2 — they ARE working hard, that's how they stay in the spiral.
+                     // mT:1 not 2 — money doesn't buy time; every dollar is pre-owed.
+                     // eT removed.
+
+  wage_trapped:     {name:'Wage Trapped',       sub:'time sold for money\nno reinvestment',         type:'stressed',  chapter:'III · Traps',
+                     example:'A licensed nurse in a private hospital earning just enough to cover rent, car, and food. Skilled and employed — but every hour sold leaves nothing to compound.',
+                     g:{hE:1,eM:2,mT:3,moneyHealth:1}},
+                     // eM:2 — solid income. mT:3 — ALL time sold for money, that's the trap.
+                     // eT removed: they are not buying back time. moneyHealth:1 — barely.
+
+  burned_out:       {name:'Burned Out',         sub:'system overloaded\nhealth & energy severed',   type:'stressed',  chapter:'III · Traps',
+                     example:'A consultant who ran three simultaneous projects for two years. Still technically employed. Cannot feel anything. Sleep is not restorative. The machine is running on fumes.',
+                     g:{eM:2,mT:3,mN:1,tN:1,nA:1}},
+                     // hE:0 — health→energy link severed; that's the definition.
+                     // eM:2 — machine still runs (they're still employed). mT:3 — still locked in.
+                     // mN:1, tN:1, nA:1 — residual, barely.
+
+  martyr:           {name:'Martyr',             sub:'gives time & network\nself depleted',          type:'stressed',  chapter:'III · Traps',
+                     example:'A parent who gave up their career entirely for their children. A carer who cancelled their own life. Gives everything — receives meaning in exchange, not resources.',
+                     g:{tN:3}},
+                     // tN:3 — ALL time flows to network (others). That is the entire story.
+                     // eT removed: not buying back time. hE:0, eM:0 — nothing for self.
+
+  isolated_grinder: {name:'Isolated Grinder',   sub:'energy→money only\nnetwork starved',           type:'stressed',  chapter:'III · Traps',
+                     example:'A self-taught developer grinding leetcode and freelance gigs alone. Income growing, zero relationships. The money works but no one knows their name.',
+                     g:{hE:1,eM:3,mT:2,moneyHealth:1}},
+                     // eM:3 — dominant energy→money conversion, that's the whole system.
+                     // eT removed. nA removed — no network means no network agency.
+                     // mT:2 — money does buy some time back (tools, services).
+
+  time_poor_rich:   {name:'Time-Poor Rich',     sub:'high income\nzero bandwidth',                  type:'stressed',  chapter:'III · Traps',
+                     example:'A Big Law associate billing 2,800 hours a year. $300k salary, no weekends, no hobbies, no sleep. Money is abundant; the person is not.',
+                     g:{hE:1,eM:3,mT:3,mN:1,nA:1,moneyHealth:2}},
+                     // eM:3 — dominant energy→money (that's their entire life).
+                     // mT:3 — strong rails: all time sold. mN:1, nA:1 — money buys some access.
+                     // moneyHealth:2 — they do pay for healthcare. eT:0 correctly absent.
+
+  workaholic:       {name:'Workaholic',         sub:'energy→money maxed\nhealth loop ignored',      type:'stressed',  chapter:'IV · Detours',
+                     example:'Early Jeff Bezos — famously sleeping on the office floor, building Amazon at the cost of everything else. The company grew. The body and relationships did not.',
+                     g:{hE:1,eM:3,mT:3,moneyHealth:1}},
+                     // hE:1 ghost — barely. eM:3 dominant. mT:3 — all time sold.
+                     // moneyHealth:1 — token spend on health (gym membership unused).
+
+  hedonist:         {name:'Hedonist',           sub:'money consumed\nnot reinvested',               type:'stressed',  chapter:'IV · Detours',
+                     example:'A lottery winner who blows the payout in three years. Or a mid-career professional spending every raise on lifestyle upgrades — cars, bottles, travel — with no net worth change.',
+                     g:{hE:1,eM:1,moneyHealth:1}},
+                     // mT:0 — no productive time↔money exchange. Your exact point.
+                     // eT:0 — not buying back time with energy.
+                     // eM:1 — some income trickles in (or they're burning savings).
+                     // moneyHealth:1 — money does flow to pleasure/health superficially.
+
+  social_climber:   {name:'Social Climber',     sub:'network wide\nagency hollow',                  type:'stressed',  chapter:'IV · Detours',
+                     example:'Someone who attends every event, knows everyone, posts constantly — but hasn\'t built anything. The network is wide and shallow. Influence without substance.',
+                     g:{hE:1,eM:1,mN:2,tN:3,nA:1}},
+                     // tN:3 — dominant: all time invested in network.
+                     // mN:2 — money also spent on access/status.
+                     // nA:1 not 0 — some doors do open, but hollow.
+                     // eT removed. mT removed — no productive exchange.
+
+  recluse_wealthy:  {name:'Recluse Wealthy',    sub:'assets compound\nperson withdrawn',            type:'neutral',   chapter:'IV · Detours',
+                     example:'Howard Hughes in his later years — enormous wealth, total withdrawal. Or a tech founder who sold their company and retreated. Assets compound passively. The person has stopped participating.',
+                     g:{hE:1,moneyHealth:2,mT:1}},
+                     // eM:0 — they are NOT working. Passive assets only.
+                     // moneyHealth:2 — money does maintain health (private doctors).
+                     // mT:1 — minimal: could buy time if they wanted, but barely engaged.
+                     // mN:0, tN:0, nA:0 — all social loops severed.
+
+  pivot:            {name:'The Pivot',          sub:'decoupling old edges\nrerouting the system',   type:'ascending', chapter:'V · Ascending',
+                     example:'A 38-year-old lawyer who quits to study machine learning. A burnout survivor who spends six months hiking before re-entering. The moment the old system is consciously dismantled.',
+                     g:{hE:2,eM:1,mT:1,mN:1,tN:1,nA:3,moneyHealth:1,timeHealth:1}},
+                     // nA:3 — agency/intention is what defines the pivot. Everything else low.
+                     // eT removed. timeHealth:1 — they finally have some time for health.
+
+  early_career:     {name:'Early Career',       sub:'building all edges\nfrom weak baseline',       type:'ascending', chapter:'V · Ascending',
+                     example:'A 24-year-old junior engineer at their first real job. Earning little, learning fast, making friends in the industry. All couplings exist but none are strong yet.',
+                     g:{hE:2,eM:1,mT:1,mN:1,tN:1,nA:1,moneyHealth:1,timeHealth:1}},
+                     // All weak, all present. eT removed.
+
+  hustle_phase:     {name:'Hustle Phase',       sub:'energy compressed\ninto capital',              type:'ascending', chapter:'V · Ascending',
+                     example:'A founder pre-product-market-fit — working 80 hours, eating poorly, skipping social events. Deliberately burning time and health to build capital and optionality.',
+                     g:{hE:1,eM:3,mT:2,mN:1,tN:1,nA:2,moneyHealth:1}},
+                     // eT:0 — they are consuming time, not buying it back. Core correction.
+                     // eM:3 dominant. mT:2 — some exchange. nA:2 — optionality building.
+
+  skill_compounder: {name:'Skill Compounder',   sub:'time→competence\nbefore money',                type:'ascending', chapter:'V · Ascending',
+                     example:'A surgeon in residency. A novelist writing their first three unpublished books. A researcher doing a PhD. Time is being exchanged for capabilities that will compound later.',
+                     g:{hE:2,eM:1,mT:1,mN:2,tN:2,nA:2,timeHealth:2}},
+                     // eT:0 — investing time, not buying it back. Core correction.
+                     // tN:2 — relationships through shared learning. timeHealth:2 — time for self.
+
+  self_investor:    {name:'Self-Investor',      sub:'health as primary asset\nboth feedbacks open', type:'ascending', chapter:'V · Ascending',
+                     example:'Someone who deliberately structures life around sleep, training, and recovery while building a business. Naval Ravikant post-AngelList — optimising the substrate, not just the output.',
+                     g:{hE:3,eM:1,mT:1,mN:1,tN:1,nA:2,moneyHealth:2,timeHealth:2}},
+                     // hE:3 — health drives everything, dominant. Both feedback loops open.
+                     // eT removed. Otherwise well-structured.
+
+  network_builder:  {name:'Network Builder',    sub:'time→relationships\nbefore money',             type:'ascending', chapter:'V · Ascending',
+                     example:'Paul Graham in the early YC years — spending time on people over product. Or a young professional who invests years in genuine relationships before any of them pay off financially.',
+                     g:{hE:2,eM:1,mT:1,mN:2,tN:3,nA:2,timeHealth:2}},
+                     // tN:3 dominant — all time to relationships.
+                     // eT removed. mN:2 — some money spent on relationships (dinners, travel).
+
+  balanced:         {name:'Balanced',           sub:'all couplings live\nboth feedbacks active',    type:'thriving',  chapter:'VI · Thriving',
+                     example:'A mid-career professional with a strong marriage, good health habits, meaningful work, and real friendships. Not famous. Not extreme. Quietly thriving on every dimension.',
+                     g:{hE:2,eM:2,eT:2,mT:2,mN:2,tN:2,nA:2,moneyHealth:2,timeHealth:2}},
+                     // eT:2 retained — only state where energy buying time autonomy is genuinely true.
+                     // All at 2: uniform moderate strength, the defining signature.
+
+  well_networked:   {name:'Well-Networked',     sub:'network generates\nmoney and time',            type:'thriving',  chapter:'VI · Thriving',
+                     example:'Reid Hoffman — a person whose relationships generate deals, capital, information, and introductions automatically. Does not trade time for money directly. The network does the work.',
+                     g:{hE:2,eM:1,mN:3,tN:3,nA:3,moneyHealth:2,timeHealth:2}},
+                     // eT removed. mT:0 — network does the work, not direct time↔money exchange.
+                     // nA:3, mN:3, tN:3 — the network flywheel dominates.
+
+  financially_free: {name:'Financially Free',   sub:'M↔T decoupled\nmoney feeds health',           type:'thriving',  chapter:'VI · Thriving',
+                     example:'Someone with $3M in index funds and $80k/year expenses. Or a landlord with paid-off properties. Capital works independently. Time is no longer currency.',
+                     g:{hE:2,eM:1,mN:2,tN:1,nA:3,moneyHealth:3,timeHealth:2}},
+                     // eM:1 not 2 — they might do some work by choice, not necessity.
+                     // mT:0 — decoupled is the point. moneyHealth:3 — money feeds health strongly.
+                     // timeHealth:2 — they now have time to invest in health too.
+
+  legacy_mode:      {name:'Legacy Mode',        sub:'system self-sustains\nfull feedback closure',  type:'thriving',  chapter:'VI · Thriving',
+                     example:'Warren Buffett at 70 — the system of relationships, capital, and reputation perpetuates itself without active input. Or a professor whose textbooks, students, and ideas outlive their daily effort.',
+                     g:{hE:2,eM:1,mN:3,tN:3,nA:3,moneyHealth:2,timeHealth:3}},
+                     // eT:0 — time is freely given, not bought. timeHealth:3 — abundant time for health.
+                     // System self-sustains: mN:3, tN:3, nA:3.
+
+  peak_state:       {name:'Peak State',         sub:'health drives all\nboth loops maxed',          type:'thriving',  chapter:'VI · Thriving',
+                     example:'Rare and temporary. Muhammad Ali at his peak. A founder at the moment of their best company. A scientist at the height of their creative powers with full health and deep relationships. All systems firing.',
+                     g:{hE:3,eM:3,eT:3,mT:2,mN:2,tN:2,nA:3,moneyHealth:3,timeHealth:3}},
+                     // eT:3 retained — at peak, energy genuinely buys maximum time autonomy. All systems maxed.
+};
+const STATE_KEYS = Object.keys(STATES);
+
+// ── EDGES ──────────────────────────────────────────────────
+// Directed transitions: [from, to]. Add or remove pairs freely.
+const EDGES = [
+  ['destitute','dependent'],['destitute','homeless'],['destitute','pivot'],
+  ['dependent','subsistence'],['dependent','sick_broke'],
+  ['homeless','subsistence'],['homeless','sick_broke'],
+  ['sick_broke','subsistence'],['sick_broke','debt_spiral'],['sick_broke','pivot'],
+  ['subsistence','debt_spiral'],['subsistence','wage_trapped'],['subsistence','burned_out'],
+  ['subsistence','martyr'],['subsistence','pivot'],
+  ['debt_spiral','wage_trapped'],['debt_spiral','burned_out'],['debt_spiral','sick_broke'],['debt_spiral','pivot'],
+  ['wage_trapped','isolated_grinder'],['wage_trapped','burned_out'],['wage_trapped','time_poor_rich'],['wage_trapped','pivot'],
+  ['burned_out','sick_broke'],['burned_out','martyr'],['burned_out','recluse_wealthy'],['burned_out','pivot'],
+  ['martyr','burned_out'],['martyr','sick_broke'],['martyr','pivot'],
+  ['isolated_grinder','time_poor_rich'],['isolated_grinder','burned_out'],['isolated_grinder','pivot'],
+  ['time_poor_rich','workaholic'],['time_poor_rich','hedonist'],['time_poor_rich','recluse_wealthy'],['time_poor_rich','pivot'],
+  ['workaholic','burned_out'],['workaholic','time_poor_rich'],['workaholic','pivot'],
+  ['hedonist','debt_spiral'],['hedonist','recluse_wealthy'],['hedonist','pivot'],
+  ['social_climber','time_poor_rich'],['social_climber','burned_out'],['social_climber','pivot'],
+  ['recluse_wealthy','pivot'],['recluse_wealthy','hedonist'],
+  ['pivot','early_career'],['pivot','hustle_phase'],['pivot','skill_compounder'],
+  ['pivot','network_builder'],['pivot','self_investor'],
+  ['early_career','hustle_phase'],['early_career','skill_compounder'],['early_career','network_builder'],
+  ['early_career','workaholic'],['early_career','social_climber'],
+  ['hustle_phase','skill_compounder'],['hustle_phase','isolated_grinder'],['hustle_phase','time_poor_rich'],
+  ['hustle_phase','financially_free'],['hustle_phase','workaholic'],
+  ['skill_compounder','self_investor'],['skill_compounder','network_builder'],
+  ['skill_compounder','financially_free'],['skill_compounder','balanced'],
+  ['network_builder','well_networked'],['network_builder','social_climber'],['network_builder','balanced'],
+  ['self_investor','balanced'],['self_investor','financially_free'],['self_investor','well_networked'],
+  ['balanced','well_networked'],['balanced','financially_free'],['balanced','legacy_mode'],['balanced','peak_state'],
+  ['well_networked','legacy_mode'],['well_networked','peak_state'],
+  ['financially_free','legacy_mode'],['financially_free','peak_state'],
+  ['legacy_mode','peak_state'],
+];
+const FWD={},BWD={};
+STATE_KEYS.forEach(k=>{FWD[k]=[];BWD[k]=[];});
+EDGES.forEach(([a,b])=>{FWD[a].push(b);BWD[b].push(a);});
+
+// ── LAYOUT ─────────────────────────────────────────────────
+// [col, row] position of each node in the diagram grid.
+// col = left→right phase; row = vertical slot (decimals allowed).
+const LAYOUT = {
+  destitute:        [0, 2.5],
+  dependent:        [1, 1],
+  homeless:         [1, 4],
+  sick_broke:       [2, 0],
+  subsistence:      [2, 2.5],
+  debt_spiral:      [3, 0],
+  wage_trapped:     [3, 1.5],
+  burned_out:       [3, 3],
+  martyr:           [3, 4.5],
+  isolated_grinder: [4, 0.5],
+  time_poor_rich:   [4, 2],
+  workaholic:       [4, 3.5],
+  hedonist:         [4, 5],
+  social_climber:   [5, 0],
+  recluse_wealthy:  [5, 1.5],
+  pivot:            [6, 2.5],
+  early_career:     [7, 0.5],
+  hustle_phase:     [7, 1.5],
+  skill_compounder: [7, 2.5],
+  network_builder:  [7, 3.5],
+  self_investor:    [7, 4.5],
+  balanced:         [8, 0.5],
+  well_networked:   [8, 1.5],
+  financially_free: [8, 2.5],
+  legacy_mode:      [8, 3.5],
+  peak_state:       [8, 4.5],
+};
+
+// ╔═══════════════════════════════════════════════════════════╗
+// ║              ✦  ENGINE — DO NOT EDIT  ✦                  ║
+// ║  Rendering, layout math, navigation, and UI are frozen.   ║
+// ╚═══════════════════════════════════════════════════════════╝
+
+const COL_W=148, ROW_H=32, NW=126, NH=24, PAD_X=16, PAD_Y=22;
+
+function nc(id) {
+  const[col,row]=LAYOUT[id];
+  return { x:PAD_X+col*COL_W+NW/2, y:PAD_Y+row*ROW_H+NH/2 };
+}
+
+// ═══════════════════════════════════════════════════════════
+// APP STATE
+// ═══════════════════════════════════════════════════════════
+let currentId='destitute', goalId=null, mode='explore';
+let panX=0, panY=0, isPanning=false, panStart=null;
+
+function cv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function tc(type){
+  if(type==='stressed')  return cv('--red');
+  if(type==='ascending') return cv('--blue');
+  if(type==='thriving')  return cv('--accent');
+  return cv('--muted');
+}
+
+function getReachable(id,adj){
+  const v=new Set(),q=[id];
+  while(q.length){const n=q.shift();if(v.has(n))continue;v.add(n);(adj[n]||[]).forEach(x=>q.push(x));}
+  return v;
+}
+
+// ═══════════════════════════════════════════════════════════
+// DIAGRAM
+// ═══════════════════════════════════════════════════════════
+function renderDiagram() {
+  const svg  = document.getElementById('diagram-svg');
+  const fwdR = getReachable(currentId,FWD);
+  const bwdR = getReachable(currentId,BWD);
+  const gBwdR= goalId?getReachable(goalId,BWD):new Set();
+
+  // measure bounds
+  let maxX=0,maxY=0;
+  STATE_KEYS.forEach(id=>{const c=nc(id);maxX=Math.max(maxX,c.x+NW/2+PAD_X);maxY=Math.max(maxY,c.y+NH/2+PAD_Y);});
+  svg.setAttribute('width',maxX);
+  svg.setAttribute('height',maxY);
+  svg.style.transform=`translate(${panX}px,${panY}px)`;
+
+  // chapter lane backgrounds
+  const LANE_COLS = [
+    {cols:[0],   label:'I',      type:'neutral'},
+    {cols:[1,2], label:'II',     type:'neutral'},
+    {cols:[3,4,5], label:'III–IV', type:'stressed'},
+    {cols:[6],   label:'V·PIVOT', type:'ascending'},
+    {cols:[7],   label:'V·ASC',  type:'ascending'},
+    {cols:[8],   label:'VI',     type:'thriving'},
+  ];
+
+  let laneSVG='';
+  LANE_COLS.forEach(({cols,label,type})=>{
+    const x0=PAD_X+Math.min(...cols)*COL_W-6;
+    const x1=PAD_X+Math.max(...cols)*COL_W+NW+12;
+    const color = tc(type);
+    laneSVG+=`<rect x="${x0}" y="0" width="${x1-x0}" height="${maxY}"
+      fill="${color}" opacity="0.03" rx="4"/>
+    <text x="${(x0+x1)/2}" y="10" text-anchor="middle"
+      font-family="IBM Plex Mono,monospace" font-size="6.5" letter-spacing="1.8"
+      fill="${color}" opacity="0.5">${label}</text>`;
+  });
+
+  // edges
+  let edgeSVG='';
+  EDGES.forEach(([a,b])=>{
+    const pa=nc(a),pb=nc(b);
+    const[acol]=LAYOUT[a],[bcol]=LAYOUT[b];
+    const isCurOut = a===currentId;
+    const isCurIn  = b===currentId;
+    const isGoalPath = goalId && gBwdR.has(a) && gBwdR.has(b);
+    const isForwardReach = fwdR.has(a)&&fwdR.has(b)&&a!==currentId;
+
+    let stroke=cv('--border'),opacity=0.2,sw=0.7;
+    if(isCurOut){ stroke=tc(STATES[b].type); opacity=0.9; sw=1.8; }
+    else if(isCurIn){ stroke=cv('--muted'); opacity=0.45; sw=1; }
+    else if(isGoalPath){ stroke=cv('--gold'); opacity=0.55; sw=1.1; }
+    else if(isForwardReach){ stroke=cv('--border'); opacity=0.35; sw=0.7; }
+
+    let d;
+    if(bcol<=acol){
+      // back-edge: arc over the top
+      const mx=(pa.x+pb.x)/2;
+      const oy=Math.min(pa.y,pb.y)-30;
+      d=`M${pa.x},${pa.y-NH/2} Q${mx},${oy} ${pb.x},${pb.y-NH/2}`;
+    } else {
+      // forward: smooth bezier from right edge to left edge
+      const x1=pa.x+NW/2, y1=pa.y, x2=pb.x-NW/2, y2=pb.y;
+      const cx=(x1+x2)/2;
+      d=`M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}`;
+    }
+    edgeSVG+=`<path d="${d}" fill="none" stroke="${stroke}" stroke-width="${sw}" opacity="${opacity}" marker-end="url(#arr)"/>`;
+  });
+
+  // nodes
+  let nodeSVG='';
+  STATE_KEYS.forEach(id=>{
+    const s=STATES[id], c=nc(id);
+    const x=c.x-NW/2, y=c.y-NH/2;
+    const isCur=id===currentId, isGoal=id===goalId;
+    const isFR=fwdR.has(id)&&!isCur, isBR=bwdR.has(id)&&!isCur;
+
+    let fill=cv('--bg'),stroke=cv('--border'),opacity=0.28,sw=0.7,tOp=0.3;
+    if(isCur)       {fill=cv('--surface');stroke=tc(s.type);opacity=1;sw=2;tOp=1;}
+    else if(isGoal) {fill=cv('--surface');stroke=cv('--gold');opacity=1;sw=2;tOp=1;}
+    else if(isFR)   {stroke=tc(s.type);opacity=0.72;sw=1;tOp=0.78;}
+    else if(isBR)   {opacity=0.38;tOp=0.38;}
+
+    nodeSVG+=`<g class="dn" data-id="${id}" style="cursor:pointer" pointer-events="all">
+      <rect x="${x-4}" y="${y-4}" width="${NW+8}" height="${NH+8}" rx="4"
+        fill="rgba(0,0,0,0)" stroke="none"/>
+      <rect x="${x}" y="${y}" width="${NW}" height="${NH}" rx="4"
+        fill="${fill}" stroke="${stroke}" stroke-width="${sw}" opacity="${opacity}"/>
+      <text x="${c.x}" y="${c.y+3.5}" text-anchor="middle"
+        font-family="IBM Plex Sans,sans-serif" font-size="9.5" font-weight="600"
+        fill="${tc(s.type)}" opacity="${tOp}">${s.name}</text>
+    </g>`;
+  });
+
+  svg.innerHTML=`<defs>
+    <marker id="arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+      <path d="M0,0 L5,2.5 L0,5 z" fill="${cv('--muted')}" opacity="0.4"/>
+    </marker>
+  </defs>${laneSVG}${edgeSVG}${nodeSVG}`;
+
+  // node click handled via delegation on dw2
+}
+
+// ═══════════════════════════════════════════════════════════
+// FOCUS
+// ═══════════════════════════════════════════════════════════
+const EL={
+  hE:'health → energy',eM:'energy → money',eT:'energy → time',
+  mT:'money ↔ time exchange',mN:'money → network',tN:'time → network',
+  nA:'network → agency',moneyHealth:'money → health feedback',timeHealth:'time → health feedback',
+};
+
+function renderFocus(){
+  const s=STATES[currentId];
+  const con=document.getElementById('focus-glyphs');
+  const exampleHTML=`<div class="state-example">${s.example}</div>`;
+  if(mode==='explore'){
+    con.innerHTML=`<div class="glyph-current">
+      ${glyph(s.g,1)}
+    </div>
+    <div class="state-text-col">
+      <div class="state-name ${s.type}">${s.name}</div>
+      <div class="state-example">${s.example}</div>
+    </div>`;
+  } else {
+    const gs=goalId?STATES[goalId]:null;
+    const nowSvg=glyph(s.g,1);
+    const goalSvg=gs?glyph(gs.g,1):glyph({},1);
+    let actionHTML='';
+    if(gs){
+      const phrases=[];
+      for(const k of Object.keys(EL)){
+        const c=s.g[k]||0,gl=gs.g[k]||0;
+        if(gl>c)phrases.push({dir:'strengthen',label:EL[k],cls:'pos'});
+        else if(gl<c)phrases.push({dir:'weaken',label:EL[k],cls:'neg'});
+      }
+      actionHTML=phrases.length===0
+        ?`<div class="action-col"><div class="action-same">already at goal state</div></div>`
+        :`<div class="action-col"><div class="action-heading">to get there</div>${phrases.map(p=>`<div class="action-row ${p.cls}"><span class="action-verb">${p.dir}</span><span class="action-edge">${p.label}</span></div>`).join('')}</div>`;
+    }
+    con.innerHTML=`
+      <div class="glyph-current">
+        <div class="compare-label now-label">NOW</div>
+        ${nowSvg}
+        <div class="state-name ${s.type}">${s.name}</div>
+        <div class="state-sub">${s.sub.replace(/\n/g,'<br>')}</div>
+      </div>
+      ${gs?actionHTML:''}
+      <div class="glyph-compare ${gs?'set':''}">
+        ${gs?`<div class="compare-label goal-label">GOAL · ${gs.name}</div>`:`<div class="compare-label" style="color:var(--muted)">SET GOAL →</div>`}
+        ${goalSvg}
+        ${gs?`<div class="state-name ${gs.type}" style="font-size:clamp(1.4rem,1.6vw,2.2rem)">${gs.name}</div><div class="state-sub">${gs.sub.replace(/\n/g,'<br>')}</div>`:`<div class="state-sub" style="color:var(--muted)">click a node &<br>set as goal</div>`}
+        <button class="set-goal-btn ${gs?'clear':''}" onclick="toggleGoal()">${gs?'CLEAR GOAL':'SET AS GOAL'}</button>
+      </div>`;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// FILMSTRIP
+// ═══════════════════════════════════════════════════════════
+function buildFilmstrip(){
+  document.getElementById('filmstrip').innerHTML=STATE_KEYS.map(id=>{
+    const s=STATES[id];
+    return`<div class="strip-card" id="sc-${id}" onclick="goTo('${id}')">
+      ${glyph(s.g,0.2)}
+      <div class="strip-name">${s.name}</div>
+    </div>`;
+  }).join('');
+}
+
+function updateFilmstrip(){
+  document.querySelectorAll('.strip-card').forEach(c=>{
+    const id=c.id.replace('sc-','');
+    c.classList.toggle('active',id===currentId);
+    c.classList.toggle('goal-card',id===goalId);
+  });
+  const strip=document.getElementById('filmstrip');
+  const card=document.getElementById(`sc-${currentId}`);
+  if(!card)return;
+  const wrap=strip.parentElement;
+  const off=card.offsetLeft-wrap.offsetWidth/2+card.offsetWidth/2;
+  strip.style.transform=`translateX(${-Math.max(0,off)}px)`;
+}
+
+// ═══════════════════════════════════════════════════════════
+// NAVIGATION & INTERACTIONS
+// ═══════════════════════════════════════════════════════════
+function goTo(id){
+  currentId=id;
+  renderDiagram();
+  renderFocus();
+  updateFilmstrip();
+  scrollDiagramTo(id);
+}
+
+function scrollDiagramTo(id){
+  const wrap=document.getElementById('diagram-wrap');
+  const ww=wrap.clientWidth;
+  const c=nc(id);
+  // gently nudge so selected node is in view, horizontally centered
+  const targetPanX = ww/2 - c.x;
+  // clamp: don't show before the diagram starts
+  const svg=document.getElementById('diagram-svg');
+  const dw=parseFloat(svg.getAttribute('width'))||1200;
+  panX=Math.min(0,Math.max(targetPanX, ww-dw-PAD_X));
+  svg.style.transform=`translate(${panX}px,${panY}px)`;
+}
+
+function toggleGoal(){
+  goalId=goalId?null:currentId;
+  renderDiagram(); renderFocus(); updateFilmstrip();
+}
+function setMode(m){
+  mode=m;
+  document.getElementById('btn-explore').classList.toggle('active',m==='explore');
+  document.getElementById('btn-compare').classList.toggle('active',m==='compare');
+  renderFocus();
+}
+function getSystemTheme(){
+  return window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+}
+function applyTheme(theme){
+  document.documentElement.dataset.theme=theme;
+  syncThemeButtons();
+  renderDiagram(); renderFocus();
+}
+function toggleTheme(){
+  const isDark=document.documentElement.dataset.theme==='dark';
+  applyTheme(isDark?'light':'dark');
+}
+function syncThemeButtons(){
+  const theme=document.documentElement.dataset.theme||'light';
+  const label=theme==='dark'?'◐ LIGHT':'◑ DARK';
+  const btn=document.getElementById('theme-btn');
+  const tutBtn=document.getElementById('tut-theme-btn');
+  if(btn)btn.textContent=label;
+  if(tutBtn)tutBtn.textContent=label;
+}
+(function(){
+  const theme=getSystemTheme();
+  document.documentElement.dataset.theme=theme;
+  syncThemeButtons();
+  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{
+    applyTheme(getSystemTheme());
+  });
+})();
+
+// ── pointer interaction (pan + node select) ──
+const dw2=document.getElementById('diagram-wrap');
+let ptrDown=null;
+const PAN_THRESH=5;
+
+function hitTestNode(clientX,clientY){
+  const rect=dw2.getBoundingClientRect();
+  const sx=clientX-rect.left-panX;
+  const sy=clientY-rect.top-panY;
+  for(const id of STATE_KEYS){
+    const c=nc(id);
+    const x0=c.x-NW/2, y0=c.y-NH/2;
+    if(sx>=x0-4 && sx<=x0+NW+4 && sy>=y0-4 && sy<=y0+NH+4) return id;
+  }
+  return null;
+}
+
+// pan via mousedown/mousemove/mouseup
+dw2.addEventListener('mousedown',e=>{
+  ptrDown={x:e.clientX,y:e.clientY,moved:false};
+  isPanning=true; panStart={x:e.clientX-panX,y:e.clientY-panY};
+});
+window.addEventListener('mousemove',e=>{
+  if(!isPanning||!ptrDown)return;
+  const dx=e.clientX-ptrDown.x,dy=e.clientY-ptrDown.y;
+  if(Math.sqrt(dx*dx+dy*dy)>=PAN_THRESH){
+    ptrDown.moved=true;
+    panX=e.clientX-panStart.x; panY=e.clientY-panStart.y;
+    document.getElementById('diagram-svg').style.transform=`translate(${panX}px,${panY}px)`;
+  }
+});
+window.addEventListener('mouseup',e=>{
+  isPanning=false;
+  if(ptrDown&&!ptrDown.moved){
+    const hit=hitTestNode(e.clientX,e.clientY);
+    if(hit) goTo(hit);
+  }
+  ptrDown=null;
+});
+
+// touch: pan + tap
+let touchStart=null;
+dw2.addEventListener('touchstart',e=>{
+  const t=e.touches[0];
+  touchStart={x:t.clientX,y:t.clientY,moved:false};
+  panStart={x:t.clientX-panX,y:t.clientY-panY};
+},{passive:true});
+dw2.addEventListener('touchmove',e=>{
+  if(!touchStart)return;
+  const t=e.touches[0];
+  const dx=t.clientX-touchStart.x,dy=t.clientY-touchStart.y;
+  if(Math.sqrt(dx*dx+dy*dy)>=PAN_THRESH){
+    touchStart.moved=true;
+    panX=t.clientX-panStart.x; panY=t.clientY-panStart.y;
+    document.getElementById('diagram-svg').style.transform=`translate(${panX}px,${panY}px)`;
+  }
+},{passive:true});
+dw2.addEventListener('touchend',e=>{
+  if(touchStart&&!touchStart.moved){
+    const t=e.changedTouches[0];
+    const hit=hitTestNode(t.clientX,t.clientY);
+    if(hit) goTo(hit);
+  }
+  touchStart=null;
+});
+
+// keyboard — spatial navigation: move to nearest node in the pressed direction
+document.addEventListener('keydown', e => {
+  const ARROWS = ['ArrowRight','ArrowLeft','ArrowUp','ArrowDown'];
+  if (!ARROWS.includes(e.key)) return;
+  e.preventDefault();
+
+  const cur = nc(currentId);
+  let best = null, bestDist = Infinity;
+
+  STATE_KEYS.forEach(id => {
+    if (id === currentId) return;
+    const c = nc(id);
+    const dx = c.x - cur.x, dy = c.y - cur.y;
+
+    // For each direction, require movement primarily in that axis
+    // and penalise perpendicular drift so diagonal nodes don't win
+    let primary, perp;
+    if (e.key === 'ArrowRight') { if (dx <= 0) return; primary = dx; perp = Math.abs(dy); }
+    if (e.key === 'ArrowLeft')  { if (dx >= 0) return; primary = -dx; perp = Math.abs(dy); }
+    if (e.key === 'ArrowDown')  { if (dy <= 0) return; primary = dy; perp = Math.abs(dx); }
+    if (e.key === 'ArrowUp')    { if (dy >= 0) return; primary = -dy; perp = Math.abs(dx); }
+
+    // weighted distance: penalise perpendicular drift heavily
+    const dist = primary + perp * 2.5;
+    if (dist < bestDist) { bestDist = dist; best = id; }
+  });
+
+  if (best) goTo(best);
+});
+
+window.addEventListener('resize',()=>{renderDiagram();renderFocus();});
+
+// ═══════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════
+buildFilmstrip();
+requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  renderDiagram();
+  renderFocus();
+  updateFilmstrip();
+  openTutorial();
+}));
+
+// ─── TUTORIAL ────────────────────────────────────────────
+let tutPage = 0;
+const TUT_PAGES = 5;
+
+function openTutorial() {
+  tutPage = 0;
+  document.getElementById('tutorial').classList.remove('hidden');
+  syncThemeButtons();
+  renderTutPage();
+}
+function closeTutorial() {
+  document.getElementById('tutorial').classList.add('hidden');
+}
+function tutGo(n) {
+  tutPage = Math.max(0, Math.min(TUT_PAGES - 1, n));
+  renderTutPage();
+}
+function renderTutPage() {
+  document.querySelectorAll('.tut-slide').forEach((el,i) => {
+    el.classList.toggle('active', i === tutPage);
+  });
+  document.querySelectorAll('.tut-dot').forEach((el,i) => {
+    el.classList.toggle('active', i === tutPage);
+  });
+  const prevBtn = document.getElementById('tut-prev');
+  const nextBtn = document.getElementById('tut-next');
+  prevBtn.style.visibility = tutPage === 0 ? 'hidden' : 'visible';
+  nextBtn.textContent = tutPage === TUT_PAGES - 1 ? 'ENTER →' : 'NEXT →';
+}
+document.addEventListener('keydown', e => {
+  const tut = document.getElementById('tutorial');
+  if (tut.classList.contains('hidden')) return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); tutPage < TUT_PAGES-1 ? tutGo(tutPage+1) : closeTutorial(); }
+  if (e.key === 'ArrowLeft')  { e.preventDefault(); tutGo(tutPage-1); }
+  if (e.key === 'Escape')     closeTutorial();
+}, true);
+
+</script>
+
+<!-- ══════════════════════════════════════════════════════════
+     TUTORIAL OVERLAY
+═══════════════════════════════════════════════════════════ -->
+<div id="tutorial">
+  <div class="tut-header">
+    <div class="tut-logo">Life State <em>Topology</em> — Guide</div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="theme-btn" id="tut-theme-btn" onclick="toggleTheme()">◑ DARK</button>
+      <button class="tut-close" onclick="closeTutorial()">✕ CLOSE</button>
+    </div>
+  </div>
+
+  <div class="tut-body">
+    <div class="tut-slides">
+
+      <!-- ── SLIDE 0: The Model ── -->
+      <div class="tut-slide active">
+        <div class="tut-left">
+          <div class="tut-diagram-wrap">
+            <svg width="260" height="224" viewBox="0 0 160 130" fill="none" style="display:block">
+              <defs>
+                <marker id="ta" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto">
+                  <path d="M0,0.5 L4.5,2.5 L0,4.5 z" fill="currentColor"/>
+                </marker>
+              </defs>
+              <polyline points="14,62 6,62 6,10 47,10" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="square" stroke-linejoin="miter" marker-end="url(#ta)"/>
+              <polyline points="146,62 154,62 154,10 113,10" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="square" stroke-linejoin="miter" marker-end="url(#ta)"/>
+              <line x1="80" y1="16" x2="80" y2="29" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+              <line x1="70" y1="41" x2="34" y2="62" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+              <line x1="90" y1="41" x2="126" y2="62" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+              <line x1="42" y1="66" x2="118" y2="66" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+              <line x1="118" y1="70" x2="42" y2="70" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+              <line x1="34" y1="74" x2="68" y2="92" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+              <line x1="126" y1="74" x2="92" y2="92" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+              <line x1="80" y1="104" x2="80" y2="116" stroke="currentColor" stroke-width="1.3" marker-end="url(#ta)"/>
+              <rect x="62" y="4"   width="36" height="12" rx="2" fill="var(--bg)"/>
+              <text x="80" y="13"  text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Health</text>
+              <rect x="62" y="29"  width="36" height="12" rx="2" fill="var(--bg)"/>
+              <text x="80" y="38"  text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Energy</text>
+              <rect x="8"  y="62"  width="38" height="12" rx="2" fill="var(--bg)"/>
+              <text x="27" y="71"  text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Money</text>
+              <rect x="114" y="62" width="30" height="12" rx="2" fill="var(--bg)"/>
+              <text x="129" y="71" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Time</text>
+              <rect x="56" y="92"  width="48" height="12" rx="2" fill="var(--bg)"/>
+              <text x="80" y="101" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Network</text>
+              <rect x="59" y="116" width="42" height="12" rx="2" fill="var(--bg)"/>
+              <text x="80" y="125" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="currentColor">Agency</text>
+            </svg>
+          </div>
+        </div>
+        <div class="tut-right">
+          <div class="tut-chapter">01 / The Model</div>
+          <div class="tut-title">Six things.<br>One <em>life</em>.</div>
+          <div class="tut-body-text">
+            Think about what actually determines how someone's life is going. Boil it all the way down and you get six things: <strong>Health, Energy, Money, Time, Network,</strong> and <strong>Agency</strong>.<br><br>
+            They flow into each other. Good health gives you energy. Energy earns you money or buys back your time. Money and time are interchangeable — up to a point. Both open doors to people, and people give you real choices.<br><br>
+            The arrows looping back from Money and Time up to Health are the ones most people forget. How you use your resources either maintains you — or quietly erodes you.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SLIDE 1: The Glyph ── -->
+      <div class="tut-slide">
+        <div class="tut-left" style="flex-direction:column;gap:28px;align-items:flex-start;justify-content:center;">
+          <div class="tut-glyph-row">
+            <div class="tut-glyph-item">
+              <svg width="72" height="110" viewBox="0 0 300 460" style="color:var(--text)">
+                <line x1="150" y1="20" x2="150" y2="108" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+              </svg>
+              <div class="tut-glyph-label">hE only<br>destitute</div>
+            </div>
+            <div class="tut-glyph-item">
+              <svg width="72" height="110" viewBox="0 0 300 460" style="color:var(--text)">
+                <line x1="150" y1="20" x2="150" y2="108" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <line x1="146" y1="112" x2="52" y2="211" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <line x1="154" y1="112" x2="248" y2="211" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <line x1="75" y1="237" x2="225" y2="237" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+                <line x1="225" y1="211" x2="75" y2="211" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+              </svg>
+              <div class="tut-glyph-label">rails strong<br>wage trapped</div>
+            </div>
+            <div class="tut-glyph-item">
+              <svg width="72" height="110" viewBox="0 0 300 460" style="color:var(--text)">
+                <polyline points="44,211 44,20 150,20" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+                <polyline points="256,211 256,20 150,20" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+                <line x1="150" y1="20" x2="150" y2="108" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+                <line x1="146" y1="112" x2="52" y2="211" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <line x1="154" y1="112" x2="248" y2="211" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <line x1="75" y1="224" x2="225" y2="224" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <line x1="225" y1="211" x2="75" y2="211" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <line x1="57" y1="237" x2="136" y2="327" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <line x1="243" y1="237" x2="164" y2="327" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <line x1="150" y1="340" x2="150" y2="432" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+              </svg>
+              <div class="tut-glyph-label">all flows<br>balanced</div>
+            </div>
+          </div>
+        </div>
+        <div class="tut-right">
+          <div class="tut-chapter">02 / The Glyph</div>
+          <div class="tut-title">Every state has<br>a <em>shape</em>.</div>
+          <div class="tut-body-text">
+            Each life state is drawn as a small version of that same diagram — but with the lines thickened or removed depending on how strongly each flow is operating.<br><br>
+            <strong>No line</strong> means that connection is completely dead. <strong>A hair-thin line</strong> means it barely exists. <strong>A thick line</strong> means it dominates everything else.<br><br>
+            The two horizontal lines between Money and Time are special — they show how freely you can swap one for the other. A lawyer billing 2,800 hours a year has those rails maxed out. That's the trap. A retiree with passive income has them gone entirely. That's the freedom.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SLIDE 2: The Story ── -->
+      <div class="tut-slide">
+        <div class="tut-left" style="flex-direction:column;gap:0;padding:24px 28px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;color:var(--muted);margin-bottom:16px">THE ARC</div>
+          <div style="display:flex;flex-direction:column;gap:6px;width:100%">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--muted);padding:7px 12px;border-left:2px solid var(--border)">I · Zero — system inert</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--muted);padding:7px 12px;border-left:2px solid var(--border)">II · Survival — bare loops</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--red);padding:7px 12px;border-left:2px solid var(--red)">III · Traps — locked in</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--red);padding:7px 12px;border-left:2px solid var(--red)">IV · Detours — off-axis</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--blue);padding:7px 12px;border-left:2px solid var(--blue)">V · Pivot — conscious rewire</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--blue);padding:7px 12px;border-left:2px solid var(--blue)">V · Ascending — building</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--accent);padding:7px 12px;border-left:2px solid var(--accent)">VI · Thriving — loops closed</div>
+          </div>
+        </div>
+        <div class="tut-right">
+          <div class="tut-chapter">03 / The Story</div>
+          <div class="tut-title">26 states.<br><em>One</em> human arc.</div>
+          <div class="tut-body-text">
+            The 26 states are arranged left to right, from nothing to everything. But life doesn't move in a straight line — there are <strong>traps you can get stuck in</strong>, detours that look like progress, and regressions that can happen to anyone.<br><br>
+            The most important state in the whole map isn't Peak State at the far right. It's <strong>The Pivot</strong> — the moment someone consciously decides to dismantle what isn't working and rebuild. Almost every trap has a path to it.<br><br>
+            Every state comes with a real example: a person, a situation, a moment you'll recognise. The abstractions are meant to be grounded.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SLIDE 3: The Diagram ── -->
+      <div class="tut-slide">
+        <div class="tut-left" style="flex-direction:column;gap:20px;padding:28px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;color:var(--muted)">READING THE DIAGRAM</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:36px;height:14px;border-radius:3px;border:2px solid var(--accent);flex-shrink:0"></div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--text);opacity:0.8">current state</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:36px;height:14px;border-radius:3px;border:2px solid var(--gold);flex-shrink:0"></div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--text);opacity:0.8">goal state</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <svg width="36" height="14"><line x1="0" y1="7" x2="36" y2="7" stroke="var(--gold)" stroke-width="1.5"/></svg>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--text);opacity:0.8">path to goal</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <svg width="36" height="14"><line x1="0" y1="7" x2="36" y2="7" stroke="var(--accent)" stroke-width="1.5"/></svg>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--text);opacity:0.8">reachable edges</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <svg width="36" height="14"><line x1="0" y1="7" x2="36" y2="7" stroke="var(--border)" stroke-width="1" stroke-dasharray="3,3"/></svg>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--text);opacity:0.8">unreachable / dim</div>
+            </div>
+          </div>
+        </div>
+        <div class="tut-right">
+          <div class="tut-chapter">04 / The Diagram</div>
+          <div class="tut-title">See where<br>you can <em>go</em>.</div>
+          <div class="tut-body-text">
+            The map at the bottom isn't just decoration — it shows you the actual transitions between states. When you select one, everything lights up: states you could realistically move to glow in colour, states out of reach fade back.<br><br>
+            Set a goal state in <strong>Compare mode</strong> and a gold path appears, tracing the route between where you are and where you want to be. The diagram tells you which states you need to pass through — and which ones are dead ends without a Pivot first.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SLIDE 4: Tips ── -->
+      <div class="tut-slide">
+        <div class="tut-left" style="align-items:center;justify-content:center;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:3.5rem;font-weight:700;color:var(--accent);opacity:0.18;user-select:none;line-height:1">TIPS</div>
+        </div>
+        <div class="tut-right">
+          <div class="tut-chapter">05 / Tips</div>
+          <div class="tut-title">Get the most<br>out of <em>it</em>.</div>
+          <div class="tut-tips">
+            <div class="tut-tip">
+              <div class="tut-tip-key">← → ↑ ↓</div>
+              <div class="tut-tip-desc">Arrow keys move you through the diagram spatially — it finds the nearest state in whichever direction you press.</div>
+            </div>
+            <div class="tut-tip">
+              <div class="tut-tip-key">COMPARE</div>
+              <div class="tut-tip-desc">Hit Compare, pick a state you're aiming for, and set it as your goal. You'll get a side-by-side diff showing exactly which flows need to grow and which need to shrink.</div>
+            </div>
+            <div class="tut-tip">
+              <div class="tut-tip-key">FILMSTRIP</div>
+              <div class="tut-tip-desc">Scroll the strip at the very bottom to scan all 26 glyphs at once. Patterns that are hard to describe in words become obvious visually.</div>
+            </div>
+            <div class="tut-tip">
+              <div class="tut-tip-key">CLICK NODE</div>
+              <div class="tut-tip-desc">Click any node directly in the diagram to jump there — everything updates instantly: the glyph, the example, the edge highlights.</div>
+            </div>
+            <div class="tut-tip">
+              <div class="tut-tip-key">◐ / ◑ THEME</div>
+              <div class="tut-tip-desc">Switch between light and dark — right here in this guide, or in the toolbar once you're in. Everything adapts, including the glyphs.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tut-slides -->
+  </div><!-- /tut-body -->
+
+  <div class="tut-footer">
+    <div class="tut-dots">
+      <div class="tut-dot active" onclick="tutGo(0)"></div>
+      <div class="tut-dot" onclick="tutGo(1)"></div>
+      <div class="tut-dot" onclick="tutGo(2)"></div>
+      <div class="tut-dot" onclick="tutGo(3)"></div>
+      <div class="tut-dot" onclick="tutGo(4)"></div>
+    </div>
+    <div class="tut-nav">
+      <button class="tut-btn" id="tut-prev" onclick="tutGo(tutPage-1)" style="visibility:hidden">← BACK</button>
+      <button class="tut-btn primary" id="tut-next" onclick="tutPage<4?tutGo(tutPage+1):closeTutorial()">NEXT →</button>
+    </div>
+  </div>
+</div><!-- /tutorial -->
+
+</body>
+</html>
