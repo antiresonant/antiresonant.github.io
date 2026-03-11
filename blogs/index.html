@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blogs &mdash; Polarj Sapkota</title>
+  <meta name="description" content="Blog posts by Polarj Sapkota on engineering, research, and technology.">
+  <meta property="og:title" content="Blogs &mdash; Polarj Sapkota">
+  <meta property="og:description" content="Blog posts by Polarj Sapkota on engineering, research, and technology.">
+  <meta property="og:image" content="https://antiresonant.github.io/info/assets/profile/Tremendous.png">
+  <meta property="og:url" content="https://antiresonant.github.io/blogs/">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../info/assets/profile/Tremendous.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <a class="brand" href="../info/">Polarj Sapkota</a>
+  <button class="menu-btn" id="menu-btn">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="../info/">Home</a></li>
+    <li><a class="active" href="./">Blogs</a></li>
+    <li><a href="../info/#repository">Papers &amp; Reports</a></li>
+  </ul>
+</nav>
+
+<!-- MAIN -->
+<main class="blog-main">
+  <header class="blog-header">
+    <h1 class="sec-title">Blogs</h1>
+    <div class="sec-accent"></div>
+    <p class="sec-subtitle">Thoughts on engineering, research, and building things.</p>
+  </header>
+
+  <div class="blog-list">
+    <div class="blog-card">
+      <span class="blog-tag">INTERACTIVE</span>
+      <h2><a href="../life-states/">States of Life</a></h2>
+      <p class="blog-excerpt">Interactive glyphs that model how six most important factors determine what kind of life a person is living. Inspired by Jimmy Carr's idea that <a href="https://www.youtube.com/shorts/95FzlwFI3kI" target="_blank">you don't solve your problems, you just replace them</a>.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="blog-footer">
+  &copy; 2026 Polarj Sapkota &nbsp;&middot;&nbsp; <a href="../info/">Home &rarr;</a>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const nav = document.querySelector('.top-nav');
+  menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+</script>
+
+</body>
+</html>

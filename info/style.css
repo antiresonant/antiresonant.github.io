@@ -417,6 +417,37 @@ button{cursor:pointer;font-family:var(--ff)}
 .skill-group ul{list-style:none}
 .skill-group li{font-size:.82rem;color:var(--text-secondary);padding:.15rem 0}
 
+/* ===== BLOGS ARROW ===== */
+.blogs-arrow{
+  position:absolute;
+  left:25%;
+  display:flex;
+  flex-direction:row-reverse;
+  align-items:center;
+  z-index:5;
+  transform:translateY(-50%);
+}
+.ba-line{
+  flex:1;height:0;
+  border-top:1.5px solid var(--accent);
+  min-width:20px;
+}
+.ba-head{
+  width:0;height:0;flex-shrink:0;
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-right:9px solid var(--accent);
+}
+.ba-btn{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.45rem 1.1rem;border-radius:var(--r);
+  font-size:.8rem;font-weight:500;letter-spacing:.02em;
+  border:1px solid var(--border);color:var(--text-secondary);
+  text-decoration:none;white-space:nowrap;flex-shrink:0;
+  margin-left:.3rem;
+}
+.ba-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+
 /* ===== PAPERS ARROW ===== */
 .papers-arrow{
   position:absolute;
@@ -549,6 +580,7 @@ button{cursor:pointer;font-family:var(--ff)}
   .side-nav .dot-label{display:none}
   .slide-arrow{display:none}
   .papers-arrow{display:none}
+  .blogs-arrow{display:none}
   .hero-links-tertiary{display:flex}
   .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
   .hero-contact{gap:1.2rem}
