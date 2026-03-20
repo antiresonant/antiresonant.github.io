@@ -40,7 +40,7 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 a{color:var(--accent);text-decoration:none}
-a:hover{opacity:.85}
+a:hover{color:var(--accent)}
 img{max-width:100%;display:block}
 button{cursor:pointer;font-family:var(--ff)}
 
