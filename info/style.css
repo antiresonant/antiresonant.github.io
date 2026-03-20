@@ -252,6 +252,7 @@ button{cursor:pointer;font-family:var(--ff)}
   line-height:1.7;margin-bottom:1rem;
 }
 .main-about{margin-bottom:1.8rem}
+.main-intro a{color:var(--accent)}
 .main-about a{color:var(--accent)}
 .main-quote{
   font-size:.95rem;font-style:italic;color:var(--text-primary);
