@@ -244,9 +244,8 @@ button{cursor:pointer;font-family:var(--ff)}
 .main-about a{color:var(--accent)}
 
 /* Selected works */
-.sw-heading{
-  font-size:.68rem;font-weight:700;text-transform:uppercase;
-  letter-spacing:.12em;color:var(--accent);font-family:var(--mono);
+.sw-title{
+  font-size:1.3rem;font-weight:700;letter-spacing:-.01em;
   margin-bottom:1rem;
 }
 .sw-columns{
