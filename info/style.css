@@ -269,16 +269,13 @@ button{cursor:pointer;font-family:var(--ff)}
 
 /* Repository CTA */
 .repo-link{
-  margin-top:1.8rem;text-align:center;
+  margin-top:1.8rem;padding-top:1rem;border-top:1px solid var(--border);
 }
 .repo-cta{
-  display:inline-block;
-  padding:.7rem 1.8rem;border-radius:var(--r);
-  background:var(--accent);color:var(--bg-primary);
-  font-size:.85rem;font-weight:600;letter-spacing:.02em;
-  transition:background .2s;
+  color:var(--accent);font-size:.88rem;font-weight:600;
+  letter-spacing:.01em;
 }
-.repo-cta:hover{background:#33e0bb;opacity:1;
+.repo-cta:hover{opacity:1;text-decoration:underline;
 }
 
 /* ===== LIGHTBOX ===== */
