@@ -247,7 +247,9 @@ button{cursor:pointer;font-family:var(--ff)}
 .sw-columns{
   display:grid;grid-template-columns:1fr 1fr;gap:0 3rem;
 }
+.sw-columns{align-items:stretch}
 .sw-col{display:flex;flex-direction:column}
+.sw-col .sw-list{flex:1}
 .sw-col-label{
   font-size:.68rem;font-weight:600;text-transform:uppercase;
   letter-spacing:.08em;color:var(--text-secondary);font-family:var(--mono);
