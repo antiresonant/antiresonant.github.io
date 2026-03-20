@@ -288,13 +288,14 @@ button{cursor:pointer;font-family:var(--ff)}
 .sw-list a{color:var(--text-primary)}
 .sw-list a:hover{color:var(--accent)}
 
-/* Repository CTA */
-.repo-link{
-  margin-top:1.8rem;
+/* Selected Works title row */
+.sw-title-row{
+  display:flex;align-items:baseline;gap:1rem;margin-bottom:1rem;
 }
+.sw-title-row .sw-title{margin-bottom:0}
 .repo-cta{
-  color:var(--accent);font-size:1.1rem;font-weight:700;
-  letter-spacing:-.01em;
+  color:var(--accent);font-size:.82rem;font-weight:600;
+  letter-spacing:.01em;white-space:nowrap;
 }
 .repo-cta:hover{text-decoration:underline}
 
