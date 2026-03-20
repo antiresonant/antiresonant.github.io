@@ -252,6 +252,7 @@ button{cursor:pointer;font-family:var(--ff)}
   font-size:.68rem;font-weight:600;text-transform:uppercase;
   letter-spacing:.08em;color:var(--text-secondary);font-family:var(--mono);
   order:1;margin-top:.6rem;padding-top:.3rem;border-top:1px solid var(--border);
+  text-align:center;
 }
 .sw-list{list-style:none;margin-bottom:0}
 .sw-list li{
