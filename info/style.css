@@ -272,8 +272,8 @@ button{cursor:pointer;font-family:var(--ff)}
   margin-top:1.8rem;padding-top:1rem;border-top:1px solid var(--border);
 }
 .repo-cta{
-  color:var(--accent);font-size:.88rem;font-weight:600;
-  letter-spacing:.01em;
+  color:var(--accent);font-size:1.3rem;font-weight:700;
+  letter-spacing:-.01em;
 }
 .repo-cta:hover{opacity:1;text-decoration:underline;
 }
