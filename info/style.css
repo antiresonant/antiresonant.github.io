@@ -45,7 +45,7 @@ a:hover{color:var(--accent)}
 a[href]::after{
   content:'';
   display:inline-block;
-  width:.6em;height:.6em;
+  width:1.2em;height:1.2em;
   margin-left:.2em;vertical-align:middle;
   background:currentColor;
   opacity:.45;
