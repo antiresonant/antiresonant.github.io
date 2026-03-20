@@ -41,6 +41,22 @@ html,body{
 }
 a{color:var(--accent);text-decoration:none}
 a:hover{color:var(--accent)}
+/* External link icon on content links */
+a[href]::after{
+  content:'\2197';
+  font-size:.7em;margin-left:.15em;
+  display:inline-block;vertical-align:super;
+  opacity:.5;
+}
+/* Exclude nav, buttons, brand, CTAs */
+.top-nav a::after,
+.side-nav a::after,
+.hero-links a::after,
+.hero-links button::after,
+.ba-btn::after,.pa-btn::after,
+.footer-line a::after,
+.repo-cta::after,
+.hero-contact a::after{content:none !important}
 img{max-width:100%;display:block}
 button{cursor:pointer;font-family:var(--ff)}
 

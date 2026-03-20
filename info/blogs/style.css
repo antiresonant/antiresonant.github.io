@@ -41,6 +41,12 @@ html,body{
 }
 a{color:var(--accent);text-decoration:none}
 a:hover{color:var(--accent)}
+a[href]::after{
+  content:'\2197';font-size:.7em;margin-left:.15em;
+  display:inline-block;vertical-align:super;opacity:.5;
+}
+.top-nav a::after,
+.blog-footer a::after{content:none !important}
 img{max-width:100%;display:block}
 button{cursor:pointer;font-family:var(--ff)}
 
