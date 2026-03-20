@@ -294,7 +294,7 @@ button{cursor:pointer;font-family:var(--ff)}
 }
 .sw-title-row .sw-title{margin-bottom:0}
 .repo-cta{
-  color:var(--accent);font-size:.78rem;font-weight:500;
+  color:var(--accent);font-size:.78rem;font-weight:700;
   letter-spacing:.03em;white-space:nowrap;font-family:var(--mono);
 }
 .repo-cta:hover{text-decoration:underline}
