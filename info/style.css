@@ -223,6 +223,11 @@ button{cursor:pointer;font-family:var(--ff)}
 }
 .main-wrap{max-width:860px;width:100%}
 
+.main-title{
+  font-size:.7rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--accent);font-family:var(--mono);
+  margin-bottom:1.2rem;
+}
 .main-intro{
   font-size:.92rem;color:var(--text-secondary);
   margin-bottom:1rem;line-height:1.7;
