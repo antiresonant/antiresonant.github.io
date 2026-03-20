@@ -228,8 +228,8 @@ button{cursor:pointer;font-family:var(--ff)}
   color:var(--accent);margin-bottom:1.2rem;
 }
 .main-intro,.main-about{
-  font-size:.88rem;color:var(--text-secondary);
-  line-height:1.75;margin-bottom:1rem;
+  font-size:.92rem;color:var(--text-secondary);
+  line-height:1.7;margin-bottom:1rem;
 }
 .main-about{margin-bottom:1.8rem}
 .main-about a{color:var(--accent)}
