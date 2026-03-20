@@ -23,611 +23,628 @@
 <body>
 
 <!-- TOP NAV -->
-<nav class="top-nav">
-  <a class="brand" href="#hero">Polarj Sapkota</a>
+<nav class="top-nav" id="topnav">
+  <button class="brand" id="brand-btn">Polarj Sapkota</button>
   <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
 </nav>
 
-<!-- ==================== HERO ==================== -->
-<section class="hero" id="hero">
-  <div class="hero-content">
-    <img class="hero-photo" src="assets/profile/Tremendous.png" alt="Polarj Sapkota">
-    <h1 class="hero-name">Polarj Sapkota</h1>
-    <p class="hero-sub"><span id="engineer-word">Electrical Engineer</span> &middot; <span id="theorist-word">Theorist</span></p>
-    <div class="hero-links hero-links-primary">
-      <a href="javascript:void(0)" onclick="openConsult()">&#9670; Consult Polarj</a>
-      <a href="assets/papers/PolarCV.pdf" target="_blank">&#9655; Download CV</a>
-    </div>
-    <div class="hero-links hero-links-secondary">
-      <a href="mailto:hi@polarjsapkota.com">&#9993; Email</a>
-      <a class="btn-github" href="https://github.com/antiresonant" target="_blank"><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a>
-      <a class="btn-linkedin" href="https://www.linkedin.com/in/polarj-s-86239b158/" target="_blank"><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 01.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg> LinkedIn</a>
-    </div>
-    <div class="hero-links hero-links-tertiary">
-      <a href="./blogs/">&#9997; Blogs</a>
-      <a href="#repository">&#9783; Papers &amp; Reports</a>
-    </div>
-    <div class="hero-contact">
-      <div class="hc"><strong>Location</strong><a href="https://en.wikipedia.org/wiki/Pangaea">Pangaea</a></div>
-    </div>
-  </div>
-  <div class="blogs-arrow" id="blogs-arrow">
-    <span class="ba-line"></span>
-    <span class="ba-head"></span>
-    <a class="ba-btn" href="./blogs/">&#9997; Blogs</a>
-  </div>
-  <div class="papers-arrow" id="papers-arrow">
-    <span class="pa-line"></span>
-    <span class="pa-head"></span>
-    <a class="pa-btn" href="#repository">&#9783; Papers &amp; Reports</a>
-  </div>
-  <div class="scroll-hint">&#8595;</div>
-</section>
+<!-- SIDE NAV (2 DOTS) -->
+<nav class="side-nav" id="sidenav">
+  <button class="dot active" data-idx="0"><span class="dot-label">Home</span></button>
+  <button class="dot" data-idx="1"><span class="dot-label">Who am I</span></button>
+</nav>
 
-<!-- ==================== ABOUT ==================== -->
-<section class="about-section" id="about">
-  <div class="container">
-    <p class="intro-tagline">The kind of engineer who shims superconducting magnets to 2 parts per billion, then writes a natural language compiler that cuts LLM-inference cost by 100,000&times;.</p>
-    <blockquote class="about-quote">If life is a latent space, movement is the only reward.</blockquote>
-    <div class="about-body">
-      <p>Current obsessions: nanoscale energy harvesting, far-field wireless power transfer, and monolithic integration&mdash;think <a href="https://static.wikia.nocookie.net/disney/images/4/4e/Microbot.png/revision/latest?cb=20150821161449">Big Hero 6</a> microbots, smaller. Also shipping a natural language compiler that <a href="https://antiresonant.github.io/nlc-paper/">cuts LLM-inference cost by ~100,000&times;</a>.</p>
-      <p>Engineering by nature requires constraints; and I love working with systems with the hardest ones. I've shimmed superconducting magnets for MRI at GE, designed flight controllers for eVTOL aircraft, built wireless sensor networks that detect poachers in real-time, and written compilers that turn plain English into verified code. I theorize, model, experiment and make observations to bring things to life.</p>
-    </div>
-    <div class="about-stats-grid">
-      <div class="stat-inline"><span class="num">3</span><span class="lbl">Publications</span></div>
-      <span class="grid-vline"></span>
-      <div class="stat-inline"><span class="num">2&times;</span><span class="lbl">Founder</span></div>
-      <span class="grid-hline"></span>
-      <span class="grid-hline"></span>
-      <span class="grid-hline"></span>
-      <div class="stat-inline"><span class="num">63</span><span class="lbl">Circuit Designs</span></div>
-      <span class="grid-vline"></span>
-      <div class="stat-inline"><span class="num">15</span><span class="lbl">Papers</span></div>
-    </div>
-  </div>
-</section>
+<!-- DECK -->
+<div class="deck" id="deck">
 
-<!-- ==================== HOW I SPEND MY TIME ==================== -->
-<div class="section-divider">
-  <h2>How I Spend My Time</h2>
-</div>
-
-<!-- RESEARCH -->
-<section class="content-section" id="research">
-  <div class="container">
-    <h3 class="section-label">Research &amp; Ideas</h3>
-    <div class="card-grid cols-2">
-
-      <div class="r-card">
-        <span class="r-tag">SOFTWARE THEORY</span>
-        <h4>NLC &mdash; Natural Language Compiler</h4>
-        <p>A framework for making LLM-generated code deterministic and verifiable. Each algorithmic step is specified as a domain&ndash;range contract: the LLM generates code, the system asserts correctness, and regenerates on failure.</p>
-        <div class="r-card-foot">
-          <a class="btn btn-primary" href="assets/papers/NLC__A_Natural_Language_Compiler_with_Deterministic_Outputs.pdf" target="_blank">&#8595; Read Paper</a>
+  <!-- ==================== SLIDE 1: HERO ==================== -->
+  <section class="slide active" id="hero">
+    <div class="hero-body">
+      <div class="hero-content">
+        <img class="hero-photo" src="assets/profile/Tremendous.png" alt="Polarj Sapkota">
+        <h1 class="hero-name">Polarj Sapkota</h1>
+        <p class="hero-sub"><span id="engineer-word">Electrical Engineer</span> &middot; <span id="theorist-word">Theorist</span></p>
+        <div class="hero-links hero-links-primary">
+          <a href="javascript:void(0)" onclick="openConsult()">&#9670; Consult Polarj</a>
+          <a href="assets/papers/PolarCV.pdf" target="_blank">&#9655; Download CV</a>
         </div>
-      </div>
-
-      <div class="r-card">
-        <span class="r-tag">SOFTWARE THEORY</span>
-        <h4>The Periodic Table of Software (PSI)</h4>
-        <p>All computational behavior reduces to ~650 structural primitives&mdash;analogous to the periodic table's 118 elements. Working prototype: 35 indexed fragments with contracts, deterministic SHA-256 caching, and 5 orders of magnitude energy savings.</p>
-        <div class="r-card-foot">
-          <a class="btn btn-primary" href="assets/papers/Fungible-Software-Case.pdf" target="_blank">&#8595; Case Study</a>
+        <div class="hero-links hero-links-secondary">
+          <a href="mailto:hi@polarjsapkota.com">&#9993; Email</a>
+          <a class="btn-github" href="https://github.com/antiresonant" target="_blank"><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a>
+          <a class="btn-linkedin" href="https://www.linkedin.com/in/polarj-s-86239b158/" target="_blank"><svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 01.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg> LinkedIn</a>
         </div>
-      </div>
-
-      <div class="r-card">
-        <span class="r-tag">ECONOMICS &amp; LABOR</span>
-        <h4>The Future of Software Labor</h4>
-        <p>A book-length research essay analyzing 260 years of labor transitions through the lens of AI-driven automation. Central finding: when a capability becomes cheap, labor migrates one abstraction layer up.</p>
-        <div class="r-card-foot">
-          <a class="btn btn-primary" href="assets/papers/future.pdf" target="_blank">&#8595; Read Essay</a>
+        <div class="hero-links hero-links-tertiary">
+          <a href="./blogs/">&#9997; Blogs</a>
+          <a href="javascript:void(0)" onclick="goToSlide(1)">&#9783; Papers &amp; Reports</a>
         </div>
-      </div>
-
-      <div class="r-card">
-        <span class="r-tag">CONSERVATION TECH</span>
-        <h4>Wireless Sensor Networks for Wildlife</h4>
-        <p>Sensor nodes using 4-element microphone arrays with 2&deg; angular discrimination, spectrogram-based noise removal, and novel PSD estimation via abstract algebra. Detects poaching activity in real-time across protected habitats.</p>
-        <div class="r-card-foot">
-          <a class="btn btn-outline" href="#galleries">&#9655; See Hardware Photos</a>
-        </div>
-      </div>
-
-      <div class="r-card">
-        <span class="r-tag">POWER SYSTEMS</span>
-        <h4>Real-Time Thermal Rating of Transmission Lines</h4>
-        <p>R&amp;D system calculating real-time ampacity based on air/conductor temperature, wind speed, and solar heating. Includes predictive models for ampacity forecasting. Published at IEEE PowerCon 2024.</p>
-        <div class="r-card-foot">
-          <a class="btn btn-primary" href="assets/papers/Real-Time Thermal Rating of OH Lines.pdf" target="_blank">&#8595; Read Report</a>
-        </div>
-      </div>
-
-      <div class="r-card">
-        <span class="r-tag">MACHINE LEARNING</span>
-        <h4>Heartbeat Anomaly Detection</h4>
-        <p>ANN &amp; LSTM-based predictive models for detecting abnormal cardiac conditions including atrial fibrillation. Trained on ECG time-series data with real-time classification output.</p>
-        <div class="r-card-foot">
-          <a class="btn btn-primary" href="assets/papers/Heartbeat Anomaly Detection.pdf" target="_blank">&#8595; Read Report</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ENGINEERING -->
-<section class="content-section alt" id="engineering">
-  <div class="container">
-    <h3 class="section-label">Engineering Portfolio</h3>
-    <div class="card-grid cols-2">
-
-      <div class="eng-card">
-        <h4>Power Systems</h4>
-        <ul>
-          <li>Overcurrent protection system design</li>
-          <li>Transmission line design</li>
-          <li>Switchgear and grounding system</li>
-          <li>Load-flow and contingency analysis</li>
-          <li>HVDC protection &amp; control research</li>
-          <li>456 MW hydropower plant modeling</li>
-        </ul>
-        <div class="eng-card-foot">
-          <a class="btn btn-outline" href="assets/papers/Research on HVDC Protection &amp; Control Equipment.pdf" target="_blank">HVDC Paper</a>
-        </div>
-      </div>
-
-      <div class="eng-card">
-        <h4>Power Electronics</h4>
-        <ul>
-          <li>Static VAR compensator</li>
-          <li>Switched PFC reactor</li>
-          <li>Novel current source topology</li>
-          <li>Simplest resonant converter</li>
-          <li>Closed-loop boost converter with DC machine</li>
-          <li>TRIAC firing control for industrial heating</li>
-        </ul>
-        <div class="eng-card-foot">
-          <a class="btn btn-outline" href="assets/papers/Control Characteristics Simulation of Power Converters.pdf" target="_blank">Converter Paper</a>
-        </div>
-      </div>
-
-      <div class="eng-card">
-        <h4>Control Systems</h4>
-        <ul>
-          <li>eVTOL inertial-frame flight controller</li>
-          <li>BLDC motor control algorithms</li>
-          <li>Voltage-controlled inverter</li>
-          <li>Dye-injection process control</li>
-          <li>Ackermann gain and observer design</li>
-          <li>Automatic load-tester (1 W &ndash; 1 kW)</li>
-        </ul>
-        <div class="eng-card-foot">
-          <a class="btn btn-outline" href="assets/papers/Dye-injection.pdf" target="_blank">Dye-Injection Paper</a>
-        </div>
-      </div>
-
-      <div class="eng-card">
-        <h4>Signal Processing &amp; Instrumentation</h4>
-        <ul>
-          <li>40 GHz Signal Integrity (TDR + S-parameters)</li>
-          <li>Binaural recording microphone array</li>
-          <li>Acoustic source localization (4-mic, TDOA)</li>
-          <li>8-step PGA for DAQ (CMRR &gt;120 dB)</li>
-          <li>Edge detection, histogram equalization, SVD</li>
-        </ul>
-        <div class="eng-card-foot">
-          <a class="btn btn-outline" href="assets/papers/Binaural Recording Project Progress Report.pdf" target="_blank">Binaural Report</a>
-        </div>
-      </div>
-
-      <div class="eng-card">
-        <h4>Embedded Systems &amp; Hardware</h4>
-        <ul>
-          <li>STM32 AC waveform monitor (ADC, UART, ZCD)</li>
-          <li>Multi-axis haptic joypad (discrete analog, no MCU)</li>
-          <li>Multi-level security (discrete logic, 2FA, no MCU)</li>
-          <li>Battery level indicator circuit</li>
-          <li>Path-planning rover (GNC, obstacle avoidance)</li>
-          <li>MRI magnet shimming (10.8 H, 1.5 T, 2 ppb)</li>
-        </ul>
-        <div class="eng-card-foot">
-          <a class="btn btn-outline" href="assets/papers/Gamepad Haptic Feedback.pdf" target="_blank">Haptic Joypad</a>
-          <a class="btn btn-outline" href="assets/papers/Battery Level Indicator Final Report.pdf" target="_blank">Battery Indicator</a>
-        </div>
-      </div>
-
-      <div class="eng-card">
-        <h4>Lighting &amp; Facility Design</h4>
-        <ul>
-          <li>RGB art gallery (DIALux, multiple renders)</li>
-          <li>Basantapur lighting intervention study</li>
-          <li>KU ring road lighting case study</li>
-          <li>Food processing plant &amp; boiler installation</li>
-          <li>Industrial warehouse construction</li>
-        </ul>
-        <div class="eng-card-foot">
-          <a class="btn btn-outline" href="assets/papers/Report on Food Processing Plant and Boiler Installation - Professional Engineering Management.pdf" target="_blank">Plant Report</a>
-          <a class="btn btn-outline" href="assets/papers/Report on Industrial Warehouse Construction - Professional Engineering Management.pdf" target="_blank">Warehouse Report</a>
-        </div>
-      </div>
-
-      <div class="eng-card">
-        <h4>Optimization</h4>
-        <ul>
-          <li>F1 game performance optimization</li>
-          <li>NPN-BJT V<sub>BE</sub> optimization</li>
-          <li>Switching-noise reduction</li>
-          <li>MIMO channel power optimization</li>
-          <li>Root variation analysis</li>
-        </ul>
-      </div>
-
-      <div class="eng-card">
-        <h4>Image Processing</h4>
-        <ul>
-          <li>Edge detection suite (multiple operators)</li>
-          <li>Histogram equalization</li>
-          <li>SVD compression analysis</li>
-          <li>Temperature-changing kernel</li>
-          <li>Customizable DFT matrix</li>
-        </ul>
-        <div class="eng-card-foot">
-          <a class="btn btn-outline" href="#galleries">&#9655; MATLAB Gallery</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- SOFTWARE -->
-<section class="content-section" id="software">
-  <div class="container">
-    <h3 class="section-label">Software &amp; Computing</h3>
-    <div class="card-grid cols-3">
-
-      <div class="sw-card">
-        <h4>NLC Compiler</h4>
-        <div class="sw-tech">JavaScript &middot; Claude API &middot; Domain-Driven Design</div>
-        <p>Live compiler: write algorithms in plain English, get verified working code. Iterative domain&ndash;range assertion ensures deterministic outputs from a probabilistic LLM.</p>
-      </div>
-      <div class="sw-card">
-        <h4>Fungible Software Engine v0</h4>
-        <div class="sw-tech">Python &middot; Flask &middot; SHA-256 Caching</div>
-        <p>35 indexed computational fragments with contracts, 5 composition pipelines, deterministic cache. Proof-of-concept for the Periodic Table of Software thesis.</p>
-      </div>
-      <div class="sw-card">
-        <h4>Knowledge Pipeline</h4>
-        <div class="sw-tech">Python &middot; Claude Vision &middot; Typst &middot; PyMuPDF</div>
-        <p>Converts handwritten notes and photographs into typeset documents. Claude Vision extracts structure into JSON IR; renders to Typst, LaTeX, or HTML.</p>
-      </div>
-      <div class="sw-card">
-        <h4>Brain Pipeline</h4>
-        <div class="sw-tech">GitHub Actions &middot; LaTeX &middot; Overleaf &middot; Claude API</div>
-        <p>Voice-to-paper infrastructure. Record &rarr; transcribe &rarr; structure with AI &rarr; auto-compile to PDF. Zero-cost publishing on free tiers.</p>
-      </div>
-      <div class="sw-card">
-        <h4>NN Sonifier</h4>
-        <div class="sw-tech">Python &middot; NumPy &middot; Sounddevice</div>
-        <p>Real-time audio sonification of neural network training. Maps layer weights to frequency bands; demonstrates grokking through sound.</p>
-      </div>
-      <div class="sw-card">
-        <h4>Quantum Circuits</h4>
-        <div class="sw-tech">Qiskit &middot; OpenQASM 2.0 &middot; BluequBit</div>
-        <p>Collection of circuits from 4 to hundreds of qubits. RY, RZ, SX, CZ gate operations executed on quantum hardware.</p>
-      </div>
-      <div class="sw-card">
-        <h4>Badlibs</h4>
-        <div class="sw-tech">Python &middot; Flask &middot; GPT-4 &middot; SQLite &middot; Vercel</div>
-        <p>Daily AI-generated Mad Libs with 16 custom lib types, crowdsourced quality voting, and analytics. Deployed live.</p>
-      </div>
-      <div class="sw-card">
-        <h4>DirtyMario</h4>
-        <div class="sw-tech">Python &middot; Pygame</div>
-        <p>Platformer engine with physics, AI enemy behaviors, level editor, and neural network input vector generation for future ML integration.</p>
-      </div>
-      <div class="sw-card">
-        <h4>Acoustic Source Localization</h4>
-        <div class="sw-tech">Python &middot; NumPy &middot; Matplotlib</div>
-        <p>TDOA cross-correlation across environmental scenarios. Temperature-adjusted speed of sound, dual-frequency analysis at 1 kHz and 20 kHz.</p>
-      </div>
-      <div class="sw-card">
-        <h4>STM32 Waveform Monitor</h4>
-        <div class="sw-tech">C &middot; STM32 HAL &middot; ADC &middot; UART</div>
-        <p>Embedded firmware for real-time AC analysis: peak detection, zero-cross detection, min/max tracking, and data averaging at 50/60 Hz.</p>
-      </div>
-      <div class="sw-card">
-        <h4>Signal Processing Library</h4>
-        <div class="sw-tech">Python &middot; NumPy &middot; SciPy</div>
-        <p>Hadamard transforms, Joukowsky airfoil flow fields, Radon transforms, SVD image compression, Fourier phase analysis.</p>
-      </div>
-      <div class="sw-card">
-        <h4>Wealth Redistribution Model</h4>
-        <div class="sw-tech">Python &middot; Discrete Mathematics</div>
-        <p>Discrete mathematical model simulating wealth redistribution dynamics. Analyzes convergence behavior and equilibrium states in economic systems.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- GALLERIES -->
-<section class="content-section alt" id="galleries">
-  <div class="container">
-    <h3 class="section-label">Galleries</h3>
-
-    <div class="gallery-group">
-      <h4>Hardware &amp; Lab Photography</h4>
-      <p class="gallery-desc">Physical builds: microphone arrays, thermal rating apparatus, circuit boards.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/hardware/Mic Array Front.jpg" alt="Microphone array front" loading="lazy">
-          <div class="g-label">Mic Array &mdash; Front</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/hardware/Mic Array Back.jpg" alt="Microphone array back" loading="lazy">
-          <div class="g-label">Mic Array &mdash; Back</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/hardware/RT-TR-OHL.jpeg" alt="Thermal rating test setup" loading="lazy">
-          <div class="g-label">RT Thermal Rating Setup</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/hardware/Fault Protecxion.png" alt="Fault protection diagram" loading="lazy">
-          <div class="g-label">Fault Protection System</div>
+        <div class="hero-contact">
+          <div class="hc"><strong>Location</strong><a href="https://en.wikipedia.org/wiki/Pangaea">Pangaea</a></div>
         </div>
       </div>
     </div>
-
-    <div class="gallery-group">
-      <h4>DIALux Lighting Design</h4>
-      <p class="gallery-desc">RGB Art Gallery lighting renders &mdash; professional illumination design with colored zones.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/dialux/RGB Art Gallery.jpg" alt="Gallery overview" loading="lazy">
-          <div class="g-label">Gallery Overview</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/dialux/RGB Art Gallery - Lobby.jpg" alt="Gallery lobby" loading="lazy">
-          <div class="g-label">Lobby</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/dialux/RGB Art Gallery - Blue General Gallery.jpg" alt="Blue gallery" loading="lazy">
-          <div class="g-label">Blue General Gallery</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/dialux/RGB Art Gallery - Green Special Gallery.jpg" alt="Green gallery" loading="lazy">
-          <div class="g-label">Green Special Gallery</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/dialux/RGB Art Gallery - Balcony.jpg" alt="Balcony" loading="lazy">
-          <div class="g-label">Balcony</div>
-        </div>
-      </div>
+    <div class="blogs-arrow" id="blogs-arrow">
+      <span class="ba-line"></span>
+      <span class="ba-head"></span>
+      <a class="ba-btn" href="./blogs/">&#9997; Blogs</a>
     </div>
-
-    <div class="gallery-group">
-      <h4>MATLAB &amp; Signal Processing</h4>
-      <p class="gallery-desc">Edge detection, histogram equalization, spectral analysis, and complex field analysis.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/A Edge 1.png" alt="Edge detection A1" loading="lazy">
-          <div class="g-label">Edge Detection A1</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/A Edge 2.png" alt="Edge detection A2" loading="lazy">
-          <div class="g-label">Edge Detection A2</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/A Edge 3.png" alt="Edge detection A3" loading="lazy">
-          <div class="g-label">Edge Detection A3</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/A Edge 4.png" alt="Edge detection A4" loading="lazy">
-          <div class="g-label">Edge Detection A4</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/C Edge 1.png" alt="Edge detection C" loading="lazy">
-          <div class="g-label">Edge Detection C</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/D Edge 1.png" alt="Edge detection D" loading="lazy">
-          <div class="g-label">Edge Detection D</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/Hist Equal 1.png" alt="Histogram equalization 1" loading="lazy">
-          <div class="g-label">Hist Equalization 1</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/Hist Equal 2.png" alt="Histogram equalization 2" loading="lazy">
-          <div class="g-label">Hist Equalization 2</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/Hist Equal 3.png" alt="Histogram equalization 3" loading="lazy">
-          <div class="g-label">Hist Equalization 3</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/Hist Equal 4.png" alt="Histogram equalization 4" loading="lazy">
-          <div class="g-label">Hist Equalization 4</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/Hist Equal 5.png" alt="Histogram equalization 5" loading="lazy">
-          <div class="g-label">Hist Equalization 5</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/Z Field.png" alt="Z-plane field" loading="lazy">
-          <div class="g-label">Z-Plane Field Analysis</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/dark_magnitude_normalized.jpg" alt="Magnitude spectrum normalized" loading="lazy">
-          <div class="g-label">Magnitude Spectrum (Normalized)</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/matlab/dark_phase_transformed.jpg" alt="Phase transformed" loading="lazy">
-          <div class="g-label">Phase Transformed</div>
-        </div>
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="assets/signal/spread_spectrum.png" alt="Spread spectrum" loading="lazy">
-          <div class="g-label">Spread Spectrum Analysis</div>
-        </div>
-      </div>
+    <div class="papers-arrow" id="papers-arrow">
+      <span class="pa-line"></span>
+      <span class="pa-head"></span>
+      <a class="pa-btn" href="javascript:void(0)" onclick="goToSlide(1)">&#9783; Papers &amp; Reports</a>
     </div>
+    <button class="scroll-hint" onclick="goToSlide(1)" aria-label="Scroll down">&#8595;</button>
+    <div class="footer-line">&copy; 2026 Polarj Sapkota &nbsp;&middot;&nbsp; <a href="https://antiresonant.github.io/">Portfolio &rarr;</a></div>
+  </section>
 
-    <div class="gallery-group">
-      <h4>Circuit Designs &amp; Schematics <span style="font-weight:400;font-size:.78rem;color:var(--text-secondary)">(63 designs)</span></h4>
-      <p class="gallery-desc">Collection of analog, digital, and mixed-signal circuit schematics.</p>
-      <div class="gallery-grid gallery-grid-sm" id="circuits-gallery"></div>
-      <div class="circuits-toggle-wrap">
-        <button id="circuits-toggle" class="btn btn-outline" onclick="toggleCircuits()">Show all 63 circuits</button>
-      </div>
-    </div>
+  <!-- ==================== SLIDE 2: WHO AM I ==================== -->
+  <section class="slide" id="main">
+    <div class="slide-scroll" id="slide-scroll">
 
-  </div>
-</section>
-
-<!-- PAPERS & REPORTS -->
-<section class="content-section" id="repository">
-  <div class="container">
-    <h3 class="section-label">Papers &amp; Reports</h3>
-    <div class="doc-list">
-
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>NLC: A Natural Language Compiler with Deterministic Outputs</h4>
-          <span>PUBLICATION</span>
+      <!-- ABOUT -->
+      <div class="about-block">
+        <div class="container">
+          <h2 class="slide-title">Who am I and how I spend my time</h2>
+          <p class="intro-tagline">The kind of engineer who shims superconducting magnets to 2 parts per billion, then writes a natural language compiler that cuts LLM-inference cost by 100,000&times;.</p>
+          <blockquote class="about-quote">If life is a latent space, movement is the only reward.</blockquote>
+          <div class="about-body">
+            <p>Current obsessions: nanoscale energy harvesting, far-field wireless power transfer, and monolithic integration&mdash;think <a href="https://static.wikia.nocookie.net/disney/images/4/4e/Microbot.png/revision/latest?cb=20150821161449">Big Hero 6</a> microbots, smaller. Also shipping a natural language compiler that <a href="https://antiresonant.github.io/nlc-paper/">cuts LLM-inference cost by ~100,000&times;</a>.</p>
+            <p>Engineering by nature requires constraints; and I love working with systems with the hardest ones. I've shimmed superconducting magnets for MRI at GE, designed flight controllers for eVTOL aircraft, built wireless sensor networks that detect poachers in real-time, and written compilers that turn plain English into verified code. I theorize, model, experiment and make observations to bring things to life.</p>
+          </div>
+          <div class="about-stats-grid">
+            <div class="stat-inline"><span class="num">3</span><span class="lbl">Publications</span></div>
+            <span class="grid-vline"></span>
+            <div class="stat-inline"><span class="num">2&times;</span><span class="lbl">Founder</span></div>
+            <span class="grid-hline"></span>
+            <span class="grid-hline"></span>
+            <span class="grid-hline"></span>
+            <div class="stat-inline"><span class="num">63</span><span class="lbl">Circuit Designs</span></div>
+            <span class="grid-vline"></span>
+            <div class="stat-inline"><span class="num">15</span><span class="lbl">Papers</span></div>
+          </div>
         </div>
-        <a class="btn btn-primary" href="assets/papers/NLC__A_Natural_Language_Compiler_with_Deterministic_Outputs.pdf" target="_blank">&#8595; PDF</a>
       </div>
 
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Fungible Software Case Study</h4>
-          <span>PUBLICATION</span>
+      <!-- RESEARCH -->
+      <div class="content-section bg-alt">
+        <div class="container">
+          <h3 class="section-label">Research &amp; Ideas</h3>
+          <div class="card-grid cols-2">
+
+            <div class="r-card">
+              <span class="r-tag">SOFTWARE THEORY</span>
+              <h4>NLC &mdash; Natural Language Compiler</h4>
+              <p>A framework for making LLM-generated code deterministic and verifiable. Each algorithmic step is specified as a domain&ndash;range contract: the LLM generates code, the system asserts correctness, and regenerates on failure.</p>
+              <div class="r-card-foot">
+                <a class="btn btn-primary" href="assets/papers/NLC__A_Natural_Language_Compiler_with_Deterministic_Outputs.pdf" target="_blank">&#8595; Read Paper</a>
+              </div>
+            </div>
+
+            <div class="r-card">
+              <span class="r-tag">SOFTWARE THEORY</span>
+              <h4>The Periodic Table of Software (PSI)</h4>
+              <p>All computational behavior reduces to ~650 structural primitives&mdash;analogous to the periodic table's 118 elements. Working prototype: 35 indexed fragments with contracts, deterministic SHA-256 caching, and 5 orders of magnitude energy savings.</p>
+              <div class="r-card-foot">
+                <a class="btn btn-primary" href="assets/papers/Fungible-Software-Case.pdf" target="_blank">&#8595; Case Study</a>
+              </div>
+            </div>
+
+            <div class="r-card">
+              <span class="r-tag">ECONOMICS &amp; LABOR</span>
+              <h4>The Future of Software Labor</h4>
+              <p>A book-length research essay analyzing 260 years of labor transitions through the lens of AI-driven automation. Central finding: when a capability becomes cheap, labor migrates one abstraction layer up.</p>
+              <div class="r-card-foot">
+                <a class="btn btn-primary" href="assets/papers/future.pdf" target="_blank">&#8595; Read Essay</a>
+              </div>
+            </div>
+
+            <div class="r-card">
+              <span class="r-tag">CONSERVATION TECH</span>
+              <h4>Wireless Sensor Networks for Wildlife</h4>
+              <p>Sensor nodes using 4-element microphone arrays with 2&deg; angular discrimination, spectrogram-based noise removal, and novel PSD estimation via abstract algebra. Detects poaching activity in real-time across protected habitats.</p>
+              <div class="r-card-foot">
+                <a class="btn btn-outline" href="javascript:void(0)" onclick="scrollToGalleries()">&#9655; See Hardware Photos</a>
+              </div>
+            </div>
+
+            <div class="r-card">
+              <span class="r-tag">POWER SYSTEMS</span>
+              <h4>Real-Time Thermal Rating of Transmission Lines</h4>
+              <p>R&amp;D system calculating real-time ampacity based on air/conductor temperature, wind speed, and solar heating. Includes predictive models for ampacity forecasting. Published at IEEE PowerCon 2024.</p>
+              <div class="r-card-foot">
+                <a class="btn btn-primary" href="assets/papers/Real-Time Thermal Rating of OH Lines.pdf" target="_blank">&#8595; Read Report</a>
+              </div>
+            </div>
+
+            <div class="r-card">
+              <span class="r-tag">MACHINE LEARNING</span>
+              <h4>Heartbeat Anomaly Detection</h4>
+              <p>ANN &amp; LSTM-based predictive models for detecting abnormal cardiac conditions including atrial fibrillation. Trained on ECG time-series data with real-time classification output.</p>
+              <div class="r-card-foot">
+                <a class="btn btn-primary" href="assets/papers/Heartbeat Anomaly Detection.pdf" target="_blank">&#8595; Read Report</a>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <a class="btn btn-primary" href="assets/papers/Fungible-Software-Case.pdf" target="_blank">&#8595; PDF</a>
       </div>
 
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Real-Time Thermal Rating of Overhead Lines</h4>
-          <span>PUBLICATION &middot; IEEE POWERCON 2024</span>
+      <!-- ENGINEERING -->
+      <div class="content-section bg-primary">
+        <div class="container">
+          <h3 class="section-label">Engineering Portfolio</h3>
+          <div class="card-grid cols-2">
+
+            <div class="eng-card">
+              <h4>Power Systems</h4>
+              <ul>
+                <li>Overcurrent protection system design</li>
+                <li>Transmission line design</li>
+                <li>Switchgear and grounding system</li>
+                <li>Load-flow and contingency analysis</li>
+                <li>HVDC protection &amp; control research</li>
+                <li>456 MW hydropower plant modeling</li>
+              </ul>
+              <div class="eng-card-foot">
+                <a class="btn btn-outline" href="assets/papers/Research on HVDC Protection &amp; Control Equipment.pdf" target="_blank">HVDC Paper</a>
+              </div>
+            </div>
+
+            <div class="eng-card">
+              <h4>Power Electronics</h4>
+              <ul>
+                <li>Static VAR compensator</li>
+                <li>Switched PFC reactor</li>
+                <li>Novel current source topology</li>
+                <li>Simplest resonant converter</li>
+                <li>Closed-loop boost converter with DC machine</li>
+                <li>TRIAC firing control for industrial heating</li>
+              </ul>
+              <div class="eng-card-foot">
+                <a class="btn btn-outline" href="assets/papers/Control Characteristics Simulation of Power Converters.pdf" target="_blank">Converter Paper</a>
+              </div>
+            </div>
+
+            <div class="eng-card">
+              <h4>Control Systems</h4>
+              <ul>
+                <li>eVTOL inertial-frame flight controller</li>
+                <li>BLDC motor control algorithms</li>
+                <li>Voltage-controlled inverter</li>
+                <li>Dye-injection process control</li>
+                <li>Ackermann gain and observer design</li>
+                <li>Automatic load-tester (1 W &ndash; 1 kW)</li>
+              </ul>
+              <div class="eng-card-foot">
+                <a class="btn btn-outline" href="assets/papers/Dye-injection.pdf" target="_blank">Dye-Injection Paper</a>
+              </div>
+            </div>
+
+            <div class="eng-card">
+              <h4>Signal Processing &amp; Instrumentation</h4>
+              <ul>
+                <li>40 GHz Signal Integrity (TDR + S-parameters)</li>
+                <li>Binaural recording microphone array</li>
+                <li>Acoustic source localization (4-mic, TDOA)</li>
+                <li>8-step PGA for DAQ (CMRR &gt;120 dB)</li>
+                <li>Edge detection, histogram equalization, SVD</li>
+              </ul>
+              <div class="eng-card-foot">
+                <a class="btn btn-outline" href="assets/papers/Binaural Recording Project Progress Report.pdf" target="_blank">Binaural Report</a>
+              </div>
+            </div>
+
+            <div class="eng-card">
+              <h4>Embedded Systems &amp; Hardware</h4>
+              <ul>
+                <li>STM32 AC waveform monitor (ADC, UART, ZCD)</li>
+                <li>Multi-axis haptic joypad (discrete analog, no MCU)</li>
+                <li>Multi-level security (discrete logic, 2FA, no MCU)</li>
+                <li>Battery level indicator circuit</li>
+                <li>Path-planning rover (GNC, obstacle avoidance)</li>
+                <li>MRI magnet shimming (10.8 H, 1.5 T, 2 ppb)</li>
+              </ul>
+              <div class="eng-card-foot">
+                <a class="btn btn-outline" href="assets/papers/Gamepad Haptic Feedback.pdf" target="_blank">Haptic Joypad</a>
+                <a class="btn btn-outline" href="assets/papers/Battery Level Indicator Final Report.pdf" target="_blank">Battery Indicator</a>
+              </div>
+            </div>
+
+            <div class="eng-card">
+              <h4>Lighting &amp; Facility Design</h4>
+              <ul>
+                <li>RGB art gallery (DIALux, multiple renders)</li>
+                <li>Basantapur lighting intervention study</li>
+                <li>KU ring road lighting case study</li>
+                <li>Food processing plant &amp; boiler installation</li>
+                <li>Industrial warehouse construction</li>
+              </ul>
+              <div class="eng-card-foot">
+                <a class="btn btn-outline" href="assets/papers/Report on Food Processing Plant and Boiler Installation - Professional Engineering Management.pdf" target="_blank">Plant Report</a>
+                <a class="btn btn-outline" href="assets/papers/Report on Industrial Warehouse Construction - Professional Engineering Management.pdf" target="_blank">Warehouse Report</a>
+              </div>
+            </div>
+
+            <div class="eng-card">
+              <h4>Optimization</h4>
+              <ul>
+                <li>F1 game performance optimization</li>
+                <li>NPN-BJT V<sub>BE</sub> optimization</li>
+                <li>Switching-noise reduction</li>
+                <li>MIMO channel power optimization</li>
+                <li>Root variation analysis</li>
+              </ul>
+            </div>
+
+            <div class="eng-card">
+              <h4>Image Processing</h4>
+              <ul>
+                <li>Edge detection suite (multiple operators)</li>
+                <li>Histogram equalization</li>
+                <li>SVD compression analysis</li>
+                <li>Temperature-changing kernel</li>
+                <li>Customizable DFT matrix</li>
+              </ul>
+              <div class="eng-card-foot">
+                <a class="btn btn-outline" href="javascript:void(0)" onclick="scrollToGalleries()">&#9655; MATLAB Gallery</a>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <a class="btn btn-primary" href="assets/papers/Real-Time Thermal Rating of OH Lines.pdf" target="_blank">&#8595; PDF</a>
       </div>
 
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Control Characteristics Simulation of Power Converters</h4>
-          <span>TECHNICAL REPORT</span>
+      <!-- SOFTWARE -->
+      <div class="content-section bg-alt">
+        <div class="container">
+          <h3 class="section-label">Software &amp; Computing</h3>
+          <div class="card-grid cols-3">
+
+            <div class="sw-card">
+              <h4>NLC Compiler</h4>
+              <div class="sw-tech">JavaScript &middot; Claude API &middot; Domain-Driven Design</div>
+              <p>Live compiler: write algorithms in plain English, get verified working code. Iterative domain&ndash;range assertion ensures deterministic outputs from a probabilistic LLM.</p>
+            </div>
+            <div class="sw-card">
+              <h4>Fungible Software Engine v0</h4>
+              <div class="sw-tech">Python &middot; Flask &middot; SHA-256 Caching</div>
+              <p>35 indexed computational fragments with contracts, 5 composition pipelines, deterministic cache. Proof-of-concept for the Periodic Table of Software thesis.</p>
+            </div>
+            <div class="sw-card">
+              <h4>Knowledge Pipeline</h4>
+              <div class="sw-tech">Python &middot; Claude Vision &middot; Typst &middot; PyMuPDF</div>
+              <p>Converts handwritten notes and photographs into typeset documents. Claude Vision extracts structure into JSON IR; renders to Typst, LaTeX, or HTML.</p>
+            </div>
+            <div class="sw-card">
+              <h4>Brain Pipeline</h4>
+              <div class="sw-tech">GitHub Actions &middot; LaTeX &middot; Overleaf &middot; Claude API</div>
+              <p>Voice-to-paper infrastructure. Record &rarr; transcribe &rarr; structure with AI &rarr; auto-compile to PDF. Zero-cost publishing on free tiers.</p>
+            </div>
+            <div class="sw-card">
+              <h4>NN Sonifier</h4>
+              <div class="sw-tech">Python &middot; NumPy &middot; Sounddevice</div>
+              <p>Real-time audio sonification of neural network training. Maps layer weights to frequency bands; demonstrates grokking through sound.</p>
+            </div>
+            <div class="sw-card">
+              <h4>Quantum Circuits</h4>
+              <div class="sw-tech">Qiskit &middot; OpenQASM 2.0 &middot; BluequBit</div>
+              <p>Collection of circuits from 4 to hundreds of qubits. RY, RZ, SX, CZ gate operations executed on quantum hardware.</p>
+            </div>
+            <div class="sw-card">
+              <h4>Badlibs</h4>
+              <div class="sw-tech">Python &middot; Flask &middot; GPT-4 &middot; SQLite &middot; Vercel</div>
+              <p>Daily AI-generated Mad Libs with 16 custom lib types, crowdsourced quality voting, and analytics. Deployed live.</p>
+            </div>
+            <div class="sw-card">
+              <h4>DirtyMario</h4>
+              <div class="sw-tech">Python &middot; Pygame</div>
+              <p>Platformer engine with physics, AI enemy behaviors, level editor, and neural network input vector generation for future ML integration.</p>
+            </div>
+            <div class="sw-card">
+              <h4>Acoustic Source Localization</h4>
+              <div class="sw-tech">Python &middot; NumPy &middot; Matplotlib</div>
+              <p>TDOA cross-correlation across environmental scenarios. Temperature-adjusted speed of sound, dual-frequency analysis at 1 kHz and 20 kHz.</p>
+            </div>
+            <div class="sw-card">
+              <h4>STM32 Waveform Monitor</h4>
+              <div class="sw-tech">C &middot; STM32 HAL &middot; ADC &middot; UART</div>
+              <p>Embedded firmware for real-time AC analysis: peak detection, zero-cross detection, min/max tracking, and data averaging at 50/60 Hz.</p>
+            </div>
+            <div class="sw-card">
+              <h4>Signal Processing Library</h4>
+              <div class="sw-tech">Python &middot; NumPy &middot; SciPy</div>
+              <p>Hadamard transforms, Joukowsky airfoil flow fields, Radon transforms, SVD image compression, Fourier phase analysis.</p>
+            </div>
+            <div class="sw-card">
+              <h4>Wealth Redistribution Model</h4>
+              <div class="sw-tech">Python &middot; Discrete Mathematics</div>
+              <p>Discrete mathematical model simulating wealth redistribution dynamics. Analyzes convergence behavior and equilibrium states in economic systems.</p>
+            </div>
+
+          </div>
         </div>
-        <a class="btn btn-primary" href="assets/papers/Control Characteristics Simulation of Power Converters.pdf" target="_blank">&#8595; PDF</a>
       </div>
 
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Dye-Injection Process Control</h4>
-          <span>TECHNICAL REPORT</span>
+      <!-- GALLERIES -->
+      <div class="content-section bg-primary" id="galleries">
+        <div class="container">
+          <h3 class="section-label">Galleries</h3>
+
+          <div class="gallery-group">
+            <h4>Hardware &amp; Lab Photography</h4>
+            <p class="gallery-desc">Physical builds: microphone arrays, thermal rating apparatus, circuit boards.</p>
+            <div class="gallery-grid">
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/hardware/Mic Array Front.jpg" alt="Microphone array front" loading="lazy">
+                <div class="g-label">Mic Array &mdash; Front</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/hardware/Mic Array Back.jpg" alt="Microphone array back" loading="lazy">
+                <div class="g-label">Mic Array &mdash; Back</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/hardware/RT-TR-OHL.jpeg" alt="Thermal rating test setup" loading="lazy">
+                <div class="g-label">RT Thermal Rating Setup</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/hardware/Fault Protecxion.png" alt="Fault protection diagram" loading="lazy">
+                <div class="g-label">Fault Protection System</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-group">
+            <h4>DIALux Lighting Design</h4>
+            <p class="gallery-desc">RGB Art Gallery lighting renders &mdash; professional illumination design with colored zones.</p>
+            <div class="gallery-grid">
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/dialux/RGB Art Gallery.jpg" alt="Gallery overview" loading="lazy">
+                <div class="g-label">Gallery Overview</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/dialux/RGB Art Gallery - Lobby.jpg" alt="Gallery lobby" loading="lazy">
+                <div class="g-label">Lobby</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/dialux/RGB Art Gallery - Blue General Gallery.jpg" alt="Blue gallery" loading="lazy">
+                <div class="g-label">Blue General Gallery</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/dialux/RGB Art Gallery - Green Special Gallery.jpg" alt="Green gallery" loading="lazy">
+                <div class="g-label">Green Special Gallery</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/dialux/RGB Art Gallery - Balcony.jpg" alt="Balcony" loading="lazy">
+                <div class="g-label">Balcony</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-group">
+            <h4>MATLAB &amp; Signal Processing</h4>
+            <p class="gallery-desc">Edge detection, histogram equalization, spectral analysis, and complex field analysis.</p>
+            <div class="gallery-grid">
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/A Edge 1.png" alt="Edge detection A1" loading="lazy">
+                <div class="g-label">Edge Detection A1</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/A Edge 2.png" alt="Edge detection A2" loading="lazy">
+                <div class="g-label">Edge Detection A2</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/A Edge 3.png" alt="Edge detection A3" loading="lazy">
+                <div class="g-label">Edge Detection A3</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/A Edge 4.png" alt="Edge detection A4" loading="lazy">
+                <div class="g-label">Edge Detection A4</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/C Edge 1.png" alt="Edge detection C" loading="lazy">
+                <div class="g-label">Edge Detection C</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/D Edge 1.png" alt="Edge detection D" loading="lazy">
+                <div class="g-label">Edge Detection D</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/Hist Equal 1.png" alt="Histogram equalization 1" loading="lazy">
+                <div class="g-label">Hist Equalization 1</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/Hist Equal 2.png" alt="Histogram equalization 2" loading="lazy">
+                <div class="g-label">Hist Equalization 2</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/Hist Equal 3.png" alt="Histogram equalization 3" loading="lazy">
+                <div class="g-label">Hist Equalization 3</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/Hist Equal 4.png" alt="Histogram equalization 4" loading="lazy">
+                <div class="g-label">Hist Equalization 4</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/Hist Equal 5.png" alt="Histogram equalization 5" loading="lazy">
+                <div class="g-label">Hist Equalization 5</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/Z Field.png" alt="Z-plane field" loading="lazy">
+                <div class="g-label">Z-Plane Field Analysis</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/dark_magnitude_normalized.jpg" alt="Magnitude spectrum normalized" loading="lazy">
+                <div class="g-label">Magnitude Spectrum (Normalized)</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/matlab/dark_phase_transformed.jpg" alt="Phase transformed" loading="lazy">
+                <div class="g-label">Phase Transformed</div>
+              </div>
+              <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="assets/signal/spread_spectrum.png" alt="Spread spectrum" loading="lazy">
+                <div class="g-label">Spread Spectrum Analysis</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-group">
+            <h4>Circuit Designs &amp; Schematics <span style="font-weight:400;font-size:.78rem;color:var(--text-secondary)">(63 designs)</span></h4>
+            <p class="gallery-desc">Collection of analog, digital, and mixed-signal circuit schematics.</p>
+            <div class="gallery-grid gallery-grid-sm" id="circuits-gallery"></div>
+            <div class="circuits-toggle-wrap">
+              <button id="circuits-toggle" class="btn btn-outline" onclick="toggleCircuits()">Show all 63 circuits</button>
+            </div>
+          </div>
+
         </div>
-        <a class="btn btn-primary" href="assets/papers/Dye-injection.pdf" target="_blank">&#8595; PDF</a>
       </div>
 
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Research on HVDC Protection &amp; Control Equipment</h4>
-          <span>TECHNICAL REPORT</span>
+      <!-- PAPERS & REPORTS -->
+      <div class="content-section bg-alt" id="repository">
+        <div class="container">
+          <h3 class="section-label">Papers &amp; Reports</h3>
+          <div class="doc-list">
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>NLC: A Natural Language Compiler with Deterministic Outputs</h4>
+                <span>PUBLICATION</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/NLC__A_Natural_Language_Compiler_with_Deterministic_Outputs.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Fungible Software Case Study</h4>
+                <span>PUBLICATION</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Fungible-Software-Case.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Real-Time Thermal Rating of Overhead Lines</h4>
+                <span>PUBLICATION &middot; IEEE POWERCON 2024</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Real-Time Thermal Rating of OH Lines.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Control Characteristics Simulation of Power Converters</h4>
+                <span>TECHNICAL REPORT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Control Characteristics Simulation of Power Converters.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Dye-Injection Process Control</h4>
+                <span>TECHNICAL REPORT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Dye-injection.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Research on HVDC Protection &amp; Control Equipment</h4>
+                <span>TECHNICAL REPORT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Research on HVDC Protection &amp; Control Equipment.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Wealth Redistribution Model (Discrete Systems)</h4>
+                <span>TECHNICAL REPORT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Wealth Redistribution Model_ Discrete..pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Heartbeat Anomaly Detection</h4>
+                <span>COURSE PROJECT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Heartbeat Anomaly Detection.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Binaural Recording Project &mdash; Progress Report</h4>
+                <span>COURSE PROJECT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Binaural Recording Project Progress Report.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Binaural Recording Proposal</h4>
+                <span>COURSE PROJECT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Binaural Recording Proposal vTerminal.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Gamepad Haptic Feedback</h4>
+                <span>COURSE PROJECT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Gamepad Haptic Feedback.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Dual-Axis Haptic Feedback Joypad with Finer Control</h4>
+                <span>COURSE PROJECT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Dual-Axis Haptic Feedback Joypad with finer control.PDF" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Battery Level Indicator &mdash; Final Report</h4>
+                <span>COURSE PROJECT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Battery Level Indicator Final Report.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Food Processing Plant &amp; Boiler Installation Report</h4>
+                <span>COURSE PROJECT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Report on Food Processing Plant and Boiler Installation - Professional Engineering Management.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Industrial Warehouse Construction Report</h4>
+                <span>COURSE PROJECT</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/Report on Industrial Warehouse Construction - Professional Engineering Management.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+            <div class="doc-row">
+              <div class="doc-info">
+                <h4>Curriculum Vitae</h4>
+                <span>CV</span>
+              </div>
+              <a class="btn btn-primary" href="assets/papers/PolarCV.pdf" target="_blank">&#8595; PDF</a>
+            </div>
+
+          </div>
         </div>
-        <a class="btn btn-primary" href="assets/papers/Research on HVDC Protection &amp; Control Equipment.pdf" target="_blank">&#8595; PDF</a>
       </div>
 
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Wealth Redistribution Model (Discrete Systems)</h4>
-          <span>TECHNICAL REPORT</span>
-        </div>
-        <a class="btn btn-primary" href="assets/papers/Wealth Redistribution Model_ Discrete..pdf" target="_blank">&#8595; PDF</a>
-      </div>
+      <!-- FOOTER -->
+      <footer class="site-footer">
+        &copy; 2026 Polarj Sapkota &nbsp;&middot;&nbsp; <a href="https://antiresonant.github.io/">Portfolio &rarr;</a>
+      </footer>
 
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Heartbeat Anomaly Detection</h4>
-          <span>COURSE PROJECT</span>
-        </div>
-        <a class="btn btn-primary" href="assets/papers/Heartbeat Anomaly Detection.pdf" target="_blank">&#8595; PDF</a>
-      </div>
+    </div><!-- /slide-scroll -->
+  </section>
 
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Binaural Recording Project &mdash; Progress Report</h4>
-          <span>COURSE PROJECT</span>
-        </div>
-        <a class="btn btn-primary" href="assets/papers/Binaural Recording Project Progress Report.pdf" target="_blank">&#8595; PDF</a>
-      </div>
-
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Binaural Recording Proposal</h4>
-          <span>COURSE PROJECT</span>
-        </div>
-        <a class="btn btn-primary" href="assets/papers/Binaural Recording Proposal vTerminal.pdf" target="_blank">&#8595; PDF</a>
-      </div>
-
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Gamepad Haptic Feedback</h4>
-          <span>COURSE PROJECT</span>
-        </div>
-        <a class="btn btn-primary" href="assets/papers/Gamepad Haptic Feedback.pdf" target="_blank">&#8595; PDF</a>
-      </div>
-
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Dual-Axis Haptic Feedback Joypad with Finer Control</h4>
-          <span>COURSE PROJECT</span>
-        </div>
-        <a class="btn btn-primary" href="assets/papers/Dual-Axis Haptic Feedback Joypad with finer control.PDF" target="_blank">&#8595; PDF</a>
-      </div>
-
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Battery Level Indicator &mdash; Final Report</h4>
-          <span>COURSE PROJECT</span>
-        </div>
-        <a class="btn btn-primary" href="assets/papers/Battery Level Indicator Final Report.pdf" target="_blank">&#8595; PDF</a>
-      </div>
-
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Food Processing Plant &amp; Boiler Installation Report</h4>
-          <span>COURSE PROJECT</span>
-        </div>
-        <a class="btn btn-primary" href="assets/papers/Report on Food Processing Plant and Boiler Installation - Professional Engineering Management.pdf" target="_blank">&#8595; PDF</a>
-      </div>
-
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Industrial Warehouse Construction Report</h4>
-          <span>COURSE PROJECT</span>
-        </div>
-        <a class="btn btn-primary" href="assets/papers/Report on Industrial Warehouse Construction - Professional Engineering Management.pdf" target="_blank">&#8595; PDF</a>
-      </div>
-
-      <div class="doc-row">
-        <div class="doc-info">
-          <h4>Curriculum Vitae</h4>
-          <span>CV</span>
-        </div>
-        <a class="btn btn-primary" href="assets/papers/PolarCV.pdf" target="_blank">&#8595; PDF</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  &copy; 2026 Polarj Sapkota &nbsp;&middot;&nbsp; <a href="https://antiresonant.github.io/">Portfolio &rarr;</a>
-</footer>
+</div><!-- /deck -->
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -663,6 +680,87 @@
 </div>
 
 <script>
+// ---- Deck navigation (2 slides) ----
+var activeSlide = 0;
+var slides = [document.getElementById('hero'), document.getElementById('main')];
+var dots = Array.from(document.querySelectorAll('.side-nav .dot'));
+var scrollEl = document.getElementById('slide-scroll');
+var deck = document.getElementById('deck');
+
+function goToSlide(idx){
+  if(idx < 0 || idx > 1 || idx === activeSlide) return;
+  slides[activeSlide].classList.remove('active');
+  activeSlide = idx;
+  slides[activeSlide].classList.add('active');
+  dots.forEach(function(d,i){ d.classList.toggle('active', i === activeSlide); });
+  // Reset scroll position when entering slide 2
+  if(idx === 1) scrollEl.scrollTop = 0;
+}
+
+// Side dots
+dots.forEach(function(d){
+  d.addEventListener('click', function(){ goToSlide(+d.dataset.idx); });
+});
+
+// Brand → hero
+document.getElementById('brand-btn').addEventListener('click', function(){ goToSlide(0); });
+
+// Keyboard
+document.addEventListener('keydown', function(e){
+  if(document.getElementById('lightbox').classList.contains('active')) return;
+  if(document.getElementById('consult-overlay').classList.contains('active')) return;
+  if(e.key === 'ArrowDown' && activeSlide === 0){ e.preventDefault(); goToSlide(1); }
+  if(e.key === 'ArrowUp' && activeSlide === 1 && scrollEl.scrollTop <= 0){ e.preventDefault(); goToSlide(0); }
+});
+
+// Wheel — snap between slides, but allow natural scroll inside slide 2
+var wheelLock = false;
+deck.addEventListener('wheel', function(e){
+  if(wheelLock) return;
+
+  if(activeSlide === 0){
+    // On hero: any downward wheel → go to slide 2
+    if(e.deltaY > 0){
+      e.preventDefault();
+      wheelLock = true;
+      goToSlide(1);
+      setTimeout(function(){ wheelLock = false; }, 350);
+    }
+    return;
+  }
+
+  // On slide 2: only intercept if at very top and scrolling up
+  if(activeSlide === 1 && e.deltaY < 0 && scrollEl.scrollTop <= 0){
+    e.preventDefault();
+    wheelLock = true;
+    goToSlide(0);
+    setTimeout(function(){ wheelLock = false; }, 350);
+  }
+  // Otherwise, let the scroll container handle it naturally
+}, {passive: false});
+
+// Touch swipe
+var tx, ty;
+deck.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; ty = e.touches[0].clientY; });
+deck.addEventListener('touchend', function(e){
+  if(tx === undefined) return;
+  var dy = e.changedTouches[0].clientY - ty;
+  tx = undefined;
+  if(Math.abs(dy) < 40) return;
+
+  if(dy < 0 && activeSlide === 0){ goToSlide(1); return; }
+  if(dy > 0 && activeSlide === 1 && scrollEl.scrollTop <= 0){ goToSlide(0); }
+});
+
+// Scroll to galleries (for internal links)
+function scrollToGalleries(){
+  if(activeSlide !== 1) goToSlide(1);
+  setTimeout(function(){
+    var el = document.getElementById('galleries');
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  }, activeSlide !== 1 ? 100 : 0);
+}
+
 // ---- Theme toggle ----
 (function(){
   var toggle = document.getElementById('theme-toggle');
@@ -697,7 +795,7 @@ function closeLightbox(e){
     document.getElementById('lightbox').classList.remove('active');
   }
 }
-document.addEventListener('keydown',function(e){
+document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){
     document.getElementById('lightbox').classList.remove('active');
     document.getElementById('consult-overlay').classList.remove('active');
@@ -720,7 +818,7 @@ function posPapersArrow(){
   var arrow = document.getElementById('papers-arrow');
   if(!word || !arrow) return;
   var r = word.getBoundingClientRect();
-  arrow.style.top = (r.top + r.height * 0.55 + window.scrollY) + 'px';
+  arrow.style.top = (r.top + r.height * 0.55) + 'px';
   arrow.style.left = (r.right + 3) + 'px';
 }
 function posBlogsArrow(){
@@ -728,7 +826,7 @@ function posBlogsArrow(){
   var arrow = document.getElementById('blogs-arrow');
   if(!word || !arrow) return;
   var r = word.getBoundingClientRect();
-  arrow.style.top = (r.top + r.height * 0.55 + window.scrollY) + 'px';
+  arrow.style.top = (r.top + r.height * 0.55) + 'px';
   arrow.style.right = (window.innerWidth - r.left + 3) + 'px';
 }
 posPapersArrow();
