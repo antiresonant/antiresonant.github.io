@@ -180,7 +180,7 @@ button{cursor:pointer;font-family:var(--ff)}
   letter-spacing:.06em;color:var(--accent);margin-bottom:.1rem;font-family:var(--mono);
 }
 .hero-contact .hc a{font-size:.8rem;color:var(--text-secondary)}
-.btn-email{border-color:rgba(255,255,255,.2) !important;color:var(--text-primary) !important;font-weight:500}
+.btn-email{border-color:var(--border) !important;color:var(--text-primary) !important;font-weight:500}
 .btn-email:hover{border-color:var(--accent) !important;color:var(--accent) !important;background:var(--accent-glow) !important}
 
 /* Blogs & Papers arrows */
