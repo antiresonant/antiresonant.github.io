@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,19 +21,16 @@
 <!-- TOP NAV -->
 <nav class="top-nav">
   <a class="brand" href="../">Polarj Sapkota</a>
-  <button class="menu-btn" id="menu-btn">&#9776;</button>
-  <ul class="nav-links">
-    <li><a href="../">Home</a></li>
-    <li><a class="active" href="./">Blogs</a></li>
-    <li><a href="../#repository">Papers &amp; Reports</a></li>
-  </ul>
+  <a class="nav-link" href="../">Home</a>
+  <a class="nav-link active" href="./">Blogs</a>
+  <a class="nav-link" href="../repository/">Repository</a>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
 </nav>
 
 <!-- MAIN -->
 <main class="blog-main">
   <header class="blog-header">
     <h1 class="sec-title">Blogs</h1>
-    <div class="sec-accent"></div>
     <p class="sec-subtitle">Thoughts on engineering, research, and building things.</p>
   </header>
 
@@ -51,9 +48,25 @@
 </footer>
 
 <script>
-  const menuBtn = document.getElementById('menu-btn');
-  const nav = document.querySelector('.top-nav');
-  menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+(function(){
+  var toggle = document.getElementById('theme-toggle');
+  var html = document.documentElement;
+  var stored = localStorage.getItem('theme');
+  if(stored) html.setAttribute('data-theme', stored);
+  else if(window.matchMedia('(prefers-color-scheme: light)').matches) html.setAttribute('data-theme','light');
+  updateIcon();
+  toggle.addEventListener('click', function(){
+    var current = html.getAttribute('data-theme') || 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateIcon();
+  });
+  function updateIcon(){
+    var t = html.getAttribute('data-theme') || 'dark';
+    toggle.textContent = t === 'dark' ? '\u2600' : '\u263D';
+  }
+})();
 </script>
 
 </body>
