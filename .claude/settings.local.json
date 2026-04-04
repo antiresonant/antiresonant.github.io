@@ -11,7 +11,8 @@
       "WebFetch(*)",
       "WebSearch(*)",
       "Skill(*)",
-      "NotebookEdit(*)"
+      "NotebookEdit(*)",
+      "Bash(grep:*)"
     ]
   }
 }
