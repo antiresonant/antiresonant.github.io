@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/ktm-ward-map/">
+    <title>Kathmandu Ward Overlay</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main id="app">
+      <div id="map" aria-label="Kathmandu ward map overlay"></div>
+
+      <section class="toolbar" aria-label="Map controls">
+        <div class="title-block">
+          <h1>Kathmandu Wards</h1>
+          <span id="status">Loading OSM wards</span>
+        </div>
+
+        <div class="control-grid">
+          <label class="field">
+            <span>Basemap</span>
+            <select id="basemap">
+              <option value="streets">Streets</option>
+              <option value="light">Light</option>
+              <option value="imagery">Satellite</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Ward</span>
+            <select id="wardSelect">
+              <option value="">All wards</option>
+            </select>
+          </label>
+
+          <label class="field range-field">
+            <span>Image opacity</span>
+            <input id="opacity" type="range" min="0" max="1" step="0.01" value="0.44">
+          </label>
+        </div>
+
+        <div class="switches" aria-label="Layer toggles">
+          <label><input id="imageToggle" type="checkbox" checked> Ward image</label>
+          <label><input id="wardToggle" type="checkbox" checked> OSM wards</label>
+          <label><input id="labelToggle" type="checkbox" checked> Labels</label>
+        </div>
+      </section>
+
+      <div class="attribution">
+        OpenStreetMap contributors | Ward raster: local map image
+      </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
