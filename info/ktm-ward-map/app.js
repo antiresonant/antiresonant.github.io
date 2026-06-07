@@ -25,6 +25,8 @@ const dom = {
   opacity: document.querySelector("#opacity"),
   status: document.querySelector("#status"),
   wardSelect: document.querySelector("#wardSelect"),
+  infoToggle: document.querySelector("#infoToggle"),
+  seoPanel: document.querySelector("#seoPanel"),
 };
 
 const map = L.map("map", {
@@ -85,6 +87,12 @@ dom.labelToggle.addEventListener("change", () => {
 
 dom.opacity.addEventListener("input", () => {
   rasterLayer.setOpacity(Number(dom.opacity.value));
+});
+
+dom.infoToggle?.addEventListener("click", () => {
+  const expanded = dom.infoToggle.getAttribute("aria-expanded") === "true";
+  dom.infoToggle.setAttribute("aria-expanded", String(!expanded));
+  dom.seoPanel?.classList.toggle("is-open", !expanded);
 });
 
 dom.wardSelect.addEventListener("change", () => {

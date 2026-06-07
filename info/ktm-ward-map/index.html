@@ -1,15 +1,155 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/ktm-ward-map/">
-    <title>Kathmandu Ward Overlay</title>
+    <title>Kathmandu Ward Map | Interactive KMC Ward Boundaries 1-32</title>
+    <meta name="description" content="Interactive Kathmandu ward map for Kathmandu Metropolitan City. Find KMC ward numbers 1-32 with ward boundaries over streets, satellite, and the official ward raster.">
+    <meta name="keywords" content="Kathmandu ward map, KMC ward map, Kathmandu Metropolitan City ward map, Kathmandu ward number, Kathmandu ward boundary, Kathmandu municipality ward, Kathmandu mahanagarpalika ward map">
+    <meta name="author" content="Polarj Sapkota">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <meta name="geo.region" content="NP-P3">
+    <meta name="geo.placename" content="Kathmandu">
+    <meta name="geo.position" content="27.708317;85.320582">
+    <meta name="ICBM" content="27.708317, 85.320582">
+    <link rel="canonical" href="https://polarjsapkota.com/ktm-ward-map/">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://tile.openstreetmap.org">
+    <link rel="preconnect" href="https://a.tile.openstreetmap.org">
+    <link rel="preconnect" href="https://b.tile.openstreetmap.org">
+    <link rel="preconnect" href="https://c.tile.openstreetmap.org">
+    <link rel="preload" as="image" href="kathmandu-ward-map-cropped.jpg" fetchpriority="high">
+    <meta property="og:title" content="Kathmandu Ward Map | Interactive KMC Ward Boundaries">
+    <meta property="og:description" content="Find Kathmandu Metropolitan City ward numbers and boundaries on a real street or satellite map. Covers all 32 Kathmandu wards with an official raster overlay.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://polarjsapkota.com/ktm-ward-map/">
+    <meta property="og:image" content="https://polarjsapkota.com/ktm-ward-map/kathmandu-ward-map-cropped.jpg">
+    <meta property="og:image:alt" content="Kathmandu Metropolitan City ward boundary map overlaid on a street map">
+    <meta property="og:site_name" content="Polarj Sapkota">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kathmandu Ward Map | KMC Ward Boundaries 1-32">
+    <meta name="twitter:description" content="Interactive Kathmandu Metropolitan City ward map with ward boundaries, ward numbers, streets, satellite view, and an official raster overlay.">
+    <meta name="twitter:image" content="https://polarjsapkota.com/ktm-ward-map/kathmandu-ward-map-cropped.jpg">
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     >
     <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://polarjsapkota.com/ktm-ward-map/#app",
+            "name": "Kathmandu Ward Map",
+            "alternateName": ["KMC Ward Map", "Kathmandu Metropolitan City Ward Map"],
+            "url": "https://polarjsapkota.com/ktm-ward-map/",
+            "applicationCategory": "MapApplication",
+            "operatingSystem": "Any",
+            "isAccessibleForFree": true,
+            "description": "Interactive Kathmandu ward map for finding Kathmandu Metropolitan City ward numbers and boundaries over a real street or satellite map.",
+            "inLanguage": "en",
+            "featureList": [
+              "Kathmandu Metropolitan City ward numbers 1-32",
+              "Street, light, and satellite basemaps",
+              "Ward boundary polygons from OpenStreetMap where available",
+              "Official Kathmandu ward raster overlay with opacity controls",
+              "Ward selector for quick zooming"
+            ],
+            "spatialCoverage": {
+              "@type": "City",
+              "name": "Kathmandu Metropolitan City",
+              "containedInPlace": {
+                "@type": "Country",
+                "name": "Nepal"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 27.708317,
+                "longitude": 85.320582
+              }
+            },
+            "provider": {
+              "@type": "Person",
+              "name": "Polarj Sapkota",
+              "url": "https://polarjsapkota.com/"
+            }
+          },
+          {
+            "@type": "Dataset",
+            "@id": "https://polarjsapkota.com/ktm-ward-map/#ward-boundaries",
+            "name": "Kathmandu Metropolitan City Ward Boundary Overlay",
+            "description": "Local GeoJSON and raster overlay used to display ward boundaries for Kathmandu Metropolitan City, Nepal.",
+            "url": "https://polarjsapkota.com/ktm-ward-map/data/kathmandu-wards.geojson",
+            "license": "https://www.openstreetmap.org/copyright",
+            "spatialCoverage": {
+              "@type": "Place",
+              "name": "Kathmandu Metropolitan City, Nepal",
+              "geo": {
+                "@type": "GeoShape",
+                "box": "27.6679494 85.2771438 27.7500026 85.3731257"
+              }
+            },
+            "keywords": [
+              "Kathmandu ward map",
+              "Kathmandu Metropolitan City wards",
+              "KMC ward boundaries",
+              "Kathmandu ward number"
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://polarjsapkota.com/ktm-ward-map/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://polarjsapkota.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Kathmandu Ward Map",
+                "item": "https://polarjsapkota.com/ktm-ward-map/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://polarjsapkota.com/ktm-ward-map/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do I find my Kathmandu ward number?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Use the ward selector or zoom into your location on the Kathmandu ward map. The map overlays ward numbers and ward boundaries on streets and satellite imagery."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How many wards are in Kathmandu Metropolitan City?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Kathmandu Metropolitan City has 32 wards. This map labels all 32 wards through the raster overlay and includes OpenStreetMap ward polygons where available."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does the map show 29 out of 32 OSM ward polygons?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The live vector layer is based on available OpenStreetMap relations. At the time this map was generated, OpenStreetMap returned 29 ward polygons; the raster overlay still shows all 32 Kathmandu wards."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <main id="app">
@@ -17,7 +157,7 @@
 
       <section class="toolbar" aria-label="Map controls">
         <div class="title-block">
-          <h1>Kathmandu Wards</h1>
+          <h1>Kathmandu Ward Map</h1>
           <span id="status">Loading OSM wards</span>
         </div>
 
@@ -51,9 +191,93 @@
         </div>
       </section>
 
+      <article class="seo-panel" id="seoPanel" aria-labelledby="mapInfoTitle">
+        <button class="seo-toggle" id="infoToggle" type="button" aria-expanded="false" aria-controls="mapInfoBody">
+          <span>
+            <strong id="mapInfoTitle">About this Kathmandu ward map</strong>
+            <small>Find KMC ward numbers and boundaries</small>
+          </span>
+        </button>
+        <div class="seo-body" id="mapInfoBody">
+          <p>
+            This interactive Kathmandu ward map helps people find ward numbers and
+            boundaries inside Kathmandu Metropolitan City, also called KMC or
+            Kathmandu Mahanagarpalika. It combines a real street map, satellite
+            view, OpenStreetMap ward polygons, and an official-style ward raster
+            overlay so the ward map can be read against actual roads and places.
+          </p>
+          <p>
+            Use it when you need to identify a Kathmandu ward for forms, local
+            address lookup, ward office questions, planning work, school or
+            research projects, property context, or general navigation across
+            Kathmandu, Nepal.
+          </p>
+          <h2>What is included</h2>
+          <ul>
+            <li>Ward number lookup for Kathmandu Metropolitan City wards 1-32.</li>
+            <li>Overlay of Kathmandu ward boundaries on current street and satellite maps.</li>
+            <li>Opacity control for comparing the ward raster with real roads.</li>
+            <li>Ward selector for zooming to available KMC ward boundary polygons.</li>
+            <li>Local GeoJSON data for faster loading and more reliable access.</li>
+          </ul>
+          <h2>Kathmandu wards covered</h2>
+          <p>
+            The raster layer shows all 32 Kathmandu wards. The vector layer uses
+            available OpenStreetMap ward relations and currently includes 29 KMC
+            ward polygons; wards 22, 24, and 25 remain visible in the raster layer.
+          </p>
+          <ol class="ward-list" aria-label="Kathmandu Metropolitan City ward numbers">
+            <li>Kathmandu Ward 1</li>
+            <li>Kathmandu Ward 2</li>
+            <li>Kathmandu Ward 3</li>
+            <li>Kathmandu Ward 4</li>
+            <li>Kathmandu Ward 5</li>
+            <li>Kathmandu Ward 6</li>
+            <li>Kathmandu Ward 7</li>
+            <li>Kathmandu Ward 8</li>
+            <li>Kathmandu Ward 9</li>
+            <li>Kathmandu Ward 10</li>
+            <li>Kathmandu Ward 11</li>
+            <li>Kathmandu Ward 12</li>
+            <li>Kathmandu Ward 13</li>
+            <li>Kathmandu Ward 14</li>
+            <li>Kathmandu Ward 15</li>
+            <li>Kathmandu Ward 16</li>
+            <li>Kathmandu Ward 17</li>
+            <li>Kathmandu Ward 18</li>
+            <li>Kathmandu Ward 19</li>
+            <li>Kathmandu Ward 20</li>
+            <li>Kathmandu Ward 21</li>
+            <li>Kathmandu Ward 22</li>
+            <li>Kathmandu Ward 23</li>
+            <li>Kathmandu Ward 24</li>
+            <li>Kathmandu Ward 25</li>
+            <li>Kathmandu Ward 26</li>
+            <li>Kathmandu Ward 27</li>
+            <li>Kathmandu Ward 28</li>
+            <li>Kathmandu Ward 29</li>
+            <li>Kathmandu Ward 30</li>
+            <li>Kathmandu Ward 31</li>
+            <li>Kathmandu Ward 32</li>
+          </ol>
+        </div>
+      </article>
+
       <div class="attribution">
         OpenStreetMap contributors | Ward raster: local map image
       </div>
+
+      <noscript>
+        <section class="noscript-content">
+          <h2>Kathmandu Ward Map</h2>
+          <p>
+            This page provides a Kathmandu Metropolitan City ward map for finding
+            KMC ward numbers 1-32 and ward boundaries in Kathmandu, Nepal. Enable
+            JavaScript to use the interactive street, satellite, ward polygon,
+            and raster overlay controls.
+          </p>
+        </section>
+      </noscript>
     </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
