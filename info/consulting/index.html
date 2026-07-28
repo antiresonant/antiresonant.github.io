@@ -186,7 +186,10 @@
     </div>
   </section>
 
-  <section class="consult-section">
+  <!-- Client Intake / Brochures section.
+       Visibility is controlled by the SHOW_BROCHURES binary in the script
+       right below the section: 1 = visible, 0 = hidden. Currently 0 (hidden). -->
+  <section class="consult-section" id="brochures-section" style="display:none">
     <h2>Client Intake</h2>
     <div class="pricing-row">
       <a class="pricing-card" href="../assets/EE%20Consulting%20-%20Nepal.pdf" target="_blank">
@@ -201,6 +204,14 @@
       </a>
     </div>
   </section>
+  <script>
+    // SHOW_BROCHURES: binary switch for the Client Intake / Brochures section above.
+    // 1 = visible, 0 = invisible. Currently set to 0 (hidden).
+    // The section also carries style="display:none" so it stays hidden without JS;
+    // flipping this to 1 reveals it.
+    var SHOW_BROCHURES = 0;
+    document.getElementById('brochures-section').style.display = SHOW_BROCHURES ? '' : 'none';
+  </script>
 
   <section class="consult-section consult-cta-section">
     <h2>Work With Me</h2>
