@@ -225,7 +225,10 @@
       <h2 class="consult-title">Consulting Services</h2>
       <p class="consult-desc">Embedded controls, power electronics, instrumentation, signal integrity, and engineering feasibility reviews. Outcome-based packages with clear deliverables.</p>
     </div>
-    <div class="consult-cards">
+    <!-- View Brochure cards.
+         Visibility is controlled by the SHOW_BROCHURES binary in the script
+         right below: 1 = visible, 0 = hidden. Currently 0 (hidden). -->
+    <div class="consult-cards" id="brochure-cards" style="display:none">
       <a class="consult-card" href="assets/EE%20Consulting%20-%20Global.pdf" target="_blank">
         <div class="consult-icon">&#127760;</div>
         <h3>Global</h3>
@@ -241,6 +244,14 @@
     </div>
   </div>
 </div>
+<script>
+  // SHOW_BROCHURES: binary switch for the View Brochure cards above.
+  // 1 = visible, 0 = invisible. Currently set to 0 (hidden).
+  // The container also carries style="display:none" so it stays hidden without JS;
+  // flipping this to 1 reveals it.
+  var SHOW_BROCHURES = 0;
+  document.getElementById('brochure-cards').style.display = SHOW_BROCHURES ? '' : 'none';
+</script>
 
 <script>
 // ---- Deck navigation (2 slides) ----
